@@ -39,8 +39,7 @@ Copyright (c) 2023 SAP SE or an SAP affiliate company and script-to-package-tool
 
 
 # Security 👮
-Found a security-related issue or vulnerability and want to notify us? Please contact us at 📧 [macatsap-opensource-security@sap.com](mailto:macatsap-opensource-security@sap.com?subject=[GitHub]%20script-to-package-tool-for-macos
-%20Security%20Issue%20Report)
+Found a security-related issue or vulnerability and want to notify us? Please contact us at 📧 [macatsap-opensource-security@sap.com](mailto:macatsap-opensource-security@sap.com?subject=[GitHub]%20script-to-package-tool-for-macos%20Security%20Issue%20Report)
 
 # Support 🤓
 
