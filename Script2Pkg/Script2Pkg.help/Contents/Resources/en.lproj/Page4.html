@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <script src="../js/topicpage.js" type="text/javascript"></script>
+        <title>Glossary</title>
+        <meta name="robots" content="index" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+    </head>
+    <body>
+        <a name="Page4"></a>
+        <p class="Left Heading1">
+            <img style="margin: 0.0px 0.0px -9.0px -5.0px;" height="64.0" src="../images/script2pkg.png" width="64.0" />
+            <span class="Heading1">Script2Pkg</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">There are terms used in Script2Pkg which may need explanation. Please see below for the most common:</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Bold">
+            <span class="Bold">Installer package</span>
+        </p>
+        <p class="Left Normal Bold">
+            <span class="Normal">A file with a&nbsp;</span>
+            <span class="Bold">.pkg</span>
+            <span class="Normal">&nbsp;file extension which is used on macOS. It normally contains an archive of files to install and information on where to install them. It can also include additional resources like Read Me or license documents, as well as scripts to run before or after the installation.</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Bold">
+            <span class="Bold">Payload-free package</span>
+        </p>
+        <p class="Left Normal Bold">
+            <span class="Normal">Payload-free packages are installer packages for macOS that exist only to run scripts. They don't install any files, which would be referred to as the installer package's payload. With no payload included with these installer packages, the installer packages built by this tool are referred to as&nbsp;</span>
+            <span class="Bold">payload-free</span>
+            <span class="Normal">.</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Bold">
+            <span class="Bold">Notarization</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">Notarization is an additional safeguard against signed installer packages being modified by a malicious third party. The Apple notary service is an automated system that scans an installer package for malicious content and checks for code-signing issues, so notarization of a signed installer package ensures that Apple has passed the signed code through an automated scanning process and verified that the signed code is free of malicious content. macOS's security tools can check the notarization status of a signed and notarized installer package.</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Bold">
+            <span class="Bold">Receipt</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">Installer package receipt files are used by macOS to maintain a record of what the Installer application has installed. Normally, a receipt file is created each time you install new software via a package file but there is an exception to this rule: payload-free packages normally do not install any files and do not leave a receipt behind. The receipt files will contain the following information:</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <ul class="listSquare">
+            <li class="Normal">
+                <p class="Left Normal">
+                    <span class="Normal">Package identifier: This is a string which is used to uniquely identify an installer package.</span>
+                </p>
+            </li>
+            <li class="Normal">
+                <p class="Left Normal">
+                    <span class="Normal">Package version: This is a string used to store version information for the installer package.</span>
+                </p>
+            </li>
+        </ul>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Bold Normal">
+            <span class="Bold">Note:</span>
+            <span class="Normal">&nbsp;There is an option available to enable packages created by this app to leave a receipt, so that installation of the payload-free packages created by this app leave a receipt to help track their installation.</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Footer">
+            <span class="Footer">© 2023 SAP SE. All rights reserved.</span>
+        </p>
+    </body>
+</html>

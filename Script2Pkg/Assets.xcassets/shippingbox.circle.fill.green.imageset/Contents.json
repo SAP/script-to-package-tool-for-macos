@@ -1,0 +1,22 @@
+{
+  "images" : [
+    {
+      "filename" : "shippingbox.circle.fill.green.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "shippingbox.circle.fill.green.dark.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

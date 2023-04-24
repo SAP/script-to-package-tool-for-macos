@@ -1,0 +1,225 @@
+div#main {
+    float: left;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+div#tree {
+    float: left;
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}
+div#tree Data{
+    position:absolute;
+    min-height: 100%;
+    max-height: 100%;
+}
+div#contentContainer {
+    height: 100%;
+    overflow: auto;
+}
+div#content {
+    padding: .25in .5in .25in;
+    overflow: hidden;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+hr {
+    border: 0;
+}
+a {
+    text-decoration: none;
+    color: #0000ff;
+}
+ol, ul {
+    list-style-position: outside;
+}
+ul.fancytree-container {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    overflow-y: auto;
+    height: 100%;
+    line-height: 1.5;
+    border-top: none;
+    border-left:none;
+    border-bottom: none;
+    padding: 0;
+}
+.fancytree-treefocus span.fancytree-active span.fancytree-title,
+.fancytree-treefocus span.fancytree-selected span.fancytree-title {
+    background-color: #f0f0f0;
+    color: inherit;
+}
+span.fancytree-title{
+    color: inherit;
+    width: 84%;
+}
+span.fancytree-selected span.fancytree-title {
+    color: white;
+}
+.Left {
+    text-align: left;
+}
+.Right {
+    text-align: right;
+}
+.Justify {
+    text-align: justify;
+}
+.Center {
+    text-align: center;
+    width:100%;
+}
+p {
+    font-size: 0;
+}
+span.bold {
+    font-weight: 900;
+}
+.p.bold {
+
+}
+span.italic {
+    font-style: italic;
+}
+p.italic {
+
+}
+p.last {
+    margin-bottom: 0;
+}
+table {
+    width:100%;
+    border-collapse: collapse;
+}
+.listDisc {
+    list-style-type:disc;
+}
+.listCircle {
+    list-style-type:circle;
+}
+.listSquare {
+    list-style-type:square;
+}
+
+
+ul.listCheck {
+    counter-reset: list;
+}
+ul.listCheck > li {
+    list-style: none;
+    position: relative;
+}
+ul.listCheck > li:before {
+    counter-increment: list;
+    content:"\2713\0020";
+    position: absolute;
+    left: -1.4em;
+}
+
+ul.listHyphen {
+    counter-reset: list;
+}
+ul.listHyphen > li {
+    list-style: none;
+    position: relative;
+}
+ul.listHyphen > li:before {
+    counter-increment: list;
+    content:"- ";
+    position: absolute;
+    left: -1.4em;
+}
+
+.listDecimal {
+    list-style-type:decimal;
+}
+
+ul.listDecimalRP {
+    counter-reset: list;
+}
+ul.listDecimalRP > li {
+    list-style: none;
+    position: relative;
+}
+ul.listDecimalRP > li:before {
+    counter-increment: list;
+    content: counter(list, decimal) ") ";
+    position: absolute;
+    left: -1.4em;
+}
+
+.listUpperAlpha {
+    list-style-type:upper-alpha;
+}
+ul.listUpperAlphaRP {
+    counter-reset: list;
+}
+ul.listUpperAlphaRP > li {
+    list-style: none;
+    position: relative;
+}
+ul.listUpperAlphaRP > li:before {
+    counter-increment: list;
+    content: counter(list, upper-alpha) ") ";
+    position: absolute;
+    left: -1.4em;
+}
+
+.listLowerAlpha {
+    list-style-type:lower-alpha;
+}
+ul.listLowerAlphaRP {
+    counter-reset: list;
+}
+ul.listLowerAlphaRP > li {
+    list-style: none;
+    position: relative;
+}
+ul.listLowerAlphaRP > li:before {
+    counter-increment: list;
+    content: counter(list, lower-alpha) ") ";
+    position: absolute;
+    left: -1.4em;
+}
+
+.listUpperRoman {
+    list-style-type:upper-roman;
+}
+ul.listUpperRomanRP {
+    counter-reset: list;
+}
+ul.listUpperRomanRP > li {
+    list-style: none;
+    position: relative;
+}
+ul.listUpperRomanRP > li:before {
+    counter-increment: list;
+    content: counter(list, upper-roman) ") ";
+    position: absolute;
+    left: -1.4em;
+}
+
+.listLowerRoman {
+    list-style-type:lower-roman;
+}
+ul.listLowerRomanRP {
+    counter-reset: list;
+}
+ul.listLowerRomanRP > li {
+    list-style: none;
+    position: relative;
+}
+ul.listLowerRomanRP > li:before {
+    counter-increment: list;
+    content: counter(list, lower-roman) ") ";
+    position: absolute;
+    left: -1.4em;
+}

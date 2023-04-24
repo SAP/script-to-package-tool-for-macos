@@ -1,0 +1,72 @@
+/*
+     Localizable.strings
+     Copyright 2022-2023 SAP SE
+     
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+     
+     http://www.apache.org/licenses/LICENSE-2.0
+     
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+*/
+
+"credentialsDialogText" = "Please sign in using an Apple ID associated with development team %@ and the app-specific password you have created for notarization.";
+
+"mainWindowDefaultText" = "at the script's location";
+"mainWindowAlternateText" = "at the location you have chosen in this app's settings";
+
+"selectButton" = "Select";
+"buildButton" = "Build";
+"validateButton" = "Validate";
+"okButton" = "OK";
+"cancelButton" = "Cancel";
+"invalidateButton" = "Invalidate";
+"showWindowButton" = "Show activity window…";
+
+"openDialogMessage" = "Please select one or more scripts and click the \"Build\" button below to create a package from each script you selected.";
+"validateDialogMessage" = "Please select a package and click the \"Validate\" button below to check the signature of the package.";
+
+"notarytoolMissingTooltip" = "This checkbox is disabled because the notarytool command line tool has not been found. Please install the Command Line Tools for Xcode 13 or later to get notarytool and enable notarization.";
+"signingDisabledTooltip" = "This checkbox is disabled because package signing is disabled and only signed packages may be notarized.";
+"noSigningIdentityTooltip" = "This checkbox is disabled because no valid code signing identity has been found in your login keychain.";
+
+"commandLineToolsInstalledText" = "To notarize packages, Xcode 13, the Command Line Tools for Xcode 13, or later versions of these tools are required. Compatible versions of these tools have been detected as being installed, so notarizing should work as expected.";
+
+"stoppingProgressLabel" = "Stopping…";
+
+"errorMessageTitle" = "Errors occurred while building packages.";
+"errorMessageText" = "Please check the activity window for details.";
+
+"invalidateCredentialsMessageTitle" = "Are you sure you want to invalidate the stored credentials?";
+"invalidateCredentialsMessageText" = "Invalidating credentials also disables notarization. You may re-enable notarization at any time, but you must provide valid credentials then.";
+
+"packageSuccessNotificationTitle" = "Packaging successful!";
+"packageSuccessNotificationMessage" = "The package \"%@\" has been successfully built.";
+"packageFailNotificationTitle" = "Packaging failed!";
+"packageFailNotificationMessage" = "The package \"%@\" could not be built.";
+
+"MTPackagingTaskState_0" = "Waiting";
+"MTPackagingTaskState_1" = "Building package";
+"MTPackagingTaskState_2" = "Notarizing package";
+"MTPackagingTaskState_3" = "Copying package";
+"MTPackagingTaskState_4" = "Failed to build package";
+"MTPackagingTaskState_5" = "Failed to notarize package";
+"MTPackagingTaskState_6" = "Failed to copy package";
+"MTPackagingTaskState_7" = "Cancelled";
+"MTPackagingTaskState_8" = "Complete";
+
+"pkgSignedBy" = "This package was signed by \"%@\".";
+"pkgNotSigned" = "This package is not signed.";
+"pkgIsNotarized" = "This package was notarized by Apple.";
+"pkgNotNotarized" = "This package is not notarized.";
+"pkgByApple" = "This package was created and signed by Apple.";
+"pkgExpired" = "This package is signed using a certificate that has since expired.";
+"pkgNotSignedDescription" = "This package is not signed with a digital certificate and is not trusted by Apple's notarization service. On Macs with Apple's Gatekeeper security feature enabled, installation of the package may be blocked because Apple's built-in security tools can't verify that it doesn't contain malware.";
+"pkgIsSignedDescription" = "This package is signed with a digital certificate, but is not trusted by Apple's notarization service. If a user tries to install this package on Macs with Apple's Gatekeeper security feature enabled, macOS may warn the user because of the missing notarization. The user may be able to acknowledge this warning and successfully install the package.";
+"pkgIsNotarizedDescription" = "This package is signed with a digital certificate and trusted by Apple's notarization service. A user should be able to install this package without any problems.";
+"pkgExpiredDescription" = "The signature of this package has been expired. On Macs with Apple's Gatekeeper security feature enabled, installation of the package may be blocked.";

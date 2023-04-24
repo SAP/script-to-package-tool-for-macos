@@ -1,0 +1,457 @@
+/*
+     MTMainViewController.m
+     Copyright 2022-2023 SAP SE
+     
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+     
+     http://www.apache.org/licenses/LICENSE-2.0
+     
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+*/
+
+#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
+#import <os/log.h>
+#import "MTMainViewController.h"
+#import "Constants.h"
+#import "MTDeveloperIdentity.h"
+#import "MTPayloadFreePackage.h"
+#import "MTNotarization.h"
+#import "MTProgressController.h"
+#import "MTSignatureValidationController.h"
+
+@interface MTMainViewController ()
+@property (weak) IBOutlet NSArrayController *identitiesArrayController;
+@property (weak) IBOutlet NSButton *signingCheckbox;
+@property (weak) IBOutlet NSButton *notarizingCheckbox;
+
+@property (nonatomic, strong, readwrite) NSMutableArray *devIdentitiesArray;
+@property (nonatomic, strong, readwrite) NSUserDefaults *userDefaults;
+@property (nonatomic, strong, readwrite) NSWindowController *activityController;
+@property (nonatomic, strong, readwrite) NSWindowController *settingsController;
+@property (assign) BOOL enableNotarization;
+@property (assign) BOOL verifyingCredentials;
+@end
+
+@implementation MTMainViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    _userDefaults = [NSUserDefaults standardUserDefaults];
+    _devIdentitiesArray = [[NSMutableArray alloc] init];
+    
+    [_userDefaults registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
+                                     [NSNumber numberWithBool:NO], kMTDefaultsPackageSign,
+                                     [NSNumber numberWithInteger:0], kMTDefaultsExistingPKGHandling,
+                                     nil]];
+    
+    // load the activity window
+    _activityController = [[self storyboard] instantiateControllerWithIdentifier:@"corp.sap.Script2Pkg.ActivityController"];
+    [_activityController loadWindow];
+    [[_activityController window] setHidesOnDeactivate:![_userDefaults boolForKey:kMTDefaultsActivityWindowOnTop]];
+    
+    // load the settings window
+    _settingsController = [[self storyboard] instantiateControllerWithIdentifier:@"corp.sap.Script2Pkg.SettingsController"];
+    [_settingsController loadWindow];
+    
+    // get all developer identities from login keychain
+    NSArray *allDevIdentities = [MTDeveloperIdentity validIdentitiesOfType:MTDeveloperIdentityTypeInstaller];
+
+    if ([allDevIdentities count] > 0) {
+        
+        // check for notarytool
+        [MTNotarization checkForNotarytoolWithCompletionHandler:^(BOOL exists) {
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                self.enableNotarization = exists;
+                
+                if (exists) {
+                    
+                    // send a notification
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kMTNotificationNameToolsInstalled
+                                                                        object:nil
+                                                                      userInfo:nil
+                    ];
+                    
+                } else {
+                    
+                    // disable the notarization checkbox
+                    [self->_notarizingCheckbox setToolTip:NSLocalizedString(@"notarytoolMissingTooltip", nil)];
+                    [self->_userDefaults setBool:NO forKey:kMTDefaultsPackageNotarize];
+                    
+                    // monitor kMTPackageReceiptsPath so we get informed whenever a new
+                    // package (hopefully the developer tools) has been installed
+                    int receiptsPath = open(kMTPackageReceiptsPath, O_EVTONLY);
+
+                    dispatch_source_t source = dispatch_source_create(
+                                                                      DISPATCH_SOURCE_TYPE_VNODE,
+                                                                      receiptsPath,
+                                                                      DISPATCH_VNODE_WRITE | DISPATCH_VNODE_EXTEND | DISPATCH_VNODE_ATTRIB | DISPATCH_VNODE_DELETE,
+                                                                      dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+                                                                      );
+                    
+                    dispatch_source_set_event_handler(source, ^
+                    {
+                        [MTNotarization checkForNotarytoolWithCompletionHandler:^(BOOL exists) {
+                            
+                            if (exists) {
+                                
+                                dispatch_source_cancel(source);
+                                
+                                // re-enable the notarization checkbox
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    self.enableNotarization = YES;
+                                    [self->_notarizingCheckbox setToolTip:nil];
+                                });
+                                
+                                // send a notification
+                                [[NSNotificationCenter defaultCenter] postNotificationName:kMTNotificationNameToolsInstalled
+                                                                                    object:nil
+                                                                                  userInfo:nil
+                                ];
+                            }
+                        }];
+                    });
+
+                    dispatch_source_set_cancel_handler(source, ^
+                    {
+                        int receiptsPath = (int)dispatch_source_get_handle(source);
+                        close(receiptsPath);
+                    });
+                    
+                    dispatch_resume(source);
+                }
+            });
+        }];
+        
+        NSMutableArray *identityDictionaries = [[NSMutableArray alloc] init];
+        
+        for (id identityRef in allDevIdentities) {
+            
+            MTDeveloperIdentity *identity = [[MTDeveloperIdentity alloc] initWithIdentity:(__bridge SecIdentityRef)(identityRef)];
+            NSString *teamName = [identity teamName];
+            NSString *teamID = [identity teamID];
+            NSString *certName = [identity certificateName];
+            
+            if (teamName && teamID && certName) {
+                
+                NSDictionary *identityDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                              teamName, kMTDeveloperTeamName,
+                                              teamID, kMTDeveloperTeamID,
+                                              certName, kMTDeveloperCertName,
+                                              [teamName stringByAppendingFormat:@" (%@)", teamID], kMTDeveloperTeamDisplayName,
+                                              nil
+                ];
+                
+                [identityDictionaries addObject:identityDict];
+            }
+        }
+        
+        // add the identities (sorted by name)
+        NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:kMTDeveloperTeamDisplayName
+                                                                                          ascending:YES
+                                                                                           selector:@selector(localizedCaseInsensitiveCompare:)]];
+        NSArray *sortedIdentities = [identityDictionaries sortedArrayUsingDescriptors:sortDescriptors];
+        [_identitiesArrayController addObjects:sortedIdentities];
+        
+        // select the previously selected menu entry
+        NSInteger selectionIndex = 0;
+        NSString *selectedEntry = [_userDefaults stringForKey:kMTDefaultsTeamID];
+        
+        if (selectedEntry) {
+            NSArray *filteredArray = [sortedIdentities filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", selectedEntry]];
+            NSDictionary *teamDict = [filteredArray firstObject];
+            selectionIndex = [[_identitiesArrayController arrangedObjects] indexOfObject:teamDict];
+        }
+        
+        if (!selectedEntry || selectionIndex == NSNotFound) {
+            
+            [_identitiesArrayController setSelectionIndex:0];
+            [self setDevelopmentTeam:nil];
+            
+        } else {
+            
+            [_identitiesArrayController setSelectionIndex:selectionIndex];
+        }
+        
+    } else {
+        
+        [_signingCheckbox setToolTip:NSLocalizedString(@"noSigningIdentityTooltip", nil)];
+        [_notarizingCheckbox setToolTip:NSLocalizedString(@"signingDisabledTooltip", nil)];
+        [_userDefaults setBool:NO forKey:kMTDefaultsPackageSign];
+        [_userDefaults setBool:NO forKey:kMTDefaultsPackageNotarize];
+    }
+    
+    // get notified if the user dropped a script to the app icon (in Finder or Dock)
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(importFiles:)
+                                                 name:kMTNotificationNameFileImport
+                                               object:nil
+    ];
+    
+    if ([_userDefaults boolForKey:kMTDefaultsShowActivityWindow]) {
+        [[_activityController window] orderFront:nil];
+    }
+}
+
+#pragma mark IBActions
+
+- (IBAction)setDevelopmentTeam:(id)sender
+{
+    NSDictionary *selectedDevelopmentTeam = [[self->_identitiesArrayController selectedObjects] firstObject];
+    NSString *teamID = [selectedDevelopmentTeam valueForKey:kMTDeveloperTeamID];
+    [_userDefaults setValue:teamID forKey:kMTDefaultsTeamID];
+    [_userDefaults setBool:NO forKey:kMTDefaultsPackageNotarize];
+}
+
+- (IBAction)setSigning:(id)sender
+{
+    // as a package must be signed for notarizing, we also uncheck
+    // the notarizing checkbox if signing is disabled.
+    if (![_userDefaults boolForKey:kMTDefaultsPackageSign]) {
+        [_userDefaults setBool:NO forKey:kMTDefaultsPackageNotarize];
+    }
+}
+
+- (IBAction)setNotarization:(id)sender
+{
+    // if enabled, check if we have the credentials for the selected
+    // development team already stored in keychain. Otherwise we ask
+    // the user to enter the credentials and store them into keychain.
+    if ([_notarizingCheckbox state] == NSControlStateValueMixed) {
+        [self checkCredentialsForNotarization];
+    }
+}
+
+- (IBAction)selectFiles:(id)sender
+{
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    [panel setCanChooseFiles:YES];
+    [panel setPrompt:NSLocalizedString(@"buildButton", nil)];
+    [panel setMessage:NSLocalizedString(@"openDialogMessage", nil)];
+    [panel setCanChooseDirectories:NO];
+    [panel setAllowsMultipleSelection:YES];
+    [panel setCanCreateDirectories:NO];
+    [panel setAllowedContentTypes:[NSArray arrayWithObject:UTTypeShellScript]];
+    [panel beginSheetModalForWindow:[[self view] window] completionHandler:^(NSInteger result) {
+        
+        if (result == NSModalResponseOK) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                // call the progress sheet
+                [self performSegueWithIdentifier:@"corp.sap.Script2Pkg.ProgressSegue" sender:[self buildPackageArrayFromFileURLs:[panel URLs]]];
+            });
+        }
+    }];
+}
+
+- (IBAction)showActivityWindow:(id)sender
+{
+    if ([[_activityController window] isVisible]) {
+        [[_activityController window] orderOut:nil];
+    } else {
+        [[_activityController window] makeKeyAndOrderFront:nil];
+    }
+}
+
+- (IBAction)showSettingsWindow:(id)sender
+{
+    [[_settingsController window] makeKeyAndOrderFront:nil];
+}
+
+- (IBAction)validateSigning:(id)sender
+{
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    [panel setCanChooseFiles:YES];
+    [panel setPrompt:NSLocalizedString(@"validateButton", nil)];
+    [panel setMessage:NSLocalizedString(@"validateDialogMessage", nil)];
+    [panel setCanChooseDirectories:NO];
+    [panel setAllowsMultipleSelection:NO];
+    [panel setCanCreateDirectories:NO];
+    [panel setAllowedContentTypes:[NSArray arrayWithObject:[UTType typeWithIdentifier:@"com.apple.installer-package-archive"]]];
+    [panel beginSheetModalForWindow:[[self view] window] completionHandler:^(NSInteger result) {
+        
+        if (result == NSModalResponseOK) {
+                
+            dispatch_async(dispatch_get_main_queue(), ^{
+            
+                // call the validation sheet
+                [self performSegueWithIdentifier:@"corp.sap.Script2Pkg.ValidationSegue" sender:[[panel URLs] firstObject]];
+                
+            });
+        }
+    }];
+}
+
+- (IBAction)openGitHub:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:kMTGitHubURL]];
+}
+
+- (void)importFiles:(NSNotification*)notification
+{
+    NSArray *filePaths = [notification object];
+    NSMutableArray *fileURLs = [[NSMutableArray alloc] init];
+    
+    for (NSString *filePath in filePaths) {
+        [fileURLs addObject:[NSURL fileURLWithPath:filePath]];
+    }
+    
+    if ([fileURLs count] > 0) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            // call the progress sheet
+            [self performSegueWithIdentifier:@"corp.sap.Script2Pkg.ProgressSegue" sender:[self buildPackageArrayFromFileURLs:fileURLs]];
+        });
+    }
+}
+
+#pragma mark Build MTPayloadFreePackage array
+
+- (NSArray*)buildPackageArrayFromFileURLs:(NSArray*)fileURLs
+{
+    NSString *certificateName = nil;
+    NSString *teamID = nil;
+
+    if ([_userDefaults boolForKey:kMTDefaultsPackageSign]) {
+        
+        // get the signing certificate name
+        NSDictionary *selectedObject = [[_identitiesArrayController selectedObjects] firstObject];
+        certificateName = [selectedObject valueForKey:kMTDeveloperCertName];
+        
+        if ([_userDefaults boolForKey:kMTDefaultsPackageNotarize]) {
+            
+            // get the team id
+            teamID = [_userDefaults stringForKey:kMTDefaultsTeamID];
+        }
+    }
+    
+    // get the custom output path (if configured)
+    NSURL *outputDirectoryURL = [_userDefaults URLForKey:kMTDefaultsPackageOutputPath];
+    BOOL isDirectory = NO;
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[outputDirectoryURL path] isDirectory:&isDirectory] || !isDirectory) {
+        outputDirectoryURL = nil;
+        [_userDefaults removeObjectForKey:kMTDefaultsPackageOutputPath];
+    }
+    
+    // make sure the file urls are sorted by file name
+    NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"lastPathComponent"
+                                                                                      ascending:YES
+                                                                                       selector:@selector(localizedStandardCompare:)
+                                                        ]
+    ];
+
+    NSMutableArray *packageArray = [[NSMutableArray alloc] init];
+    for (NSURL *url in [fileURLs sortedArrayUsingDescriptors:sortDescriptors]) {
+        
+        MTPayloadFreePackage *aPackage = [[MTPayloadFreePackage alloc] initWithScriptURL:url];
+        if (outputDirectoryURL) { [aPackage setOutputDirectoryURL:outputDirectoryURL]; }
+        [aPackage setPackageIdentifierPrefix:[_userDefaults stringForKey:kMTDefaultsPackageIdentifierPrefix]];
+        [aPackage setCreatePackageReceipt:[_userDefaults boolForKey:kMTDefaultsPackageCreateReceipts]];
+        [aPackage setUsesPrefixAsIdentifier:[_userDefaults boolForKey:kMTDefaultsPackagePrefixIsIdentifier]];
+        [aPackage setSigningIdentity:certificateName];
+        [aPackage setNotarizationTeamID:teamID];
+        
+        NSString *packageVersion = nil;
+        if ([_userDefaults boolForKey:kMTDefaultsPackageVersionUseScript]) {
+            
+            // check the script name for a version number
+            NSString *packageName = [aPackage packageName];
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[-_ ]([0-9]+.*)\\.pkg$"
+                                                                                   options: NSRegularExpressionCaseInsensitive
+                                                                                     error:nil];
+            NSArray *matches = [regex matchesInString:packageName options:0 range:NSMakeRange(0, [packageName length])];
+            NSString *verionFromScriptName = [packageName substringWithRange:[[matches firstObject] rangeAtIndex:1]];
+            if ([verionFromScriptName length] > 0) { packageVersion = verionFromScriptName; }
+        }
+            
+        if ([[_userDefaults stringForKey:kMTDefaultsPackageVersion] length] > 0 && !packageVersion) {
+            packageVersion = [_userDefaults stringForKey:kMTDefaultsPackageVersion];
+        }
+        
+        if (packageVersion) { [aPackage setPackageVersion:packageVersion]; }
+        [packageArray addObject:aPackage];
+    }
+    
+    return packageArray;
+}
+
+#pragma mark Check credentials for notarization
+
+- (void)checkCredentialsForNotarization
+{
+    // we disable some interface elements during verification
+    self.verifyingCredentials = YES;
+            
+    // get the team id
+    NSString *teamID = [_userDefaults stringForKey:kMTDefaultsTeamID];
+    
+    if (teamID) {
+        
+        NSArray *invalidatedCredentials = [_userDefaults valueForKey:kMTDefaultsInvalidatedCredentials];
+        
+        // if the credentials have been invalidated, we don't need to check them
+        if ([invalidatedCredentials containsObject:teamID]) {
+            
+            self.verifyingCredentials = NO;
+            [self->_userDefaults setBool:NO forKey:kMTDefaultsPackageNotarize];
+                
+            [self performSegueWithIdentifier:@"corp.sap.Script2Pkg.CredentialSegue" sender:nil];
+            
+        } else {
+            
+            [MTNotarization existsKeychainProfile:[@"Script2Pkg." stringByAppendingString:teamID]
+                                completionHandler:^(BOOL exists) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    self.verifyingCredentials = NO;
+                    [self->_userDefaults setBool:exists forKey:kMTDefaultsPackageNotarize];
+                    
+                    if (!exists) {
+                        
+                        [self performSegueWithIdentifier:@"corp.sap.Script2Pkg.CredentialSegue" sender:nil];
+                    }
+                    
+                });
+            }];
+        }
+    }
+}
+
+- (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"corp.sap.Script2Pkg.ProgressSegue"] && [sender isKindOfClass:[NSArray class]]) {
+
+        MTProgressController *destController = [segue destinationController];
+        [destController setPackages:(NSArray*)sender];
+        
+    } else if ([[segue identifier] isEqualToString:@"corp.sap.Script2Pkg.ValidationSegue"] && [sender isKindOfClass:[NSURL class]]) {
+        
+        MTSignatureValidationController *destController = [segue destinationController];
+        [destController setPackageURL:(NSURL*)sender];
+    }
+}
+
+- (void)dealloc
+{
+    // remove our observer
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kMTNotificationNameFileImport
+                                                  object:nil
+    ];
+}
+
+@end
+
+
+
