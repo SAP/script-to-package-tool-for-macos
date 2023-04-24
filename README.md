@@ -24,14 +24,25 @@ In case you are the maintainer of a new SAP open source project, these are the s
 
 *Insert a short description what is required to get your project running...*
 
-## Support, Feedback, Contributing
+# Feedback and Contributing
 
-This project is open to feature requests/suggestions, bug reports etc. via [GitHub issues](https://github.com/SAP/<your-project>/issues). Contribution and feedback are encouraged and always welcome. For more information about how to contribute, the project structure, as well as additional contribution information, see our [Contribution Guidelines](CONTRIBUTING.md).
+This project is open to feature requests/suggestions, bug reports etc. via [GitHub issues](https://github.com/SAP/script-to-package-tool-for-macos
+/issues). Contribution and feedback are encouraged and always welcome. For more information about how to contribute, the project structure, as well as additional contribution information, see our [Contribution Guidelines](CONTRIBUTING.md).
 
-## Code of Conduct
+# Code of Conduct
 
-We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone. By participating in this project, you agree to abide by its [Code of Conduct](https://github.com/SAP/.github/blob/main/CODE_OF_CONDUCT.md) at all times.
+We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone. By participating in this project, you agree to abide by its [Code of Conduct](CODE_OF_CONDUCT.md) at all times.
 
-## Licensing
+# License 🏷️
 
-Copyright (20xx-)20xx SAP SE or an SAP affiliate company and <your-project> contributors. Please see our [LICENSE](LICENSE) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/SAP/<your-project>).
+Copyright (c) 2023 SAP SE or an SAP affiliate company and script-to-package-tool-for-macos
+ contributors. Please see our [LICENSE](LICENSE) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/SAP/backgrounds).
+
+
+# Security 👮
+Found a security-related issue or vulnerability and want to notify us? Please contact us at 📧 [macatsap-opensource-security@sap.com](mailto:macatsap-opensource-security@sap.com?subject=[GitHub]%20script-to-package-tool-for-macos
+%20Security%20Issue%20Report)
+
+# Support 🤓
+
+This project is 'as-is' with no support, no changes being made. You are welcome to make changes to improve it but we are not available for questions or support of any kind.
