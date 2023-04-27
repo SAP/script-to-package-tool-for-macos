@@ -22,7 +22,7 @@ This application is designed to help you with the process of creating payload-fr
 
 # Documentation 
 
-You can find the following links also in the Wiki Page of Script2Pkg.
+You can find the following links also in the [Script2Pkg Wiki](https://github.com/SAP/script-to-package-tool-for-macos/wiki) pages.
 
 * [Installing Script2Pkg](https://github.com/SAP/script-to-package-tool-for-macos/wiki/Installation)
 * [Uninstalling Script2Pkg](https://github.com/SAP/script-to-package-tool-for-macos/wiki/Uninstallation)
