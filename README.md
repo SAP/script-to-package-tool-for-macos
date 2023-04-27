@@ -1,5 +1,7 @@
 ![Script2PkgBanner](https://raw.githubusercontent.com/SAP/script-to-package-tool-for-macos/main/readme_images/macOS_script2Pkg_Banner_GitHub.gif)
 
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP/script-to-package-tool-for-macos)](https://api.reuse.software/info/github.com/SAP/script-to-package-tool-for-macos)
+
 # Script2Pkg 
  
 This application is designed to help you with the process of creating payload-free installer packages. 
