@@ -4,7 +4,7 @@
 
 # Script2Pkg 
  
-This application is designed to help you with the process of creating [payload-free installer packages](https://github.com/SAP/script-to-package-tool-for-macos/wiki/Glossary#payload-free-package) for macOS. 
+This application is designed to help you with the process of creating [payload-free installer packages](https://github.com/SAP/script-to-package-tool-for-macos/wiki/Glossary#payload-free-installer-package) for macOS. 
 
 **Script2Pkg has multiple configuration options and can be configured for the following:**
 
