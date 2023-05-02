@@ -4,5 +4,5 @@ Upstream-Contact: SAP Mac Open Source Security macatsap-opensource-security@sap.
 Source: https://github.com/SAP/script-to-package-tool-for-macos
 
 Files: *
-Copyright: 2023 SAP SE or an SAP affiliate company and backgrounds contributors.
+Copyright: 2023 SAP SE or an SAP affiliate company and Script2Pkg contributors.
 License: Apache-2.0
