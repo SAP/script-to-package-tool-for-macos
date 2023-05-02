@@ -39,7 +39,7 @@ Copyright (c) 2023 SAP SE or an SAP affiliate company and script-to-package-tool
 
 
 # Security 👮
-Found a security-related issue or vulnerability and want to notify us? [Please see here for how to report it](https://github.com/SAP/.github/blob/main/SECURITY.md).
+Found a security-related issue or vulnerability and want to notify us? [Please see here for how to report it](https://github.com/SAP/script-to-package-tool-for-macos/security/policy).
 
 # Support 🤓
 
