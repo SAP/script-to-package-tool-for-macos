@@ -16,7 +16,6 @@
 */
 
 #import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
-#import <os/log.h>
 #import "MTMainViewController.h"
 #import "Constants.h"
 #import "MTDeveloperIdentity.h"
@@ -24,6 +23,7 @@
 #import "MTNotarization.h"
 #import "MTProgressController.h"
 #import "MTSignatureValidationController.h"
+#import "MTNotarizeController.h"
 
 @interface MTMainViewController ()
 @property (weak) IBOutlet NSArrayController *identitiesArrayController;
@@ -49,6 +49,7 @@
     [_userDefaults registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
                                      [NSNumber numberWithBool:NO], kMTDefaultsPackageSign,
                                      [NSNumber numberWithInteger:0], kMTDefaultsExistingPKGHandling,
+                                     [NSNumber numberWithBool:YES], kMTDefaultsSkipIfMissingScript,
                                      nil]];
     
     // load the activity window
@@ -236,7 +237,7 @@
     [panel setCanChooseFiles:YES];
     [panel setPrompt:NSLocalizedString(@"buildButton", nil)];
     [panel setMessage:NSLocalizedString(@"openDialogMessage", nil)];
-    [panel setCanChooseDirectories:NO];
+    [panel setCanChooseDirectories:YES];
     [panel setAllowsMultipleSelection:YES];
     [panel setCanCreateDirectories:NO];
     [panel setAllowedContentTypes:[NSArray arrayWithObject:UTTypeShellScript]];
@@ -265,6 +266,118 @@
 - (IBAction)showSettingsWindow:(id)sender
 {
     [[_settingsController window] makeKeyAndOrderFront:nil];
+}
+
+- (IBAction)signOrNotarizeExistingPackage:(id)sender
+{
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    
+    if ([sender tag] == 1000) {
+        [panel setPrompt:NSLocalizedString(@"signButton", nil)];
+        [panel setMessage:NSLocalizedString(@"signDialogMessage", nil)];
+    } else if ([sender tag] == 2000) {
+        [panel setPrompt:NSLocalizedString(@"notarizeButton", nil)];
+        [panel setMessage:NSLocalizedString(@"notarizeDialogMessage", nil)];
+    }
+    
+    [panel setCanChooseFiles:YES];
+    [panel setCanChooseDirectories:NO];
+    [panel setAllowsMultipleSelection:NO];
+    [panel setCanCreateDirectories:NO];
+    [panel setAllowedContentTypes:[NSArray arrayWithObject:[UTType typeWithIdentifier:@"com.apple.installer-package-archive"]]];
+    [panel beginSheetModalForWindow:[[self view] window] completionHandler:^(NSInteger result) {
+        
+        if (result == NSModalResponseOK) {
+            
+            NSURL *packageURL = [[panel URLs] firstObject];
+                
+            // check if the package is signed
+            [MTNotarization checkNotarizationOfPackageAtURL:packageURL
+                                          completionHandler:^(BOOL isSigned, BOOL isExpired, BOOL isNotarized, NSString *developerTeam) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    // if the package is signed and the user wants to sign an existing
+                    // package, we ask the user if the existing signature should be
+                    // replaced.
+                    
+                    if ([sender tag] == 1000) {
+                                                
+                        if (isSigned) {
+                            
+                            NSAlert *theAlert = [[NSAlert alloc] init];
+                            [theAlert setMessageText:NSLocalizedString(@"alreadySignedMessageTitle", nil)];
+                            [theAlert setInformativeText:NSLocalizedString(@"alreadySignedMessageText", nil)];
+                            [theAlert addButtonWithTitle:NSLocalizedString(@"replaceButton", nil)];
+                            [theAlert addButtonWithTitle:NSLocalizedString(@"cancelButton", nil)];
+                            [theAlert setAlertStyle:NSAlertStyleCritical];
+                            [theAlert beginSheetModalForWindow:[[self view] window] completionHandler:^(NSModalResponse returnCode) {
+
+                                if (returnCode == NSAlertFirstButtonReturn) {
+                                    [self signPackageAtURL:packageURL completionHandler:^(BOOL success) {
+                                        [self displayDialogWithSigningSuccess:success];
+                                    }];
+                                }
+                            }];
+                            
+                        } else {
+                            [self signPackageAtURL:packageURL completionHandler:^(BOOL success) {
+                                [self displayDialogWithSigningSuccess:success];
+                            }];
+                        }
+                        
+                    } else {
+                        
+                        if (isExpired) {
+                            
+                            NSAlert *theAlert = [[NSAlert alloc] init];
+                            [theAlert setMessageText:NSLocalizedString(@"expiredSignatureMessageTitle", nil)];
+                            [theAlert setInformativeText:NSLocalizedString(@"expiredSignatureMessageText", nil)];
+                            [theAlert addButtonWithTitle:NSLocalizedString(@"okButton", nil)];
+                            [theAlert setAlertStyle:NSAlertStyleCritical];
+                            [theAlert beginSheetModalForWindow:[[self view] window] completionHandler:nil];
+                            
+                        } else if (isNotarized) {
+                            
+                            NSAlert *theAlert = [[NSAlert alloc] init];
+                            [theAlert setMessageText:NSLocalizedString(@"alreadyNotarizedMessageTitle", nil)];
+                            [theAlert setInformativeText:NSLocalizedString(@"alreadyNotarizedMessageText", nil)];
+                            [theAlert addButtonWithTitle:NSLocalizedString(@"okButton", nil)];
+                            [theAlert setAlertStyle:NSAlertStyleCritical];
+                            [theAlert beginSheetModalForWindow:[[self view] window] completionHandler:nil];
+                            
+                        } else {
+                            
+                            // if the selected package is unsigned, we first sign it
+                            // and then submit it to the Apple Notary Service
+                            if (!isSigned) {
+                                
+                                [self signPackageAtURL:packageURL completionHandler:^(BOOL success) {
+                                    
+                                    if (success) {
+
+                                        // call the progress sheet
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            [self performSegueWithIdentifier:@"corp.sap.Script2Pkg.NotarizationSegue" sender:packageURL];
+                                        });
+                                        
+                                    } else {
+                                        [self displayDialogWithSigningSuccess:success];
+                                    }
+                                }];
+                                
+                            } else {
+                                
+                                // call the progress sheet
+                                [self performSegueWithIdentifier:@"corp.sap.Script2Pkg.NotarizationSegue" sender:packageURL];
+                            }
+                        }
+                    }
+                });
+            }];
+
+        }
+    }];
 }
 
 - (IBAction)validateSigning:(id)sender
@@ -298,9 +411,9 @@
 
 - (void)importFiles:(NSNotification*)notification
 {
-    NSArray *filePaths = [notification object];
+    NSArray *filePaths = [[notification userInfo] objectForKey:kMTNotificationKeyImportFiles];
     NSMutableArray *fileURLs = [[NSMutableArray alloc] init];
-    
+
     for (NSString *filePath in filePaths) {
         [fileURLs addObject:[NSURL fileURLWithPath:filePath]];
     }
@@ -353,36 +466,82 @@
     NSMutableArray *packageArray = [[NSMutableArray alloc] init];
     for (NSURL *url in [fileURLs sortedArrayUsingDescriptors:sortDescriptors]) {
         
-        MTPayloadFreePackage *aPackage = [[MTPayloadFreePackage alloc] initWithScriptURL:url];
-        if (outputDirectoryURL) { [aPackage setOutputDirectoryURL:outputDirectoryURL]; }
-        [aPackage setPackageIdentifierPrefix:[_userDefaults stringForKey:kMTDefaultsPackageIdentifierPrefix]];
-        [aPackage setCreatePackageReceipt:[_userDefaults boolForKey:kMTDefaultsPackageCreateReceipts]];
-        [aPackage setUsesPrefixAsIdentifier:[_userDefaults boolForKey:kMTDefaultsPackagePrefixIsIdentifier]];
-        [aPackage setSigningIdentity:certificateName];
-        [aPackage setNotarizationTeamID:teamID];
+        MTPayloadFreePackage *aPackage = nil;
         
-        NSString *packageVersion = nil;
-        if ([_userDefaults boolForKey:kMTDefaultsPackageVersionUseScript]) {
-            
-            // check the script name for a version number
-            NSString *packageName = [aPackage packageName];
-            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[-_ ]([0-9]+.*)\\.pkg$"
-                                                                                   options: NSRegularExpressionCaseInsensitive
-                                                                                     error:nil];
-            NSArray *matches = [regex matchesInString:packageName options:0 range:NSMakeRange(0, [packageName length])];
-            NSString *verionFromScriptName = [packageName substringWithRange:[[matches firstObject] rangeAtIndex:1]];
-            if ([verionFromScriptName length] > 0) { packageVersion = verionFromScriptName; }
-        }
-            
-        if ([[_userDefaults stringForKey:kMTDefaultsPackageVersion] length] > 0 && !packageVersion) {
-            packageVersion = [_userDefaults stringForKey:kMTDefaultsPackageVersion];
+        if ([url hasDirectoryPath]) {
+            aPackage = [[MTPayloadFreePackage alloc] initWithDirectoryURL:url];
+        } else {
+            aPackage = [[MTPayloadFreePackage alloc] initWithScriptURL:url];
         }
         
-        if (packageVersion) { [aPackage setPackageVersion:packageVersion]; }
-        [packageArray addObject:aPackage];
+        if (![aPackage isMissingScript] || ![_userDefaults boolForKey:kMTDefaultsSkipIfMissingScript]) {
+            
+            if (outputDirectoryURL) { [aPackage setOutputDirectoryURL:outputDirectoryURL]; }
+            [aPackage setPackageIdentifierPrefix:[_userDefaults stringForKey:kMTDefaultsPackageIdentifierPrefix]];
+            [aPackage setCreatePackageReceipt:[_userDefaults boolForKey:kMTDefaultsPackageCreateReceipts]];
+            [aPackage setUsesPrefixAsIdentifier:[_userDefaults boolForKey:kMTDefaultsPackagePrefixIsIdentifier]];
+            [aPackage setCreateDistribution:[_userDefaults boolForKey:kMTDefaultsCreateDistribution]];
+            [aPackage setSigningIdentity:certificateName];
+            [aPackage setNotarizationTeamID:teamID];
+            
+            NSString *packageVersion = nil;
+            if ([_userDefaults boolForKey:kMTDefaultsPackageVersionUseScript]) {
+                
+                // check the script name for a version number
+                NSString *packageName = [aPackage packageName];
+                NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[-_ ]([0-9]+.*)\\.pkg$"
+                                                                                       options: NSRegularExpressionCaseInsensitive
+                                                                                         error:nil];
+                NSArray *matches = [regex matchesInString:packageName options:0 range:NSMakeRange(0, [packageName length])];
+                NSString *verionFromScriptName = [packageName substringWithRange:[[matches firstObject] rangeAtIndex:1]];
+                if ([verionFromScriptName length] > 0) { packageVersion = verionFromScriptName; }
+            }
+            
+            if ([[_userDefaults stringForKey:kMTDefaultsPackageVersion] length] > 0 && !packageVersion) {
+                packageVersion = [_userDefaults stringForKey:kMTDefaultsPackageVersion];
+            }
+            
+            if (packageVersion) { [aPackage setPackageVersion:packageVersion]; }
+            [packageArray addObject:aPackage];
+        }
     }
     
     return packageArray;
+}
+
+#pragma mark Sign existing package
+
+- (void)signPackageAtURL:(NSURL*)url completionHandler:(void (^) (BOOL success))completionHandler
+{
+    NSDictionary *selectedIdentity = [[_identitiesArrayController selectedObjects] firstObject];
+    NSString *certificateName = [selectedIdentity valueForKey:kMTDeveloperCertName];
+    
+    [MTPayloadFreePackage signPackageAtURL:url
+                             usingIdentity:certificateName
+                         completionHandler:^(BOOL success) {
+        
+        if (completionHandler) { completionHandler(success); }
+    }];
+}
+
+- (void)displayDialogWithSigningSuccess:(BOOL)success
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        NSAlert *theAlert = [[NSAlert alloc] init];
+        
+        if (success) {
+            [theAlert setMessageText:NSLocalizedString(@"signingSuccessMessageTitle", nil)];
+            [theAlert setInformativeText:NSLocalizedString(@"signingSuccessMessageText", nil)];
+        } else {
+            [theAlert setMessageText:NSLocalizedString(@"signingFailedMessageTitle", nil)];
+            [theAlert setInformativeText:NSLocalizedString(@"signingFailedMessageText", nil)];
+        }
+        
+        [theAlert addButtonWithTitle:NSLocalizedString(@"okButton", nil)];
+        [theAlert setAlertStyle:(success) ? NSAlertStyleInformational : NSAlertStyleCritical];
+        [theAlert beginSheetModalForWindow:[[self view] window] completionHandler:nil];
+    });
 }
 
 #pragma mark Check credentials for notarization
@@ -409,7 +568,7 @@
             
         } else {
             
-            [MTNotarization existsKeychainProfile:[@"Script2Pkg." stringByAppendingString:teamID]
+            [MTNotarization existsKeychainProfile:[kMTCredentialsPrefix stringByAppendingString:teamID]
                                 completionHandler:^(BOOL exists) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -439,16 +598,25 @@
         
         MTSignatureValidationController *destController = [segue destinationController];
         [destController setPackageURL:(NSURL*)sender];
+    
+    } else if ([[segue identifier] isEqualToString:@"corp.sap.Script2Pkg.NotarizationSegue"] && [sender isKindOfClass:[NSURL class]]) {
+        
+        MTNotarizeController *destController = [segue destinationController];
+        [destController setPackageURL:(NSURL*)sender];
     }
 }
 
-- (void)dealloc
+#pragma mark NSMenuItemValidation
+
+- (BOOL)validateMenuItem:(NSMenuItem *)item
 {
-    // remove our observer
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:kMTNotificationNameFileImport
-                                                  object:nil
-    ];
+    BOOL enableItem = [[[self view] window] isVisible];
+        
+    if (([item tag] == 1000 && ![_userDefaults boolForKey:kMTDefaultsPackageSign]) || ([item tag] == 2000 && ![_userDefaults boolForKey:kMTDefaultsPackageNotarize])) {
+        enableItem = NO;
+    }
+    
+    return enableItem;
 }
 
 @end

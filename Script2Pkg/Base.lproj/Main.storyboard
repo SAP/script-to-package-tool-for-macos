@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22113.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22113.3"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -84,6 +84,16 @@
                                             </menu>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="QNd-hW-SN1"/>
+                                        <menuItem title="Sign Existing Package…" tag="1000" keyEquivalent="d" id="hgq-fm-bhE" userLabel="Sign Existing Package…">
+                                            <connections>
+                                                <action selector="signOrNotarizeExistingPackage:" target="Ady-hI-5gd" id="rKz-T4-bST"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Notarize Existing Package…" tag="2000" keyEquivalent="u" id="eHd-rj-1lq" userLabel="Notarize Existing Package…">
+                                            <connections>
+                                                <action selector="signOrNotarizeExistingPackage:" target="Ady-hI-5gd" id="kQg-5f-DkG"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Validate Package Signature…" keyEquivalent="y" id="mDR-zy-rKU">
                                             <connections>
                                                 <action selector="validateSigning:" target="Ady-hI-5gd" id="6GI-vj-uTN"/>
@@ -202,6 +212,8 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="qvp-MJ-CIP"/>
+                <userDefaultsController id="kia-oi-G2h"/>
             </objects>
             <point key="canvasLocation" x="376" y="-431"/>
         </scene>
@@ -551,9 +563,6 @@
                             </imageView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BIL-Tp-tzr">
                                 <rect key="frame" x="180" y="13" width="90" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="76" id="yd9-pF-fA6"/>
-                                </constraints>
                                 <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4HC-hu-62G">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -561,6 +570,9 @@
 DQ
 </string>
                                 </buttonCell>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="76" id="yd9-pF-fA6"/>
+                                </constraints>
                                 <connections>
                                     <action selector="dismissController:" target="j5U-OP-ylr" id="Cam-PM-Vsn"/>
                                     <binding destination="qdq-zi-rh5" name="enabled" keyPath="showProgress" id="kGO-ov-d0x">
@@ -703,7 +715,7 @@ DQ
                                                 </binding>
                                             </connections>
                                         </popUpButton>
-                                        <button verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xSq-IW-Cvf">
+                                        <button allowsExpansionToolTips="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xSq-IW-Cvf">
                                             <rect key="frame" x="136" y="39" width="115" height="18"/>
                                             <buttonCell key="cell" type="check" title="Sign packages" bezelStyle="regularSquare" imagePosition="left" inset="2" id="I8H-38-0f0">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -732,7 +744,7 @@ DQ
                                                 </binding>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wkn-wA-R1K">
+                                        <button allowsExpansionToolTips="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wkn-wA-R1K">
                                             <rect key="frame" x="269" y="39" width="139" height="18"/>
                                             <buttonCell key="cell" type="check" title="Notarize packages" bezelStyle="regularSquare" imagePosition="left" allowsMixedState="YES" inset="2" id="9oH-Kh-usa">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -878,6 +890,7 @@ DQ
                         <segue destination="7vo-GG-ZV1" kind="sheet" identifier="corp.sap.Script2Pkg.CredentialSegue" id="Hf6-VS-SNZ"/>
                         <segue destination="2fm-r5-Kw4" kind="sheet" identifier="corp.sap.Script2Pkg.ProgressSegue" id="A8D-e6-PxQ"/>
                         <segue destination="qdq-zi-rh5" kind="sheet" identifier="corp.sap.Script2Pkg.ValidationSegue" id="jr7-Au-90d"/>
+                        <segue destination="rQD-xu-fon" kind="sheet" identifier="corp.sap.Script2Pkg.NotarizationSegue" id="dYb-e5-kWu"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -944,6 +957,59 @@ DQ
                 <customObject id="tGc-A4-0Xc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-167" y="1093"/>
+        </scene>
+        <!--Notarize Controller-->
+        <scene sceneID="9X2-7c-Wl4">
+            <objects>
+                <viewController id="rQD-xu-fon" customClass="MTNotarizeController" sceneMemberID="viewController">
+                    <view key="view" id="E7T-TG-2yQ">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="117"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <progressIndicator maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="GhB-WS-oiA">
+                                <rect key="frame" x="20" y="59" width="410" height="20"/>
+                            </progressIndicator>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="27A-6w-Csk">
+                                <rect key="frame" x="361" y="13" width="76" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vmC-HC-cmS">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent">.</string>
+                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="dismissController:" target="4Iy-2Y-Jc8" id="X34-gb-mr0"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fWP-t0-2fL">
+                                <rect key="frame" x="18" y="81" width="230" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Waiting for package to be notarized…" id="dCN-oY-xhH">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GhB-WS-oiA" secondAttribute="trailing" constant="20" id="7vx-oc-k8R"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fWP-t0-2fL" secondAttribute="trailing" constant="20" id="C0O-cs-ax6"/>
+                            <constraint firstItem="fWP-t0-2fL" firstAttribute="leading" secondItem="E7T-TG-2yQ" secondAttribute="leading" constant="20" id="EeU-ET-aOg"/>
+                            <constraint firstAttribute="trailing" secondItem="27A-6w-Csk" secondAttribute="trailing" constant="20" id="Hyw-So-IOX"/>
+                            <constraint firstItem="GhB-WS-oiA" firstAttribute="leading" secondItem="E7T-TG-2yQ" secondAttribute="leading" constant="20" id="IyJ-gU-TOD"/>
+                            <constraint firstAttribute="bottom" secondItem="27A-6w-Csk" secondAttribute="bottom" constant="20" id="ZsR-ut-gaH"/>
+                            <constraint firstItem="27A-6w-Csk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="E7T-TG-2yQ" secondAttribute="leading" constant="20" id="b7U-C7-Ja1"/>
+                            <constraint firstItem="27A-6w-Csk" firstAttribute="top" secondItem="GhB-WS-oiA" secondAttribute="bottom" constant="20" id="cXF-Ag-Rcu"/>
+                            <constraint firstItem="GhB-WS-oiA" firstAttribute="top" secondItem="fWP-t0-2fL" secondAttribute="bottom" constant="3" id="qrH-rW-E6b"/>
+                            <constraint firstItem="fWP-t0-2fL" firstAttribute="top" secondItem="E7T-TG-2yQ" secondAttribute="top" constant="20" id="x1u-Y0-M5j"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="progressIndicator" destination="GhB-WS-oiA" id="6dM-mL-2n3"/>
+                    </connections>
+                </viewController>
+                <customObject id="4Iy-2Y-Jc8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-167" y="1327"/>
         </scene>
         <!--Credentials Controller-->
         <scene sceneID="aVE-2J-0X6">
@@ -1032,7 +1098,7 @@ DQ
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="6ES-hA-0ZI">
                                 <rect key="frame" x="117" y="25" width="167" height="30"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="mri-Jm-Fz2">
+                                    <button tag="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mri-Jm-Fz2">
                                         <rect key="frame" x="80" y="-2" width="89" height="32"/>
                                         <buttonCell key="cell" type="push" title="Continue" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J3T-ee-JAE">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1337,18 +1403,18 @@ Gw
                 <customObject id="4gD-pK-Ndm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="8TA-Ks-agx"/>
             </objects>
-            <point key="canvasLocation" x="1694" y="352"/>
+            <point key="canvasLocation" x="1694" y="526"/>
         </scene>
         <!--Packaging-->
         <scene sceneID="tfa-bv-BE2">
             <objects>
                 <viewController title="Packaging" id="5QV-rW-NRE" customClass="MTSettingsPackagingTabController" sceneMemberID="viewController">
                     <view key="view" id="8rq-Sd-an4">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="472"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="594"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sG8-Op-dcP">
-                                <rect key="frame" x="23" y="344" width="155" height="16"/>
+                                <rect key="frame" x="23" y="466" width="155" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Package identifier prefix:" id="vy2-Bx-Tyk">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1356,7 +1422,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdJ-Ul-U1H">
-                                <rect key="frame" x="23" y="382" width="434" height="70"/>
+                                <rect key="frame" x="23" y="504" width="434" height="70"/>
                                 <textFieldCell key="cell" controlSize="small" allowsUndo="NO" alignment="justified" id="Xni-Xz-Rjc">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">All macOS installer packages need an identifier so the macOS Installer can recognize a package as being an upgrade to an already-installed package. Even if this is not relevant to payload-free packages, an identifier must be set. If you need to change the default identifier prefix, please enter a new prefix in the text field below.</string>
@@ -1365,7 +1431,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oof-gP-CrI">
-                                <rect key="frame" x="186" y="341" width="269" height="21"/>
+                                <rect key="frame" x="186" y="463" width="269" height="21"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="corp.sap.Script2Pkg" drawsBackground="YES" usesSingleLineMode="YES" id="N9j-SW-7cp">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1385,10 +1451,10 @@ Gw
                                 </connections>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="A2h-Yg-HD2">
-                                <rect key="frame" x="25" y="297" width="430" height="5"/>
+                                <rect key="frame" x="25" y="416" width="430" height="5"/>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NvY-Jw-76A">
-                                <rect key="frame" x="23" y="171" width="154" height="16"/>
+                                <rect key="frame" x="23" y="290" width="154" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Default package version:" id="dPa-0q-E7o">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1396,7 +1462,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kfn-TD-ehQ">
-                                <rect key="frame" x="185" y="168" width="270" height="21"/>
+                                <rect key="frame" x="185" y="287" width="270" height="21"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="1.0.0" drawsBackground="YES" usesSingleLineMode="YES" id="LIw-BY-v0m">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1416,7 +1482,7 @@ Gw
                                 </connections>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YHZ-YJ-uIy">
-                                <rect key="frame" x="23" y="143" width="324" height="18"/>
+                                <rect key="frame" x="23" y="262" width="324" height="18"/>
                                 <buttonCell key="cell" type="check" title="Use package version from script name if possible" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="TYt-Xs-CuU">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1430,7 +1496,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BBA-c1-EbK">
-                                <rect key="frame" x="23" y="24" width="174" height="18"/>
+                                <rect key="frame" x="23" y="143" width="174" height="18"/>
                                 <buttonCell key="cell" type="check" title="Create package receipts" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LIg-su-ajH">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1444,10 +1510,10 @@ Gw
                                 </connections>
                             </button>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="XJH-i6-8Id">
-                                <rect key="frame" x="25" y="121" width="430" height="5"/>
+                                <rect key="frame" x="25" y="240" width="430" height="5"/>
                             </box>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPE-0t-HsC">
-                                <rect key="frame" x="23" y="209" width="434" height="70"/>
+                                <rect key="frame" x="23" y="328" width="434" height="70"/>
                                 <textFieldCell key="cell" controlSize="small" allowsUndo="NO" alignment="justified" id="J24-Wu-DNa">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">A macOS installer package can have an optional version number. Although this is not relevant for payload-free packages in most cases, it is required in some environments. If you want to use a specific version number, you can specify it in the field below. Alternatively, the version number can be taken from the name of the script, which you can enable with the checkbox below.</string>
@@ -1456,7 +1522,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdd-v6-sxO">
-                                <rect key="frame" x="23" y="61" width="434" height="42"/>
+                                <rect key="frame" x="23" y="180" width="434" height="42"/>
                                 <textFieldCell key="cell" controlSize="small" allowsUndo="NO" alignment="justified" id="CNa-Zs-Ekf">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">By default, installer packages created by this tool will not leave a package receipt when installed. If you need to create installer packages which leave package receipts, enable the option below.</string>
@@ -1465,7 +1531,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YlA-5z-cFL">
-                                <rect key="frame" x="23" y="319" width="251" height="18"/>
+                                <rect key="frame" x="23" y="438" width="251" height="18"/>
                                 <buttonCell key="cell" type="check" title="Use prefix as fixed package identifier" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="NL1-cR-7nK">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1478,19 +1544,49 @@ Gw
                                     </binding>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dfL-ha-9cq">
+                                <rect key="frame" x="23" y="24" width="201" height="18"/>
+                                <buttonCell key="cell" type="check" title="Create distribution packages" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="aOU-lv-dLl">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="jKy-RZ-EWL" name="value" keyPath="values.CreateDistribution" id="tCl-hh-kLe">
+                                        <dictionary key="options">
+                                            <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </button>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="dG2-PD-yI1">
+                                <rect key="frame" x="25" y="121" width="430" height="5"/>
+                            </box>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5h-2Y-Wt7">
+                                <rect key="frame" x="23" y="61" width="434" height="42"/>
+                                <textFieldCell key="cell" controlSize="small" allowsUndo="NO" alignment="justified" id="mqD-k9-T2g">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <string key="title">Distribution packages are a special format of installer packages, needed in some environments. If you need to create distribution packages instead of component packages, enable the option below.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="sG8-Op-dcP" firstAttribute="leading" secondItem="RdJ-Ul-U1H" secondAttribute="leading" id="324-oG-qNu"/>
                             <constraint firstItem="QPE-0t-HsC" firstAttribute="leading" secondItem="8rq-Sd-an4" secondAttribute="leading" constant="25" id="3O2-ij-RO5"/>
                             <constraint firstAttribute="trailing" secondItem="QPE-0t-HsC" secondAttribute="trailing" constant="25" id="Aka-j3-IRN"/>
                             <constraint firstItem="NvY-Jw-76A" firstAttribute="leading" secondItem="8rq-Sd-an4" secondAttribute="leading" constant="25" id="BYQ-jH-Vck"/>
+                            <constraint firstItem="YHZ-YJ-uIy" firstAttribute="top" secondItem="Kfn-TD-ehQ" secondAttribute="bottom" constant="8" id="BqU-bI-EZC"/>
                             <constraint firstItem="oof-gP-CrI" firstAttribute="top" secondItem="RdJ-Ul-U1H" secondAttribute="bottom" constant="20" id="ClX-AC-JX9"/>
                             <constraint firstAttribute="trailing" secondItem="RdJ-Ul-U1H" secondAttribute="trailing" constant="25" id="D4Z-NR-8QX"/>
-                            <constraint firstAttribute="bottom" secondItem="BBA-c1-EbK" secondAttribute="bottom" constant="25" id="Dso-LX-U48"/>
+                            <constraint firstItem="T5h-2Y-Wt7" firstAttribute="top" secondItem="dG2-PD-yI1" secondAttribute="bottom" constant="20" id="DSR-BJ-hC7"/>
                             <constraint firstItem="RdJ-Ul-U1H" firstAttribute="top" secondItem="8rq-Sd-an4" secondAttribute="top" constant="20" id="F51-Wl-ifq"/>
+                            <constraint firstItem="dG2-PD-yI1" firstAttribute="leading" secondItem="8rq-Sd-an4" secondAttribute="leading" constant="25" id="GH7-rc-uYi"/>
+                            <constraint firstItem="dG2-PD-yI1" firstAttribute="top" secondItem="BBA-c1-EbK" secondAttribute="bottom" constant="20" id="I2N-4t-thL"/>
+                            <constraint firstItem="YlA-5z-cFL" firstAttribute="top" secondItem="oof-gP-CrI" secondAttribute="bottom" constant="8" id="KRa-kK-AdN"/>
                             <constraint firstItem="oof-gP-CrI" firstAttribute="trailing" secondItem="RdJ-Ul-U1H" secondAttribute="trailing" id="Kw4-bo-ORy"/>
                             <constraint firstItem="A2h-Yg-HD2" firstAttribute="top" secondItem="YlA-5z-cFL" secondAttribute="bottom" constant="20" id="MIg-RA-wBm"/>
-                            <constraint firstItem="YHZ-YJ-uIy" firstAttribute="top" secondItem="Kfn-TD-ehQ" secondAttribute="bottom" constant="8" id="OFM-Bv-0tv"/>
+                            <constraint firstItem="T5h-2Y-Wt7" firstAttribute="leading" secondItem="8rq-Sd-an4" secondAttribute="leading" constant="25" id="NLk-Zx-N7x"/>
                             <constraint firstItem="YlA-5z-cFL" firstAttribute="leading" secondItem="8rq-Sd-an4" secondAttribute="leading" constant="25" id="Omt-Vs-X9j"/>
                             <constraint firstItem="A2h-Yg-HD2" firstAttribute="leading" secondItem="8rq-Sd-an4" secondAttribute="leading" constant="25" id="OuP-kX-4SV"/>
                             <constraint firstItem="Kfn-TD-ehQ" firstAttribute="leading" secondItem="NvY-Jw-76A" secondAttribute="trailing" constant="10" id="Qp3-Yb-yUz"/>
@@ -1498,15 +1594,18 @@ Gw
                             <constraint firstItem="YHZ-YJ-uIy" firstAttribute="leading" secondItem="8rq-Sd-an4" secondAttribute="leading" constant="25" id="T6c-GX-GF7"/>
                             <constraint firstAttribute="trailing" secondItem="XJH-i6-8Id" secondAttribute="trailing" constant="25" id="Taq-X0-Gzm"/>
                             <constraint firstItem="BBA-c1-EbK" firstAttribute="top" secondItem="Gdd-v6-sxO" secondAttribute="bottom" constant="20" id="XHF-a9-0AY"/>
-                            <constraint firstItem="YlA-5z-cFL" firstAttribute="top" secondItem="sG8-Op-dcP" secondAttribute="bottom" constant="8" id="b2u-EY-kEy"/>
+                            <constraint firstItem="dfL-ha-9cq" firstAttribute="leading" secondItem="8rq-Sd-an4" secondAttribute="leading" constant="25" id="ZIh-GV-W0i"/>
+                            <constraint firstAttribute="trailing" secondItem="dG2-PD-yI1" secondAttribute="trailing" constant="25" id="bC6-dV-Zqy"/>
                             <constraint firstItem="BBA-c1-EbK" firstAttribute="leading" secondItem="8rq-Sd-an4" secondAttribute="leading" constant="25" id="dKi-kK-6ix"/>
                             <constraint firstAttribute="trailing" secondItem="Gdd-v6-sxO" secondAttribute="trailing" constant="25" id="dyB-54-aUq"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YHZ-YJ-uIy" secondAttribute="trailing" constant="25" id="eRa-mJ-ueZ"/>
                             <constraint firstItem="oof-gP-CrI" firstAttribute="leading" secondItem="sG8-Op-dcP" secondAttribute="trailing" constant="10" id="fpg-yv-ofY"/>
                             <constraint firstItem="XJH-i6-8Id" firstAttribute="leading" secondItem="8rq-Sd-an4" secondAttribute="leading" constant="25" id="g8E-C7-TWr"/>
+                            <constraint firstAttribute="trailing" secondItem="T5h-2Y-Wt7" secondAttribute="trailing" constant="25" id="goV-TH-kAa"/>
                             <constraint firstItem="Kfn-TD-ehQ" firstAttribute="top" secondItem="QPE-0t-HsC" secondAttribute="bottom" constant="20" id="hc4-Op-rL3"/>
                             <constraint firstAttribute="trailing" secondItem="Kfn-TD-ehQ" secondAttribute="trailing" constant="25" id="iSJ-8d-spu"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BBA-c1-EbK" secondAttribute="trailing" constant="25" id="nCo-H3-32E"/>
+                            <constraint firstItem="dfL-ha-9cq" firstAttribute="top" secondItem="T5h-2Y-Wt7" secondAttribute="bottom" constant="20" id="nNY-Ye-PA9"/>
                             <constraint firstItem="QPE-0t-HsC" firstAttribute="top" secondItem="A2h-Yg-HD2" secondAttribute="bottom" constant="20" id="r2f-kR-LHQ"/>
                             <constraint firstItem="RdJ-Ul-U1H" firstAttribute="leading" secondItem="8rq-Sd-an4" secondAttribute="leading" constant="25" id="rNT-zV-n5x"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YlA-5z-cFL" secondAttribute="trailing" constant="25" id="s7z-8J-a7I"/>
@@ -1515,6 +1614,8 @@ Gw
                             <constraint firstItem="Gdd-v6-sxO" firstAttribute="top" secondItem="XJH-i6-8Id" secondAttribute="bottom" constant="20" id="vi3-Jl-qAZ"/>
                             <constraint firstAttribute="trailing" secondItem="A2h-Yg-HD2" secondAttribute="trailing" constant="25" id="w0g-ng-rtD"/>
                             <constraint firstItem="NvY-Jw-76A" firstAttribute="firstBaseline" secondItem="Kfn-TD-ehQ" secondAttribute="firstBaseline" id="xbj-SY-yhl"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dfL-ha-9cq" secondAttribute="trailing" constant="25" id="ySg-6s-wE5"/>
+                            <constraint firstAttribute="bottom" secondItem="dfL-ha-9cq" secondAttribute="bottom" constant="25" id="zAx-cc-3RP"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -1522,14 +1623,14 @@ Gw
                 <userDefaultsController id="P0A-yR-ZCI"/>
                 <userDefaultsController id="jKy-RZ-EWL"/>
             </objects>
-            <point key="canvasLocation" x="1694" y="-12"/>
+            <point key="canvasLocation" x="1694" y="59"/>
         </scene>
         <!--General-->
         <scene sceneID="srA-80-UGp">
             <objects>
                 <viewController title="General" id="95H-TL-oeU" customClass="MTSettingsGeneralTabController" sceneMemberID="viewController">
                     <view key="view" id="Fwe-hU-UIz">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="210"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="343"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Cy-gW-yfx">
@@ -1547,7 +1648,7 @@ Gw
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5v-Bq-JoB">
-                                <rect key="frame" x="23" y="148" width="434" height="42"/>
+                                <rect key="frame" x="23" y="281" width="434" height="42"/>
                                 <textFieldCell key="cell" controlSize="small" allowsUndo="NO" alignment="justified" id="4Es-9G-ssG">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">To notarize packages the Command Line Tools for Xcode 13 or later are required but are not installed at the moment. Please click the button below to install the Command Line Tools for Xcode.</string>
@@ -1556,7 +1657,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LyM-nd-tFR">
-                                <rect key="frame" x="109" y="101" width="262" height="32"/>
+                                <rect key="frame" x="109" y="234" width="262" height="32"/>
                                 <buttonCell key="cell" type="push" title="Install Command Line Tools for Xcode" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kV4-Q6-gW4">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1571,7 +1672,7 @@ Gw
                                 </connections>
                             </button>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="mhO-cP-2gP">
-                                <rect key="frame" x="25" y="85" width="430" height="5"/>
+                                <rect key="frame" x="25" y="218" width="430" height="5"/>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EmC-Qt-jiW">
                                 <rect key="frame" x="23" y="50" width="322" height="18"/>
@@ -1588,22 +1689,57 @@ Gw
                                     </binding>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mX2-hN-LLq">
+                                <rect key="frame" x="23" y="107" width="278" height="18"/>
+                                <buttonCell key="cell" type="check" title="Ignore source folders with missing scripts" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="eYa-w5-LZe">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="c8D-Ky-zqx" name="value" keyPath="values.SkipIfMissingScript" id="FGm-S3-2pl">
+                                        <dictionary key="options">
+                                            <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdm-ym-y5I">
+                                <rect key="frame" x="23" y="144" width="434" height="56"/>
+                                <textFieldCell key="cell" controlSize="small" allowsUndo="NO" alignment="justified" id="tXw-Ta-TSf">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <string key="title">A package can be based either on a single script or on a folder that must contain at least one script with either the name preinstall or postinstall. If a folder-based package contains none of these scripts, it will not do anything. If you would like to build those packages anyway, please uncheck the checkbox below.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="dEV-if-yRj">
+                                <rect key="frame" x="25" y="85" width="430" height="5"/>
+                            </box>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="mX2-hN-LLq" firstAttribute="top" secondItem="gdm-ym-y5I" secondAttribute="bottom" constant="20" id="065-jd-93N"/>
+                            <constraint firstItem="dEV-if-yRj" firstAttribute="leading" secondItem="Fwe-hU-UIz" secondAttribute="leading" constant="25" id="07h-hl-mu9"/>
                             <constraint firstItem="mhO-cP-2gP" firstAttribute="leading" secondItem="Fwe-hU-UIz" secondAttribute="leading" constant="25" id="2JR-t1-nXW"/>
+                            <constraint firstAttribute="trailing" secondItem="dEV-if-yRj" secondAttribute="trailing" constant="25" id="5Dc-Go-5u6"/>
+                            <constraint firstAttribute="trailing" secondItem="gdm-ym-y5I" secondAttribute="trailing" constant="25" id="5sE-XI-rJ0"/>
                             <constraint firstAttribute="trailing" secondItem="a5v-Bq-JoB" secondAttribute="trailing" constant="25" id="DJq-IC-CBw"/>
+                            <constraint firstItem="mX2-hN-LLq" firstAttribute="leading" secondItem="Fwe-hU-UIz" secondAttribute="leading" constant="25" id="F18-lH-0Yt"/>
                             <constraint firstAttribute="bottom" secondItem="6Cy-gW-yfx" secondAttribute="bottom" constant="25" id="FZY-8m-ksW"/>
                             <constraint firstItem="6Cy-gW-yfx" firstAttribute="leading" secondItem="Fwe-hU-UIz" secondAttribute="leading" constant="25" id="Hnl-2p-isF"/>
                             <constraint firstItem="EmC-Qt-jiW" firstAttribute="leading" secondItem="Fwe-hU-UIz" secondAttribute="leading" constant="25" id="I99-Ie-yZw"/>
+                            <constraint firstItem="dEV-if-yRj" firstAttribute="top" secondItem="mX2-hN-LLq" secondAttribute="bottom" constant="20" id="L0G-92-1rZ"/>
                             <constraint firstItem="LyM-nd-tFR" firstAttribute="centerX" secondItem="Fwe-hU-UIz" secondAttribute="centerX" id="MKe-Hx-gtk"/>
                             <constraint firstItem="LyM-nd-tFR" firstAttribute="top" secondItem="a5v-Bq-JoB" secondAttribute="bottom" constant="20" id="RcD-fU-Ig8"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EmC-Qt-jiW" secondAttribute="trailing" constant="25" id="YaK-01-4Bm"/>
                             <constraint firstItem="a5v-Bq-JoB" firstAttribute="top" secondItem="Fwe-hU-UIz" secondAttribute="top" constant="20" id="ZqV-sP-81s"/>
+                            <constraint firstItem="gdm-ym-y5I" firstAttribute="leading" secondItem="Fwe-hU-UIz" secondAttribute="leading" constant="25" id="Zwa-8S-D4j"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mX2-hN-LLq" secondAttribute="trailing" constant="25" id="dBC-zu-gaj"/>
                             <constraint firstAttribute="trailing" secondItem="mhO-cP-2gP" secondAttribute="trailing" constant="25" id="fdu-Rz-GSk"/>
                             <constraint firstItem="6Cy-gW-yfx" firstAttribute="top" secondItem="EmC-Qt-jiW" secondAttribute="bottom" constant="10" id="hf3-Sr-0C1"/>
+                            <constraint firstItem="gdm-ym-y5I" firstAttribute="top" secondItem="mhO-cP-2gP" secondAttribute="bottom" constant="20" id="hre-Hh-qul"/>
                             <constraint firstItem="a5v-Bq-JoB" firstAttribute="leading" secondItem="Fwe-hU-UIz" secondAttribute="leading" constant="25" id="jC3-iN-kMf"/>
                             <constraint firstItem="mhO-cP-2gP" firstAttribute="top" secondItem="LyM-nd-tFR" secondAttribute="bottom" constant="20" id="p9N-Ug-VUd"/>
-                            <constraint firstItem="EmC-Qt-jiW" firstAttribute="top" secondItem="mhO-cP-2gP" secondAttribute="bottom" constant="20" id="sTE-gR-rJV"/>
+                            <constraint firstItem="EmC-Qt-jiW" firstAttribute="top" secondItem="dEV-if-yRj" secondAttribute="bottom" constant="20" id="xKD-5l-9iR"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6Cy-gW-yfx" secondAttribute="trailing" constant="25" id="xTs-0s-ICO"/>
                         </constraints>
                     </view>
@@ -1613,8 +1749,9 @@ Gw
                 </viewController>
                 <customObject id="Mnw-Le-48m" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="bfp-Gd-Lud"/>
+                <userDefaultsController id="c8D-Ky-zqx"/>
             </objects>
-            <point key="canvasLocation" x="1694" y="-669"/>
+            <point key="canvasLocation" x="1694" y="-754"/>
         </scene>
     </scenes>
     <resources>

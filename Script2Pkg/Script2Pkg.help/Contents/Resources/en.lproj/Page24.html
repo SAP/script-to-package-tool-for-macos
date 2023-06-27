@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <script src="../js/topicpage.js" type="text/javascript"></script>
+        <title>Creating folder-based packages</title>
+        <meta name="robots" content="index" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+    </head>
+    <body>
+        <a name="Page24"></a>
+        <p class="Left Heading1">
+            <img style="margin: 0.0px 0.0px -9.0px -5.0px;" height="64.0" src="../images/script2pkg.png" width="64.0" />
+            <span class="Heading1">Script2Pkg</span>
+        </p>
+        <p class="Left Heading2">
+            <span class="Heading2">Creating folder-based packages</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">You may need to create an installer package where you need to provide additional resources to the script you're trying to package into an installer package. These resources may be an additional script, an application binary, or even another installer package. This tool provides an option for doing so, with the following requirements:</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Normal BoldItalic">
+            <span class="Normal">You must create a folder. Inside the folder, you must have&nbsp;</span>
+            <span class="BoldItalic bold italic">at least one script</span>
+            <span class="Normal">&nbsp;named exactly as follows:</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <ul class="listDisc">
+            <li class="Bold">
+                <p class="Left Bold">
+                    <span class="Bold">preinstall</span>
+                </p>
+            </li>
+            <li class="Bold">
+                <p class="Left Bold">
+                    <span class="Bold">postinstall</span>
+                </p>
+            </li>
+        </ul>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Normal BoldItalic">
+            <span class="Normal">These scripts&nbsp;</span>
+            <span class="BoldItalic bold italic">must also be set as executable files</span>
+            <span class="Normal">. The reason is that two categories of scripts have been defined for use with installer packages:</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <ul class="listDisc">
+            <li class="Bold">
+                <p class="Left Bold Normal">
+                    <span class="Bold">preinstall</span>
+                    <span class="Normal">: The&nbsp;</span>
+                    <span class="Bold">preinstall</span>
+                    <span class="Normal">&nbsp;script is run before files are being installed. If the script does not return an exit status of zero, Installer will cancel the installation.</span>
+                </p>
+            </li>
+            <li class="Bold">
+                <p class="Left Bold Normal">
+                    <span class="Bold">postinstall</span>
+                    <span class="Normal">: The&nbsp;</span>
+                    <span class="Bold">postinstall</span>
+                    <span class="Normal">&nbsp;script is run after files have been installed. If the script does not return an exit status of zero, Installer will declare the installation failed.</span>
+                </p>
+            </li>
+        </ul>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">The names of the scripts must also be exactly as described, as the Installer application can only use executable files with those names as scripts which can run pre-installation and post-installation actions. If the file names are different, Installer will not recognize or use them.</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">Once you have all items available, please use the procedure to create the package:</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">1. Launch the app.</span>
+        </p>
+        <p class="Left">
+            <img style="margin: 0.0px 0.0px 0.0px 0.0px;" height="424.0" src="../images/mainwindow_noselection.png" width="619.0" />
+        </p>
+        <p class="Left Normal Bold">
+            <span class="Normal">2. If you want to sign the installer package you're creating, make sure at least the&nbsp;</span>
+            <span class="Bold">Sign packages</span>
+            <span class="Normal">&nbsp;option is selected. Also select the&nbsp;</span>
+            <span class="Bold">Notarize packages</span>
+            <span class="Normal">&nbsp;option if you want the package to be notarized.</span>
+        </p>
+        <p class="Left">
+            <img style="margin: 0.0px 0.0px 0.0px 0.0px;" height="424.0" src="../images/mainwindow_signing.png" width="619.0" />
+        </p>
+        <p class="Left Normal Bold">
+            <span class="Normal">3. Click the&nbsp;</span>
+            <span class="Bold">Select scripts</span>
+            <span class="Normal">&nbsp;button.</span>
+        </p>
+        <p class="Left Normal Bold">
+            <span class="Normal">4. In the window which appears, select the folder containing your components and click the&nbsp;</span>
+            <span class="Bold">Build</span>
+            <span class="Normal">&nbsp;button. In this example also the&nbsp;</span>
+            <span class="Bold">jq</span>
+            <span class="Normal">&nbsp;binary is included besides the&nbsp;</span>
+            <span class="Bold">postinstall</span>
+            <span class="Normal">&nbsp;script, so the&nbsp;</span>
+            <span class="Bold">postinstall</span>
+            <span class="Normal">&nbsp;script can run&nbsp;</span>
+            <span class="Bold">jq</span>
+            <span class="Normal">&nbsp;right from within the package without installing it.</span>
+        </p>
+        <p class="Left">
+            <img style="margin: 0.0px 0.0px 0.0px 0.0px;" height="496.0" src="../images/mainwindow_choosefolder.png" width="912.0" />
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">5. The installer package will be created and stored in the same location as the folder which was selected. The installer package will have the same name as the source folder.</span>
+        </p>
+        <p class="Left">
+            <img style="margin: 0.0px 0.0px 0.0px 0.0px;" height="445.0" src="../images/finder_package.png" width="703.0" />
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Footer">
+            <span class="Footer">© 2023 SAP SE. All rights reserved.</span>
+        </p>
+    </body>
+</html>

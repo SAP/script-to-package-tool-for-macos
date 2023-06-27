@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AD294EE829474AE60041F5CA /* MTOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = AD294EE729474AE60041F5CA /* MTOperationQueue.m */; };
 		AD2FEFC92934B1E90015975B /* MTProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2FEFC82934B1E90015975B /* MTProgressController.m */; };
+		AD36A8092A28955A00889628 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD36A8072A28955A00889628 /* InfoPlist.strings */; };
 		AD37CE312937EF860017E7EA /* MTActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD37CE302937EF860017E7EA /* MTActivityController.m */; };
 		AD42118E29687F8C00C2EC9C /* MTTextPatternValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD42118C29687F8C00C2EC9C /* MTTextPatternValueTransformer.m */; };
 		AD534F3A29312A6800759C19 /* MTNotarization.m in Sources */ = {isa = PBXBuildFile; fileRef = AD534F3929312A6800759C19 /* MTNotarization.m */; };
@@ -32,6 +33,7 @@
 		ADB059D72941FFC90039C082 /* MTPackagingProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB059D62941FFC90039C082 /* MTPackagingProgress.m */; };
 		ADB0A3A8297EAFF7008AFB52 /* MTSignatureValidationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB0A3A7297EAFF7008AFB52 /* MTSignatureValidationController.m */; };
 		ADE48E4F2939F2640010B630 /* MTTextColorValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE48E4E2939F2640010B630 /* MTTextColorValueTransformer.m */; };
+		ADE8E5AB29D5CF5A0075A208 /* MTNotarizeController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE8E5A929D5CF5A0075A208 /* MTNotarizeController.m */; };
 		ADF9C8AE292E105D004101DE /* MTDeveloperIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF9C8AD292E105D004101DE /* MTDeveloperIdentity.m */; };
 		ADF9C8AF292E1C0E004101DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADF9C8B1292E1C0E004101DE /* Localizable.strings */; };
 		ADF9C8B4292E22EB004101DE /* MTPayloadFreePackage.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF9C8B3292E22EB004101DE /* MTPayloadFreePackage.m */; };
@@ -43,6 +45,7 @@
 		AD294EE729474AE60041F5CA /* MTOperationQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MTOperationQueue.m; path = Script2Pkg/Classes/MTOperationQueue.m; sourceTree = SOURCE_ROOT; };
 		AD2FEFC72934B1E90015975B /* MTProgressController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTProgressController.h; sourceTree = "<group>"; };
 		AD2FEFC82934B1E90015975B /* MTProgressController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTProgressController.m; sourceTree = "<group>"; };
+		AD36A8082A28955A00889628 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Script2Pkg/de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD37CE2F2937EF860017E7EA /* MTActivityController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MTActivityController.h; path = "Script2Pkg/View Controllers/MTActivityController.h"; sourceTree = SOURCE_ROOT; };
 		AD37CE302937EF860017E7EA /* MTActivityController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MTActivityController.m; path = "Script2Pkg/View Controllers/MTActivityController.m"; sourceTree = SOURCE_ROOT; };
 		AD42118C29687F8C00C2EC9C /* MTTextPatternValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTextPatternValueTransformer.m; sourceTree = "<group>"; };
@@ -88,6 +91,8 @@
 		ADB0A3A7297EAFF7008AFB52 /* MTSignatureValidationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTSignatureValidationController.m; sourceTree = "<group>"; };
 		ADE48E4D2939F2640010B630 /* MTTextColorValueTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTextColorValueTransformer.h; sourceTree = "<group>"; };
 		ADE48E4E2939F2640010B630 /* MTTextColorValueTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTextColorValueTransformer.m; sourceTree = "<group>"; };
+		ADE8E5A929D5CF5A0075A208 /* MTNotarizeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTNotarizeController.m; sourceTree = "<group>"; };
+		ADE8E5AA29D5CF5A0075A208 /* MTNotarizeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTNotarizeController.h; sourceTree = "<group>"; };
 		ADF9C8A6292E0BBA004101DE /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		ADF9C8AC292E105D004101DE /* MTDeveloperIdentity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDeveloperIdentity.h; sourceTree = "<group>"; };
 		ADF9C8AD292E105D004101DE /* MTDeveloperIdentity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDeveloperIdentity.m; sourceTree = "<group>"; };
@@ -114,6 +119,7 @@
 				AD774CA829068D670072E62B /* Assets.xcassets */,
 				ADF9C8A6292E0BBA004101DE /* Constants.h */,
 				AD086A232935E59A00D30C61 /* Info.plist */,
+				AD36A8072A28955A00889628 /* InfoPlist.strings */,
 				ADF9C8B1292E1C0E004101DE /* Localizable.strings */,
 				AD774CAD29068D670072E62B /* main.m */,
 				AD774CAA29068D670072E62B /* Main.storyboard */,
@@ -205,6 +211,8 @@
 				AD9C4593292FA8E900171CDE /* MTCredentialsController.m */,
 				AD774CA529068D650072E62B /* MTMainViewController.h */,
 				AD774CA629068D650072E62B /* MTMainViewController.m */,
+				ADE8E5AA29D5CF5A0075A208 /* MTNotarizeController.h */,
+				ADE8E5A929D5CF5A0075A208 /* MTNotarizeController.m */,
 				AD2FEFC72934B1E90015975B /* MTProgressController.h */,
 				AD2FEFC82934B1E90015975B /* MTProgressController.m */,
 				AD581B8329683617002F85D7 /* MTSettingsCredentialTabController.h */,
@@ -250,7 +258,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					AD774C9E29068D650072E62B = {
 						CreatedOnToolsVersion = 14.1;
@@ -285,6 +293,7 @@
 				AD774CA929068D670072E62B /* Assets.xcassets in Resources */,
 				ADF9C8AF292E1C0E004101DE /* Localizable.strings in Resources */,
 				AD774CAC29068D670072E62B /* Main.storyboard in Resources */,
+				AD36A8092A28955A00889628 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +307,7 @@
 				AD8C28DB296741BA00EC5F18 /* MTTableCellView.m in Sources */,
 				AD2FEFC92934B1E90015975B /* MTProgressController.m in Sources */,
 				AD37CE312937EF860017E7EA /* MTActivityController.m in Sources */,
+				ADE8E5AB29D5CF5A0075A208 /* MTNotarizeController.m in Sources */,
 				AD774CA729068D650072E62B /* MTMainViewController.m in Sources */,
 				AD73BB912966C583009778FE /* MTLocalNotification.m in Sources */,
 				ADE48E4F2939F2640010B630 /* MTTextColorValueTransformer.m in Sources */,
@@ -325,6 +335,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		AD36A8072A28955A00889628 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD36A8082A28955A00889628 /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		AD774CAA29068D670072E62B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -384,6 +402,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -444,6 +463,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -468,7 +488,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 235;
+				CURRENT_PROJECT_VERSION = 253;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 7R5ZEU67FQ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -484,7 +504,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = corp.sap.Script2Pkg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -501,7 +521,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 235;
+				CURRENT_PROJECT_VERSION = 253;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 7R5ZEU67FQ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -517,7 +537,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = corp.sap.Script2Pkg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

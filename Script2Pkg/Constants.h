@@ -20,6 +20,8 @@
 #define kMTxcodeselectPath                      @"/usr/bin/xcode-select"
 #define kMTspctlPath                            @"/usr/sbin/spctl"
 #define kMTpkgutilPath                          @"/usr/sbin/pkgutil"
+#define kMTproductsignPath                      @"/usr/bin/productsign"
+#define kMTproductbuildPath                     @"/usr/bin/productbuild"
 #define kMTPackageReceiptsPath                  "/Library/Receipts/InstallHistory.plist"
 #define kMTGitHubURL                            @"https://github.com/SAP/script-to-package-tool-for-macos"
 #define kMTDeveloperTeamDisplayName             @"name"
@@ -44,12 +46,16 @@
 #define kMTDefaultsPackageCreateReceipts        @"CreatePackageReceipts"
 #define kMTDefaultsPackageVersionUseScript      @"UseScriptVersion"
 #define kMTDefaultsPackagePrefixIsIdentifier    @"PrefixIsIdentifier"
+#define kMTDefaultsSkipIfMissingScript          @"SkipIfMissingScript"
+#define kMTDefaultsCreateDistribution           @"CreateDistribution"
 
 #define kMTNotificationKeyPackagePath           @"packagePath"
+#define kMTNotificationKeyImportFiles           @"importFiles"
 
 #define kMTMaxConcurrentOperations              10
 #define kMTScript2PkgErrorDomain                @"corp.sap.Script2Pkg.ErrorDomain"
 #define kMTPackageIdentifierPrefix              @"corp.sap.Script2Pkg"
+#define kMTCredentialsPrefix                    @"Script2Pkg."
 
 #define kMTNotificationNameFileImport           @"corp.sap.Script2Pkg.importFileNotification"
 #define kMTNotificationNameOperationsCancel     @"corp.sap.Script2Pkg.operationsCancelNotification"

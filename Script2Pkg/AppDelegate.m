@@ -51,7 +51,7 @@
         
         
     } else {
-        
+                
         // make sure we are frontmost
         [NSApp activateIgnoringOtherApps:YES];
         
@@ -96,10 +96,13 @@
 
 - (void)importFilesWithPaths:(NSArray*)importFiles
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kMTNotificationNameFileImport
-                                                        object:importFiles
-                                                      userInfo:nil
-    ];
+    if (importFiles) {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMTNotificationNameFileImport
+                                                            object:nil
+                                                          userInfo:[NSDictionary dictionaryWithObject:importFiles forKey:kMTNotificationKeyImportFiles]
+        ];
+    }
 }
 
 @end

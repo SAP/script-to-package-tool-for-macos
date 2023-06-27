@@ -17,7 +17,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface MTMainViewController : NSViewController
+@interface MTMainViewController : NSViewController <NSMenuItemValidation>
 
 @end
 

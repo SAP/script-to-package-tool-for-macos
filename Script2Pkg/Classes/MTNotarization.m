@@ -57,7 +57,7 @@
         [notarizeTask setArguments:[NSArray arrayWithObjects:
                                     @"notarytool",
                                     @"store-credentials",
-                                    [@"Script2Pkg." stringByAppendingString:teamID],
+                                    [kMTCredentialsPrefix stringByAppendingString:teamID],
                                     @"--team-id",
                                     teamID,
                                     @"--apple-id",
@@ -143,44 +143,59 @@
                                     nil
                                    ]
         ];
-        [notarizeTask setStandardOutput:[NSFileHandle fileHandleWithNullDevice]];
+        NSPipe *stdoutPipe = [[NSPipe alloc] init];
+        [notarizeTask setStandardOutput:stdoutPipe];
         [notarizeTask setStandardError:[NSFileHandle fileHandleWithNullDevice]];
-        [notarizeTask launch];
-        [notarizeTask waitUntilExit];
-        
-        NSError *error = nil;
-        
-        if ([notarizeTask terminationStatus] != 0) {
-                        
-            NSDictionary *errorDetail = [NSDictionary dictionaryWithObjectsAndKeys:@"Notarization failed", NSLocalizedDescriptionKey, nil];
-            error = [NSError errorWithDomain:kMTScript2PkgErrorDomain code:0 userInfo:errorDetail];
+        [notarizeTask setTerminationHandler:^(NSTask* task){
             
-        } else {
+            NSError *error = nil;
+            NSData *returnData = [[stdoutPipe fileHandleForReading] readDataToEndOfFile];
             
-            // staple the ticket to the package
-            NSTask *stapleTask = [[NSTask alloc] init];
-            [stapleTask setExecutableURL:[NSURL fileURLWithPath:kMTxcrunPath]];
-            [stapleTask setArguments:[NSArray arrayWithObjects:
-                                      @"stapler",
-                                      @"staple",
-                                      [url path],
-                                      nil
-                                     ]
-            ];
-            [stapleTask setStandardOutput:[NSFileHandle fileHandleWithNullDevice]];
-            [stapleTask setStandardError:[NSFileHandle fileHandleWithNullDevice]];
-            [stapleTask launch];
-            [stapleTask waitUntilExit];
-            
-            if ([stapleTask terminationStatus] != 0) {
-                                
-                NSDictionary *errorDetail = [NSDictionary dictionaryWithObjectsAndKeys:@"Stapling failed", NSLocalizedDescriptionKey, nil];
+            if (returnData) {
+                
+                NSString *consoleMsg = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+                NSRange range = [consoleMsg rangeOfString:@"status:.*Accepted" options:NSRegularExpressionSearch];
+                
+                if (range.location != NSNotFound) {
+                    
+                    // staple the ticket to the package
+                    NSTask *stapleTask = [[NSTask alloc] init];
+                    [stapleTask setExecutableURL:[NSURL fileURLWithPath:kMTxcrunPath]];
+                    [stapleTask setArguments:[NSArray arrayWithObjects:
+                                              @"stapler",
+                                              @"staple",
+                                              [url path],
+                                              nil
+                                             ]
+                    ];
+                    [stapleTask setStandardOutput:[NSFileHandle fileHandleWithNullDevice]];
+                    [stapleTask setStandardError:[NSFileHandle fileHandleWithNullDevice]];
+                    [stapleTask launch];
+                    [stapleTask waitUntilExit];
+                    
+                    if ([stapleTask terminationStatus] != 0) {
+                                        
+                        NSDictionary *errorDetail = [NSDictionary dictionaryWithObjectsAndKeys:@"Stapling failed", NSLocalizedDescriptionKey, nil];
+                        error = [NSError errorWithDomain:kMTScript2PkgErrorDomain code:0 userInfo:errorDetail];
+                    }
+                    
+                } else {
+                    
+                    NSDictionary *errorDetail = [NSDictionary dictionaryWithObjectsAndKeys:@"Notarization failed", NSLocalizedDescriptionKey, nil];
+                    error = [NSError errorWithDomain:kMTScript2PkgErrorDomain code:0 userInfo:errorDetail];
+                }
+                
+            } else {
+                
+                NSDictionary *errorDetail = [NSDictionary dictionaryWithObjectsAndKeys:@"Notarization failed", NSLocalizedDescriptionKey, nil];
                 error = [NSError errorWithDomain:kMTScript2PkgErrorDomain code:0 userInfo:errorDetail];
             }
-        }
+            
+            if (completionHandler) { completionHandler(error); }
+        }];
         
-        if (completionHandler) { completionHandler(error); }
-        
+        [notarizeTask launch];
+
     } else if (completionHandler) {
         
         NSDictionary *errorDetail = [NSDictionary dictionaryWithObjectsAndKeys:@"Notarization failed! No keychain profile defined", NSLocalizedDescriptionKey, nil];

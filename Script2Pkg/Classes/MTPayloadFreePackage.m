@@ -25,6 +25,7 @@
 @property (nonatomic, strong, readwrite) NSString *notarizationTeamID;
 @property (nonatomic, strong, readwrite) MTPackagingProgress *packagingProgress;
 @property (assign) NSInteger completedUnitCount;
+@property (assign) BOOL isDirectoryBased;
 @end
 
 @implementation MTPayloadFreePackage
@@ -42,6 +43,19 @@
         _completedUnitCount = 0;
         
         _packagingProgress = [[MTPackagingProgress alloc] initWithTaskName:scriptName totalUnitCount:4];
+    }
+    
+    return self;
+}
+
+- (id)initWithDirectoryURL:(NSURL*)url
+{
+    self = [self initWithScriptURL:url];
+    
+    if (self) {
+        _packageName = [[url lastPathComponent] stringByAppendingString:@".pkg"];
+        [_packagingProgress setName:[url lastPathComponent]];
+        _isDirectoryBased = YES;
     }
     
     return self;
@@ -98,10 +112,27 @@
             
             NSURL *scriptsDirURL = [_buildDirectoryURL URLByAppendingPathComponent:@"scripts"];
             
-            // copy the postinstall script to the temp directory and rename the script
-            [[NSFileManager defaultManager] copyItemAtURL:_scriptURL
-                                                    toURL:[scriptsDirURL URLByAppendingPathComponent:@"postinstall"]
-                                                    error:&error];
+            if (_isDirectoryBased) {
+                
+                NSArray *packageFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:_scriptURL
+                                                                      includingPropertiesForKeys:nil
+                                                                                         options:NSDirectoryEnumerationSkipsHiddenFiles
+                                                                                           error:&error];
+                for (NSURL *fileURL in packageFiles) {
+                    
+                    // copy the original files (and folders) to the scripts folder
+                    [[NSFileManager defaultManager] copyItemAtURL:fileURL
+                                                            toURL:[scriptsDirURL URLByAppendingPathComponent:[fileURL lastPathComponent]]
+                                                            error:&error];
+                }
+
+            } else {
+                                
+                // copy the postinstall script to the temp directory and rename the script
+                [[NSFileManager defaultManager] copyItemAtURL:_scriptURL
+                                                        toURL:[scriptsDirURL URLByAppendingPathComponent:@"postinstall"]
+                                                        error:&error];
+            }
             
             if (!error) {
                 
@@ -146,7 +177,12 @@
                     
                 // add the output path
                 _packageURL = [_buildDirectoryURL URLByAppendingPathComponent:_packageName];
-                [launchArguments addObject:[_packageURL path]];
+                
+                if (_createDistribution) {
+                    [launchArguments addObject:[[_packageURL path] stringByAppendingString:@".component"]];
+                } else {
+                    [launchArguments addObject:[_packageURL path]];
+                }
 
                 NSTask *pkgbuildTask = [[NSTask alloc] init];
                 [pkgbuildTask setExecutableURL:[NSURL fileURLWithPath:kMTpkgbuildPath]];
@@ -166,9 +202,49 @@
                     [self deleteBuildDirectory];
                     
                 } else {
-                    [_packagingProgress setCompletedUnitCount:++_completedUnitCount notify:YES];
+                    
+                    if (_createDistribution) {
+                        
+                        // convert the component package to a distribution
+                        [launchArguments removeAllObjects];
+                        
+                        if (_signingIdentity) {
+                            [launchArguments addObject:@"--sign"];
+                            [launchArguments addObject:_signingIdentity];
+                        }
+                        
+                        [launchArguments addObjectsFromArray:[NSArray arrayWithObjects:@"--package",
+                                                              [[_packageURL path] stringByAppendingString:@".component"],
+                                                              [_packageURL path],
+                                                              nil
+                                                             ]
+                        ];
+                        
+                        NSTask *distributionTask = [[NSTask alloc] init];
+                        [distributionTask setExecutableURL:[NSURL fileURLWithPath:kMTproductbuildPath]];
+                        [distributionTask setArguments:launchArguments];
+                        [distributionTask setStandardOutput:[NSFileHandle fileHandleWithNullDevice]];
+                        [distributionTask setStandardError:[NSFileHandle fileHandleWithNullDevice]];
+                        [distributionTask launch];
+                        [distributionTask waitUntilExit];
+                        
+                        if ([distributionTask terminationStatus] != 0) {
+                            
+                            NSDictionary *errorDetail = [NSDictionary dictionaryWithObjectsAndKeys:@"Failed to create distribution!", NSLocalizedDescriptionKey, nil];
+                            error = [NSError errorWithDomain:kMTScript2PkgErrorDomain code:0 userInfo:errorDetail];
+                            _packageURL = nil;
+                            
+                            // delete the build directory
+                            [self deleteBuildDirectory];
+                            
+                        } else {
+                            [_packagingProgress setCompletedUnitCount:++_completedUnitCount notify:YES];
+                        }
+                        
+                    } else {
+                        [_packagingProgress setCompletedUnitCount:++_completedUnitCount notify:YES];
+                    }
                 }
-
             }
         }
         
@@ -192,7 +268,7 @@
         if (_notarizationTeamID) {
 
             [MTNotarization notarizePackageAtURL:_packageURL
-                            usingKeychainProfile:[@"Script2Pkg." stringByAppendingString:_notarizationTeamID]
+                            usingKeychainProfile:[kMTCredentialsPrefix stringByAppendingString:_notarizationTeamID]
                                completionHandler:^(NSError *error) {
                 
                 if (!error) { [self->_packagingProgress setCompletedUnitCount:++self->_completedUnitCount notify:YES]; }
@@ -300,6 +376,71 @@
     [_packagingProgress cancelWithState:state error:error notify:notify];
 }
 
+- (BOOL)isMissingScript
+{
+    BOOL isMissing = _isDirectoryBased;
+    
+    if (isMissing) {
+        
+        for (NSString *scriptName in [NSArray arrayWithObjects:@"preinstall", @"postinstall", nil]) {
+            BOOL isDirectory = NO;
+            BOOL scriptExists = [[NSFileManager defaultManager] fileExistsAtPath:[[_scriptURL URLByAppendingPathComponent:scriptName] path] isDirectory:&isDirectory];
+            
+            if (scriptExists && !isDirectory) {
+                isMissing = NO;
+                break;
+            }
+        }
+    }
+    
+    return isMissing;
+}
 
++ (void)signPackageAtURL:(NSURL*)url usingIdentity:(NSString*)identity completionHandler:(void (^) (BOOL success))completionHandler
+{
+    if (url && identity) {
+
+        NSString *sourceFile = [url path];
+        NSString *signedFile = [[sourceFile stringByDeletingPathExtension] stringByAppendingFormat:@"-%@.%@", [[NSUUID UUID] UUIDString], [sourceFile pathExtension]];
+
+        NSTask *signTask = [[NSTask alloc] init];
+        [signTask setExecutableURL:[NSURL fileURLWithPath:kMTproductsignPath]];
+        [signTask setArguments:[NSArray arrayWithObjects:
+                                    @"--sign",
+                                identity,
+                                sourceFile,
+                                signedFile,
+                                nil
+                               ]
+        ];
+        [signTask setStandardOutput:[NSFileHandle fileHandleWithNullDevice]];
+        [signTask setStandardError:[NSFileHandle fileHandleWithNullDevice]];
+        [signTask setTerminationHandler:^(NSTask* task){
+            
+            BOOL success = NO;
+            
+            // if the package has been successfully signed, delete
+            // the original package and rename the signed one
+            BOOL isDirectory = NO;
+            
+            if ([[NSFileManager defaultManager] fileExistsAtPath:signedFile isDirectory:&isDirectory] && !isDirectory) {
+                
+                // delete the original file
+                BOOL removed = [[NSFileManager defaultManager] removeItemAtPath:sourceFile error:nil];
+                
+                if (removed) {
+                    success = [[NSFileManager defaultManager] moveItemAtPath:signedFile toPath:sourceFile error:nil];
+                }
+            }
+
+            if (completionHandler) { completionHandler(success); }
+        }];
+        
+        [signTask launch];
+        
+    } else if (completionHandler) {
+        completionHandler(NO);
+    }
+}
 
 @end

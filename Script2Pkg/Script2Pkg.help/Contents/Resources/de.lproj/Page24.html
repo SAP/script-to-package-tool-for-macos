@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+    <head>
+        <script src="../js/topicpage.js" type="text/javascript"></script>
+        <title>Ordnerbasierte Pakete</title>
+        <meta name="robots" content="index" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+    </head>
+    <body>
+        <a name="Page24"></a>
+        <p class="Left Heading1">
+            <img style="margin: 0.0px 0.0px -9.0px -5.0px;" height="64.0" src="../images/script2pkg.png" width="64.0" />
+            <span class="Heading1">Script2Pkg</span>
+        </p>
+        <p class="Left Heading2">
+            <span class="Heading2">Ordnerbasierte Pakete</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">Möglicherweise wollen Sie einmal ein Installationspaket erstellen, in dem Sie dem Skript, das Sie paketieren wollen, zusätzliche Ressourcen zur Verfügung stellen müssen. Bei diesen Ressourcen kann es sich um ein zusätzliches Skript, eine Programm oder sogar ein anderes Installationspaket handeln. Script2Pkg bietet eine entsprechende Option, für die folgende Voraussetzungen gelten:</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Normal BoldItalic">
+            <span class="Normal">Sie müssen einen Ordner erstellen. In diesem Ordner muss sich&nbsp;</span>
+            <span class="BoldItalic bold italic">mindestens ein Skript&nbsp;</span>
+            <span class="Normal">mit folgendem Namen befinden:</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <ul class="listDisc">
+            <li class="Bold">
+                <p class="Left Bold">
+                    <span class="Bold">preinstall</span>
+                </p>
+            </li>
+            <li class="Bold">
+                <p class="Left Bold">
+                    <span class="Bold">postinstall</span>
+                </p>
+            </li>
+        </ul>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Normal BoldItalic">
+            <span class="Normal">Diese Skripte müssen&nbsp;</span>
+            <span class="BoldItalic bold italic">ausführbare Dateien</span>
+            <span class="Normal">&nbsp;sein. Der Grund dafür ist, dass zwei Kategorien von Skripten für die Verwendung mit Installationspaketen definiert wurden:</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <ul class="listDisc">
+            <li class="Bold">
+                <p class="Left Bold Normal">
+                    <span class="Bold">preinstall</span>
+                    <span class="Normal">: Das Preinstall-Skript wird ausgeführt, bevor Dateien installiert werden. Wenn das Skript keinen Exit-Status von Null zurückgibt, bricht Installer die Installation ab.</span>
+                </p>
+            </li>
+            <li class="Bold">
+                <p class="Left Bold Normal">
+                    <span class="Bold">postinstall</span>
+                    <span class="Normal">: Das Postinstall-Skript wird ausgeführt, nachdem die Dateien installiert wurden. Wenn das Skript keinen Exit-Status von Null zurückgibt, meldet das macOS Installationsprogramm die Installation als fehlgeschlagen.</span>
+                </p>
+            </li>
+        </ul>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">Die Namen der Skripte müssen genau wie beschrieben lauten, da das macOS Installationsprogramm nur ausführbare Dateien mit diesen Namen als Skripte verwenden kann, die Aktionen vor und nach der Installation ausführen können. Wenn die Dateinamen anders lauten, werden sie vom macOS Installationsprogramm nicht erkannt oder verwendet.</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">Sobald Sie alle Elemente zur Verfügung haben, erstellen Sie das Paket wie folgt:</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">1. Starten Sie die Anwendung.</span>
+        </p>
+        <p class="Left">
+            <img style="margin: 0.0px 0.0px 0.0px 0.0px;" height="424.0" src="../images/de_mainwindow_noselection.png" width="619.0" />
+        </p>
+        <p class="Left Normal Bold">
+            <span class="Normal">2. Wenn Sie das zu erstellende Paket signieren möchten, stellen Sie bitte sicher, dass die Option&nbsp;</span>
+            <span class="Bold">Pakete signieren</span>
+            <span class="Normal">&nbsp;aktiviert ist und aktivieren Sie zusätzlich die Option&nbsp;</span>
+            <span class="Bold">Pakete beglaubigen</span>
+            <span class="Normal">, wenn Sie ein beglaubigtes Paket erstellen wollen.</span>
+        </p>
+        <p class="Left">
+            <img style="margin: 0.0px 0.0px 0.0px 0.0px;" height="424.0" src="../images/de_mainwindow_signing.png" width="619.0" />
+        </p>
+        <p class="Left Normal Bold">
+            <span class="Normal">3. Klicken Sie auf die Taste&nbsp;</span>
+            <span class="Bold">Skripte auswählen</span>
+            <span class="Normal">.</span>
+        </p>
+        <p class="Left Normal Bold">
+            <span class="Normal">4. Wählen Sie, in dem nun erscheinenden Fenster, den Ordner aus, der die Komponenten für Ihr Paket enthält und klicken Sie anschließend auf die Taste&nbsp;</span>
+            <span class="Bold">Erstellen</span>
+            <span class="Normal">. In diesem Beispiel ist neben dem&nbsp;</span>
+            <span class="Bold">Postinstall-Skript</span>
+            <span class="Normal">&nbsp;auch noch das Programm&nbsp;</span>
+            <span class="Bold">jq</span>
+            <span class="Normal">&nbsp;enthalten. Dies ermöglicht es dem&nbsp;</span>
+            <span class="Bold">Postinstall-Skript</span>
+            <span class="Normal">, das Programm&nbsp;</span>
+            <span class="Bold">jq</span>
+            <span class="Normal">&nbsp;direkt aus dem Paket heraus auszuführen, ohne dass es vorher installiert werden muss.&nbsp;</span>
+        </p>
+        <p class="Left">
+            <img style="margin: 0.0px 0.0px 0.0px 0.0px;" height="466.0" src="../images/de_mainwindow_choosefolderpng.png" width="852.0" />
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">5. Das Installationspaket wird nun erstellt und am selben Speicherort abgelegt, an dem sich auch der ausgewählte Ordner befindet. Das erzeugte Paket trägt den Namen des ausgewählten Ordners.</span>
+        </p>
+        <p class="Left">
+            <img style="margin: 0.0px 0.0px 0.0px 0.0px;" height="445.0" src="../images/de_finder_package.png" width="703.0" />
+        </p>
+        <p class="Left Normal">
+            <span class="Normal">&nbsp;</span>
+        </p>
+        <p class="Left Footer">
+            <span class="Footer">© 2023 SAP SE. All rights reserved.</span>
+        </p>
+    </body>
+</html>

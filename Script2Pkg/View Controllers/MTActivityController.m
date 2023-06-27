@@ -30,7 +30,8 @@
 
 @implementation MTActivityController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     _userDefaults = [NSUserDefaults standardUserDefaults];

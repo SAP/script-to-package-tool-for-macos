@@ -27,9 +27,14 @@
 "cancelButton" = "Cancel";
 "invalidateButton" = "Invalidate";
 "showWindowButton" = "Show activity window…";
+"notarizeButton" = "Notarize";
+"signButton" = "Sign";
+"replaceButton" = "Replace";
 
 "openDialogMessage" = "Please select one or more scripts and click the \"Build\" button below to create a package from each script you selected.";
 "validateDialogMessage" = "Please select a package and click the \"Validate\" button below to check the signature of the package.";
+"notarizeDialogMessage" = "Please select a package and click the \"Notarize\" button below to submit the package to the Apple Notary Service for notarization.";
+"signDialogMessage" = "Please select a package and click the \"Sign\" button below to sign the package.";
 
 "notarytoolMissingTooltip" = "This checkbox is disabled because the notarytool command line tool has not been found. Please install the Command Line Tools for Xcode 13 or later to get notarytool and enable notarization.";
 "signingDisabledTooltip" = "This checkbox is disabled because package signing is disabled and only signed packages may be notarized.";
@@ -44,6 +49,20 @@
 
 "invalidateCredentialsMessageTitle" = "Are you sure you want to invalidate the stored credentials?";
 "invalidateCredentialsMessageText" = "Invalidating credentials also disables notarization. You may re-enable notarization at any time, but you must provide valid credentials then.";
+"expiredSignatureMessageTitle" = "The selected package is signed using a certificate that has since expired!";
+"expiredSignatureMessageText" = "In order to get a package notarized by Apple, the package must be signed using a valid certificate. Please select a package containing a valid signature and try again.";
+"alreadyNotarizedMessageTitle" = "The selected package has already been notarized!";
+"alreadyNotarizedMessageText" = "A package can be notarized only once. Please select a package that does not have been notarized and try again.";
+"notarizeFailedMessageTitle" = "Notarization failed!";
+"notarizeFailedMessageText" = "The selected package could not be notarized.";
+"notarizeSuccessMessageTitle" = "Notarization successful!";
+"notarizeSuccessMessageText" = "The selected package has been successfully notarized by Apple.";
+"alreadySignedMessageTitle" = "Do you want to replace the existing signature?";
+"alreadySignedMessageText" = "The selected package has already been signed. If you continue, the existing signature will be replaced.";
+"signingFailedMessageTitle" = "Signing failed!";
+"signingFailedMessageText" = "The selected package could not be signed.";
+"signingSuccessMessageTitle" = "Signing successful!";
+"signingSuccessMessageText" = "The selected package has been successfully signed.";
 
 "packageSuccessNotificationTitle" = "Packaging successful!";
 "packageSuccessNotificationMessage" = "The package \"%@\" has been successfully built.";

@@ -218,6 +218,10 @@
                                                       object:nil];
         
         if (self->_taskError) {
+            
+            // close the progress sheet
+            [NSApp endSheet:[[self view] window]];
+            
             NSAlert *theAlert = [[NSAlert alloc] init];
             [theAlert setMessageText:NSLocalizedString(@"errorMessageTitle", nil)];
             [theAlert setInformativeText:NSLocalizedString(@"errorMessageText", nil)];

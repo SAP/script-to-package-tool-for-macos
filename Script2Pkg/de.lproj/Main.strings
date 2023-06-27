@@ -242,3 +242,27 @@
 
 /* Class = "NSWindow"; title = "Activity"; ObjectID = "yHs-dk-jby"; */
 "yHs-dk-jby.title" = "Aktivität";
+
+/* Class = "NSMenuItem"; title = "Notarize Existing Package…"; ObjectID = "eHd-rj-1lq"; */
+"eHd-rj-1lq.title" = "Bestehendes Paket beglaubigen …";
+
+/* Class = "NSTextFieldCell"; title = "Waiting for package to be notarized…"; ObjectID = "dCN-oY-xhH"; */
+"dCN-oY-xhH.title" = "Warte auf Beglaubigung des Paketes …";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "vmC-HC-cmS"; */
+"vmC-HC-cmS.title" = "Abbrechen";
+
+/* Class = "NSMenuItem"; title = "Sign Existing Package…"; ObjectID = "hgq-fm-bhE"; */
+"hgq-fm-bhE.title" = "Bestehendes Paket signieren …";
+
+/* Class = "NSTextFieldCell"; title = "A package can be based either on a single script or on a folder that must contain at least one script with either the name preinstall or postinstall. If a folder-based package contains none of these scripts, it will not do anything. If you would like to build those packages anyway, please uncheck the checkbox below."; ObjectID = "tXw-Ta-TSf"; */
+"tXw-Ta-TSf.title" = "Ein Paket kann entweder auf einem einzelnen Skript basieren oder aber auf einem Ordner, welcher mindestens ein Skript mit dem Namen preinstall oder postinstall enthalten muss. Falls ein ordnerbasiertes Paket keines dieser Skripte enthält, ist es ohne jede Funktion. Sollten Sie solche Pakete trotzdem erstellen wollen, deaktivieren Sie bitte die untenstehende Option.";
+
+/* Class = "NSButtonCell"; title = "Ignore source folders with missing scripts"; ObjectID = "eYa-w5-LZe"; */
+"eYa-w5-LZe.title" = "Quellordner mit fehlenden Skripten ignorieren";
+
+/* Class = "NSButtonCell"; title = "Create distribution packages"; ObjectID = "aOU-lv-dLl"; */
+"aOU-lv-dLl.title" = "Verteilungspakete erstellen";
+
+/* Class = "NSTextFieldCell"; title = "Distribution packages are a special format of installer packages, needed in some environments. If you need to create distribution packages instead of component packages, enable the option below."; ObjectID = "mqD-k9-T2g"; */
+"mqD-k9-T2g.title" = "Verteilungspakete sind spezielle Versionen von Installationspaketen, die in einigen Umgebungen benötigt werden. Wenn Sie Verteilungspakete anstelle von regulären Intallationspaketen erstellen wollen, aktivieren Sie bitte die untenstehende Option.";

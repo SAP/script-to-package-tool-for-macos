@@ -27,9 +27,14 @@
 "cancelButton" = "Abbrechen";
 "invalidateButton" = "Verwerfen";
 "showWindowButton" = "Aktivitätsfenster anzeigen…";
+"notarizeButton" = "Beglaubigen";
+"signButton" = "Signieren";
+"replaceButton" = "Ersetzen";
 
 "openDialogMessage" = "Bitte wählen Sie ein oder mehrere Skripte aus und klicken Sie anschließend auf die Taste \"Erstellen\", um für jedes ausgewählte Skript ein Paket zu erstellen.";
 "validateDialogMessage" = "Bitte wählen Sie ein Paket aus und klicken Sie anschließend auf die Taste \"Überprüfen\", um die Signatur des Pakets zu überprüfen.";
+"notarizeDialogMessage" = "Bitte wählen Sie ein Paket aus und klicken Sie anschließend auf die Taste \"Beglaubigen\", um das Paket an den Apple Notary Service zur Beglaubigung zu übermitteln.";
+"signDialogMessage" = "Bitte wählen Sie ein Paket aus und klicken Sie anschließend auf die Taste \"Signieren\", um das Paket zu signieren.";
 
 "notarytoolMissingTooltip" = "Dieses Kontrollkästchen ist deaktiviert, weil das notarytool Kommandozeilentool nicht gefunden wurde. Bitte installieren Sie die Kommandozeilentools für Xcode 13 oder höher, um notarytool zu erhalten und aktivieren Sie anschließend die Beglaubigung von Paketen.";
 "signingDisabledTooltip" = "Dieses Kontrollkästchen ist deaktiviert, weil das Signieren von Paketen deaktiviert ist und nur signierte Pakete beglaubigt werden können.";
@@ -44,6 +49,20 @@
 
 "invalidateCredentialsMessageTitle" = "Sind Sie sicher, dass Sie die gespeicherten Zugangsdaten verwerfen wollen?";
 "invalidateCredentialsMessageText" = "Dies deaktiviert temporär die Beglaubigung von Paketen. Sie können die Beglaubigung jederzeit wieder aktivieren, müssen dann jedoch die entsprechenden Zugangsdaten neu eingeben.";
+"expiredSignatureMessageTitle" = "Das ausgewählte Paket ist mit einem abgelaufenen Zertifikat signiert!";
+"expiredSignatureMessageText" = "Um ein Paket von Apple beglaubigen zu lassen, muss es mit einem gültigen Zertifikat signiert sein. Bitte wählen Sie ein Paket aus, welches über eine gültige Signatur verfügt und versuchen Sie es erneut.";
+"alreadyNotarizedMessageTitle" = "Das ausgewählte Paket wurde bereits beglaubigt!";
+"alreadyNotarizedMessageText" = "Ein Paket kann nur einmal beglaubigt werden. Bitte wählen Sie ein Paket aus, welches noch nicht beglaubigt wurde und versuchen Sie es erneut.";
+"notarizeFailedMessageTitle" = "Beglaubigung fehlgeschlagen!";
+"notarizeFailedMessageText" = "Das ausgewählte Paket konnte nicht beglaubigt werden.";
+"notarizeSuccessMessageTitle" = "Beglaubigung erfolgreich!";
+"notarizeSuccessMessageText" = "Das ausgewählte Paket wurde erfolgreich von Apple beglaubigt.";
+"alreadySignedMessageTitle" = "Wollen Sie die bestehende Signatur ersetzen?";
+"alreadySignedMessageText" = "Das ausgewählte Paket wurde bereits signiert. Wenn Sie fortfahren, wird die bestehende Signatur ersetzt.";
+"signingFailedMessageTitle" = "Signieren fehlgeschlagen!";
+"signingFailedMessageText" = "Das ausgewählte Paket konnte nicht signiert werden.";
+"signingSuccessMessageTitle" = "Signieren erfolgreich!";
+"signingSuccessMessageText" = "Das ausgewählte Paket wurde erfolgreich signiert.";
 
 "packageSuccessNotificationTitle" = "Paketerstellung erfolgreich!";
 "packageSuccessNotificationMessage" = "Das Paket \"%@\" wurde erfolgreich erstellt.";

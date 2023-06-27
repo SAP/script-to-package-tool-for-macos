@@ -46,10 +46,10 @@
 
 /*!
  @property      scriptURL
- @abstract      A property to store a file url specifying the script's storage location.
+ @abstract      A read-only property returning a file url specifying the script's storage location.
  @discussion    The value of this property is NSURL.
 */
-@property (nonatomic, strong, readwrite) NSURL *scriptURL;
+@property (nonatomic, strong, readonly) NSURL *scriptURL;
 
 /*!
  @property      signingIdentity
@@ -80,6 +80,13 @@
 @property (assign) BOOL createPackageReceipt;
 
 /*!
+ @property      createDistribution
+ @abstract      A property to specify if a distribution should be created instead of a component package .
+ @discussion    The value of this property is Boolean.
+*/
+@property (assign) BOOL createDistribution;
+
+/*!
  @property      notarizationTeamID
  @abstract      A read-only property returning the developer team id used for notarization.
  @discussion    The value of this property is NSString.
@@ -107,6 +114,14 @@
 */
 @property (nonatomic, strong, readonly) MTPackagingProgress *packagingProgress;
 
+/*!
+ @property      isDirectoryBased
+ @abstract      A read-only property returning if the package is based on a single script or a scripts directory.
+ @discussion    The value of this property is Boolean.
+*/
+@property (readonly) BOOL isDirectoryBased;
+
+
 - (id)init NS_UNAVAILABLE;
 
 /*!
@@ -116,6 +131,15 @@
  @discussion    Returns an initialized MTPayloadFreePackage object.
  */
 - (id)initWithScriptURL:(NSURL*)url NS_DESIGNATED_INITIALIZER;
+
+/*!
+ @method        initWithDirectoryURL:
+ @abstract      Initializes a MTPayloadFreePackage object with the given directory url.
+ @param         url The file url specifying the directory's storage location.
+ @discussion    Returns an initialized MTPayloadFreePackage object.
+ */
+- (id)initWithDirectoryURL:(NSURL*)url;
+
 
 /*!
  @method        setNotarizationTeamID:
@@ -160,6 +184,24 @@
  @param         notify A boolean specifying if a notification should be sent or not.
  */
 - (void)cancelWithState:(MTPackagingState)state error:(NSError*)error notify:(BOOL)notify;
+
+/*!
+ @method        isMissingScript
+ @abstract      Returns if the directory-based package misses scripts.
+ @discussion    If the source directory of a directory-based package neither contains a file @b preinstall nor @b postinstall, this method
+ returns YES. Otherwise returns NO. The method also returns NO for packages based on a single script.
+ */
+- (BOOL)isMissingScript;
+
+/*!
+ @method        signPackageAtURL:usingIdentity:completionHandler:
+ @abstract      Signs the given installer package using the given identity.
+ @param         url A file url specifying the storage location of the installer package.
+ @param         identity The name of the identity to use for signing the package.
+ @param         completionHandler The completion handler to call when the request is complete.
+ @discussion    Runs @c productsign with the @c --sign argument to sign the package.
+ */
++ (void)signPackageAtURL:(NSURL*)url usingIdentity:(NSString*)identity completionHandler:(void (^) (BOOL success))completionHandler;
 
 @end
 

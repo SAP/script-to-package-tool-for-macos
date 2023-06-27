@@ -47,7 +47,7 @@
     NSMutableAttributedString *finalString = [[NSMutableAttributedString alloc] initWithAttributedString:[_appSpecificPWText attributedStringValue]];
         
     NSDataDetector *linkDetector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:nil];
-    NSArray *allMatches = [linkDetector matchesInString:[finalString string] options:0 range:NSMakeRange(0, [finalString string].length)];
+    NSArray *allMatches = [linkDetector matchesInString:[finalString string] options:0 range:NSMakeRange(0, [[finalString string] length])];
     
     for (NSTextCheckingResult *match in [allMatches reverseObjectEnumerator]) {
         [finalString addAttribute:NSLinkAttributeName value:[match URL] range:[match range]];
