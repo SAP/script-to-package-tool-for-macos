@@ -41,7 +41,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             // close the progress sheet
-            [NSApp endSheet:[[self view] window]];
+            NSWindow *parentWindow = [[[self view] window] sheetParent];
+            [parentWindow endSheet:[[self view] window]];
             
             NSAlert *theAlert = [[NSAlert alloc] init];
             
@@ -55,10 +56,9 @@
             
             [theAlert addButtonWithTitle:NSLocalizedString(@"okButton", nil)];
             [theAlert setAlertStyle:(error) ? NSAlertStyleCritical : NSAlertStyleInformational];
-            [theAlert beginSheetModalForWindow:[NSApp mainWindow] completionHandler:^(NSModalResponse returnCode) {
+            [theAlert beginSheetModalForWindow:parentWindow completionHandler:^(NSModalResponse returnCode) {
                 [self dismissController:nil];
             }];
-
         });
     }];
     

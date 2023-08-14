@@ -220,7 +220,8 @@
         if (self->_taskError) {
             
             // close the progress sheet
-            [NSApp endSheet:[[self view] window]];
+            NSWindow *parentWindow = [[[self view] window] sheetParent];
+            [parentWindow endSheet:[[self view] window]];
             
             NSAlert *theAlert = [[NSAlert alloc] init];
             [theAlert setMessageText:NSLocalizedString(@"errorMessageTitle", nil)];
@@ -228,7 +229,7 @@
             [theAlert addButtonWithTitle:NSLocalizedString(@"okButton", nil)];
             [theAlert addButtonWithTitle:NSLocalizedString(@"showWindowButton", nil)];
             [theAlert setAlertStyle:NSAlertStyleCritical];
-            [theAlert beginSheetModalForWindow:[NSApp mainWindow] completionHandler:^(NSModalResponse returnCode) {
+            [theAlert beginSheetModalForWindow:parentWindow completionHandler:^(NSModalResponse returnCode) {
                 
                 if (returnCode == NSAlertSecondButtonReturn) {
                     

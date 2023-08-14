@@ -13,6 +13,7 @@
 		AD37CE312937EF860017E7EA /* MTActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD37CE302937EF860017E7EA /* MTActivityController.m */; };
 		AD42118E29687F8C00C2EC9C /* MTTextPatternValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD42118C29687F8C00C2EC9C /* MTTextPatternValueTransformer.m */; };
 		AD534F3A29312A6800759C19 /* MTNotarization.m in Sources */ = {isa = PBXBuildFile; fileRef = AD534F3929312A6800759C19 /* MTNotarization.m */; };
+		AD5509BD2A7D4FE500C44CE8 /* MTMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5509BC2A7D4FE500C44CE8 /* MTMainWindowController.m */; };
 		AD581B8529683617002F85D7 /* MTSettingsCredentialTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD581B8429683617002F85D7 /* MTSettingsCredentialTabController.m */; };
 		AD581B89296836E2002F85D7 /* MTSettingsLocationsTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD581B87296836E2002F85D7 /* MTSettingsLocationsTabController.m */; };
 		AD581B8D296838F2002F85D7 /* MTTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD581B8C296838F2002F85D7 /* MTTabViewController.m */; };
@@ -52,6 +53,8 @@
 		AD42118D29687F8C00C2EC9C /* MTTextPatternValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTextPatternValueTransformer.h; sourceTree = "<group>"; };
 		AD534F3829312A6800759C19 /* MTNotarization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTNotarization.h; sourceTree = "<group>"; };
 		AD534F3929312A6800759C19 /* MTNotarization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTNotarization.m; sourceTree = "<group>"; };
+		AD5509BB2A7D4FE500C44CE8 /* MTMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMainWindowController.h; sourceTree = "<group>"; };
+		AD5509BC2A7D4FE500C44CE8 /* MTMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMainWindowController.m; sourceTree = "<group>"; };
 		AD581B8329683617002F85D7 /* MTSettingsCredentialTabController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTSettingsCredentialTabController.h; sourceTree = "<group>"; };
 		AD581B8429683617002F85D7 /* MTSettingsCredentialTabController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTSettingsCredentialTabController.m; sourceTree = "<group>"; };
 		AD581B86296836E2002F85D7 /* MTSettingsLocationsTabController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTSettingsLocationsTabController.h; sourceTree = "<group>"; };
@@ -186,6 +189,8 @@
 				ADF9C8AD292E105D004101DE /* MTDeveloperIdentity.m */,
 				AD73BB902966C583009778FE /* MTLocalNotification.h */,
 				AD73BB8F2966C583009778FE /* MTLocalNotification.m */,
+				AD5509BB2A7D4FE500C44CE8 /* MTMainWindowController.h */,
+				AD5509BC2A7D4FE500C44CE8 /* MTMainWindowController.m */,
 				AD534F3829312A6800759C19 /* MTNotarization.h */,
 				AD534F3929312A6800759C19 /* MTNotarization.m */,
 				AD294EE629474AE60041F5CA /* MTOperationQueue.h */,
@@ -327,6 +332,7 @@
 				AD649A6A2967539F0032F7FA /* MTStateValueTransformer.m in Sources */,
 				AD581B8529683617002F85D7 /* MTSettingsCredentialTabController.m in Sources */,
 				AD42118E29687F8C00C2EC9C /* MTTextPatternValueTransformer.m in Sources */,
+				AD5509BD2A7D4FE500C44CE8 /* MTMainWindowController.m in Sources */,
 				ADF9C8B4292E22EB004101DE /* MTPayloadFreePackage.m in Sources */,
 				AD89DEA02968A5FA00537CA1 /* MTSettingsPackagingTabController.m in Sources */,
 			);
@@ -488,7 +494,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 253;
+				CURRENT_PROJECT_VERSION = 261;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 7R5ZEU67FQ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -504,7 +510,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = corp.sap.Script2Pkg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -521,7 +527,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 253;
+				CURRENT_PROJECT_VERSION = 261;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 7R5ZEU67FQ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -537,7 +543,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = corp.sap.Script2Pkg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
