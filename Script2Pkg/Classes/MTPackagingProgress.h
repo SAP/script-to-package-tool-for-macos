@@ -1,6 +1,6 @@
 /*
      MTPackagingProgress.h
-     Copyright 2022-2023 SAP SE
+     Copyright 2022-2024 SAP SE
      
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -24,8 +24,17 @@
 @interface MTPackagingProgress : NSObject
 
 /*!
-  @enum Packaging State
-  @discussion Specifies the different states of the packaging process.
+ @enum          Packaging State
+ @abstract      Specifies the different states of the packaging process.
+ @constant      MTPackagingStateWaiting The package is waiting for packaging.
+ @constant      MTPackagingStatePKGBuild The package is being built.
+ @constant      MTPackagingStateNotarizing The package is being notarized.
+ @constant      MTPackagingStateCopyPKG The package is copied to the final location.
+ @constant      MTPackagingStatePKGBuildFailed Building the package failed.
+ @constant      MTPackagingStateNotarizingFailed Notarization of the package failed.
+ @constant      MTPackagingStateCopyPKGFailed The package could not be copied to the final location.
+ @constant      MTPackagingStateCancelled Packaging has been cancelled.
+ @constant      MTPackagingStateComplete The packaging process has been completed.
 */
 typedef enum {
     MTPackagingStateWaiting          = 0,
@@ -81,6 +90,10 @@ typedef enum {
 */
 @property (nonatomic, strong, readonly) NSError *error;
 
+/*!
+ @method        init
+ @discussion    The init method is not available. Please use initWithTaskName:totalUnitCount: instead.
+*/
 - (id)init NS_UNAVAILABLE;
 
 /*!

@@ -1,0 +1,1055 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "alreadyNotarizedMessageText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Paket kann nur einmal beglaubigt werden. Bitte wählen Sie ein Paket aus, welches noch nicht beglaubigt wurde und versuchen Sie es erneut."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A package can be notarized only once. Please select a package that has not been notarized and try again."
+          }
+        }
+      }
+    },
+    "alreadyNotarizedMessageTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ausgewählte Paket wurde bereits beglaubigt!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected package has already been notarized!"
+          }
+        }
+      }
+    },
+    "alreadySignedMessageText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ausgewählte Paket wurde bereits signiert. Wenn Sie fortfahren, wird die bestehende Signatur ersetzt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected package has already been signed. If you continue, the existing signature will be replaced."
+          }
+        }
+      }
+    },
+    "alreadySignedMessageTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wollen Sie die bestehende Signatur ersetzen?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you want to replace the existing signature?"
+          }
+        }
+      }
+    },
+    "buildButton" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erstellen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Build"
+          }
+        }
+      }
+    },
+    "cancelButton" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "commandLineToolsInstalledText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um Pakete beglaubigen lassen zu können, sind Xcode 13, die Kommandozeilentools für Xcode 13, oder neuere Versionen dieser Programme notwendig. Die notwendige Software ist auf diesem Mac bereits installiert, sodass die Beglaubigung von Paketen problemlos funktionieren sollte."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To notarize packages, Xcode 13, the Command Line Tools for Xcode 13, or later versions of these tools are required. Compatible versions of these tools have been detected as being installed, so notarizing should work as expected."
+          }
+        }
+      }
+    },
+    "credentialsDialogText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte melden Sie sich mit einer Apple ID, die dem Entwicklerteam %@ zugeordnet ist, und dem App-spezifischen Passwort, welches Sie für die Beglaubigung von Paketen angelegt haben, an."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please sign in using an Apple ID associated with development team %@ and the app-specific password you have created for notarization."
+          }
+        }
+      }
+    },
+    "errorMessageText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte öffnen Sie das Aktivitätsfenster um Details zu erhalten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please check the activity window for details."
+          }
+        }
+      }
+    },
+    "errorMessageTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Während der Paketerstellung sind Fehler aufgetreten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Errors occurred while building packages."
+          }
+        }
+      }
+    },
+    "expiredSignatureMessageText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um ein Paket von Apple beglaubigen zu lassen, muss es mit einem gültigen Zertifikat signiert sein. Bitte wählen Sie ein Paket aus, welches über eine gültige Signatur verfügt und versuchen Sie es erneut."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In order to get a package notarized by Apple, the package must be signed using a valid certificate. Please select a package containing a valid signature and try again."
+          }
+        }
+      }
+    },
+    "expiredSignatureMessageTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ausgewählte Paket ist mit einem abgelaufenen Zertifikat signiert!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected package is signed using a certificate that has since expired!"
+          }
+        }
+      }
+    },
+    "invalidateButton" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwerfen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalidate"
+          }
+        }
+      }
+    },
+    "invalidateCredentialsMessageText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dies deaktiviert temporär die Beglaubigung von Paketen. Sie können die Beglaubigung jederzeit wieder aktivieren, müssen dann jedoch die entsprechenden Zugangsdaten neu eingeben."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalidating credentials also disables notarization. You may re-enable notarization at any time, but you must provide valid credentials then."
+          }
+        }
+      }
+    },
+    "invalidateCredentialsMessageTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sind Sie sicher, dass Sie die gespeicherten Zugangsdaten verwerfen wollen?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to invalidate the stored credentials?"
+          }
+        }
+      }
+    },
+    "invalidCredentialsMessageText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Beglaubigung von Paketen wurde aufgrund fehlender oder ungültiger Zugangsdaten deaktiviert."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notarization has been disabled due to missing or invalid credentials."
+          }
+        }
+      }
+    },
+    "invalidCredentialsMessageTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Beglaubigung von Paketen wurde deaktiviert!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notarization has been disabled!"
+          }
+        }
+      }
+    },
+    "mainWindowAlternateText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "an dem Speicherort, den Sie in den Einstellungen dieses Programms ausgwählt haben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "at the location you have chosen in this app's settings"
+          }
+        }
+      }
+    },
+    "mainWindowDefaultText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "am selben Speicherort wie das Skript"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "at the script's location"
+          }
+        }
+      }
+    },
+    "MTPackagingTaskState_0" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warte"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waiting"
+          }
+        }
+      }
+    },
+    "MTPackagingTaskState_1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paket wird erzeugt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Building package"
+          }
+        }
+      }
+    },
+    "MTPackagingTaskState_2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paket wird beglaubigt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notarizing package"
+          }
+        }
+      }
+    },
+    "MTPackagingTaskState_3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paket wird kopiert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copying package"
+          }
+        }
+      }
+    },
+    "MTPackagingTaskState_4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paketerstellung fehlgeschlagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to build package"
+          }
+        }
+      }
+    },
+    "MTPackagingTaskState_5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beglaubigung des Pakets fehlgeschlagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to notarize package"
+          }
+        }
+      }
+    },
+    "MTPackagingTaskState_6" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopieren des Pakets fehlgeschlagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to copy package"
+          }
+        }
+      }
+    },
+    "MTPackagingTaskState_7" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abgebrochen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelled"
+          }
+        }
+      }
+    },
+    "MTPackagingTaskState_8" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete"
+          }
+        }
+      }
+    },
+    "noSigningIdentityTooltip" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Kontrollkästchen ist deaktiviert, weil keine geeignete Signatur in Ihrem Anmeldeschlüsselbund gefunden wurde."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This checkbox is disabled because no valid code signing identity has been found in your login keychain."
+          }
+        }
+      }
+    },
+    "notarizeButton" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beglaubigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notarize"
+          }
+        }
+      }
+    },
+    "notarizeDialogMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte wählen Sie ein Paket aus und klicken Sie anschließend auf die Taste \"Beglaubigen\", um das Paket an den Apple Notary Service zur Beglaubigung zu übermitteln."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select a package and click the \"Notarize\" button below to submit the package to the Apple Notary Service for notarization."
+          }
+        }
+      }
+    },
+    "notarizeFailedMessageText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ausgewählte Paket konnte nicht beglaubigt werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected package could not be notarized."
+          }
+        }
+      }
+    },
+    "notarizeFailedMessageTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beglaubigung fehlgeschlagen!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notarization failed!"
+          }
+        }
+      }
+    },
+    "notarizeSuccessMessageText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ausgewählte Paket wurde erfolgreich von Apple beglaubigt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected package has been successfully notarized by Apple."
+          }
+        }
+      }
+    },
+    "notarizeSuccessMessageTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beglaubigung erfolgreich!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notarization successful!"
+          }
+        }
+      }
+    },
+    "notarytoolMissingTooltip" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Kontrollkästchen ist deaktiviert, weil das notarytool Kommandozeilentool nicht gefunden wurde. Bitte installieren Sie die Kommandozeilentools für Xcode 13 oder höher, um notarytool zu erhalten und aktivieren Sie anschließend die Beglaubigung von Paketen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This checkbox is disabled because the notarytool command line tool has not been found. Please install the Command Line Tools for Xcode 13 or later to get notarytool and enable notarization."
+          }
+        }
+      }
+    },
+    "okButton" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "openDialogMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte wählen Sie ein oder mehrere Skripte aus und klicken Sie anschließend auf die Taste \"Erstellen\", um für jedes ausgewählte Skript ein Paket zu erstellen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select one or more scripts and click the \"Build\" button below to create a package from each script you selected."
+          }
+        }
+      }
+    },
+    "packageFailNotificationMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Paket \"%@\" konnte nicht erstellt werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The package \"%@\" could not be built."
+          }
+        }
+      }
+    },
+    "packageFailNotificationTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paketerstellung fehlgeschlagen!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Packaging failed!"
+          }
+        }
+      }
+    },
+    "packageSuccessNotificationMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Paket \"%@\" wurde erfolgreich erstellt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The package \"%@\" has been successfully built."
+          }
+        }
+      }
+    },
+    "packageSuccessNotificationTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paketerstellung erfolgreich!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Packaging successful!"
+          }
+        }
+      }
+    },
+    "pkgByApple" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Paket wurde von Apple erstellt und signiert."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This package was created and signed by Apple."
+          }
+        }
+      }
+    },
+    "pkgExpired" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Paket ist mit einem abgelaufenen Zertifikat signiert."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This package is signed using a certificate that has since expired."
+          }
+        }
+      }
+    },
+    "pkgExpiredDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Signatur dieses Pakets ist abgelaufen. Auf Macs, auf denen Apples Gatekeeper Sicherheitsfeature aktiviert ist, wird die Installation nicht möglich sein."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The signature of this package has been expired. On Macs with Apple's Gatekeeper security feature enabled, installation of the package may be blocked."
+          }
+        }
+      }
+    },
+    "pkgIsNotarized" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Paket wurde von Apple beglaubigt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This package was notarized by Apple."
+          }
+        }
+      }
+    },
+    "pkgIsNotarizedDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Paket wurde mit einem digitalen Zertifikat signiert und von Apple beglaubigt. Es sollte sich problemlos installieren lassen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This package is signed with a digital certificate and trusted by Apple's notarization service. A user should be able to install this package without any problems."
+          }
+        }
+      }
+    },
+    "pkgIsSignedDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Paket wurde mit einem digitalen Zertifikat signiert, aber nicht von Apple beglaubigt. Auf Macs, auf denen Apples Gatekeeper Sicherheitsfeature aktiviert ist, wird eine Warnung erscheinen. Wird diese Warnung akzeptiert, sollte sich das Paket problemlos installieren lassen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This package is signed with a digital certificate, but is not trusted by Apple's notarization service. If a user tries to install this package on Macs with Apple's Gatekeeper security feature enabled, macOS may warn the user because of the missing notarization. The user may be able to acknowledge this warning and successfully install the package."
+          }
+        }
+      }
+    },
+    "pkgNotNotarized" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Paket ist nicht beglaubigt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This package is not notarized."
+          }
+        }
+      }
+    },
+    "pkgNotSigned" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Paket ist nicht signiert."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This package is not signed."
+          }
+        }
+      }
+    },
+    "pkgNotSignedDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Paket wurde weder mit einem digitalen Zertifikat signiert, noch wurde sie von Apple beglaubigt. Auf Macs, auf denen Apples Gatekeeper Sicherheitsfeature aktiviert ist, wird die Installation nicht möglich sein, weil macOS nicht überprüfen kann, ob das Paket Schadsoftware enthält."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This package is not signed with a digital certificate and is not trusted by Apple's notarization service. On Macs with Apple's Gatekeeper security feature enabled, installation of the package may be blocked because Apple's built-in security tools can't verify that it doesn't contain malware."
+          }
+        }
+      }
+    },
+    "pkgSignedBy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Paket wurde signiert von \"%@\"."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This package was signed by \"%@\"."
+          }
+        }
+      }
+    },
+    "replaceButton" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ersetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Replace"
+          }
+        }
+      }
+    },
+    "selectButton" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auswählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select"
+          }
+        }
+      }
+    },
+    "showWindowButton" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktivitätsfenster anzeigen…"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show activity window…"
+          }
+        }
+      }
+    },
+    "signButton" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign"
+          }
+        }
+      }
+    },
+    "signDialogMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte wählen Sie ein Paket aus und klicken Sie anschließend auf die Taste \"Signieren\", um das Paket zu signieren."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select a package and click the \"Sign\" button below to sign the package."
+          }
+        }
+      }
+    },
+    "signingDisabledTooltip" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Kontrollkästchen ist deaktiviert, weil das Signieren von Paketen deaktiviert ist und nur signierte Pakete beglaubigt werden können."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This checkbox is disabled because package signing is disabled and only signed packages may be notarized."
+          }
+        }
+      }
+    },
+    "signingFailedMessageText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ausgewählte Paket konnte nicht signiert werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected package could not be signed."
+          }
+        }
+      }
+    },
+    "signingFailedMessageTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signieren fehlgeschlagen!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signing failed!"
+          }
+        }
+      }
+    },
+    "signingSuccessMessageText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ausgewählte Paket wurde erfolgreich signiert."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected package has been successfully signed."
+          }
+        }
+      }
+    },
+    "signingSuccessMessageTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signieren erfolgreich!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signing successful!"
+          }
+        }
+      }
+    },
+    "stoppingProgressLabel" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen …"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stopping…"
+          }
+        }
+      }
+    },
+    "validateButton" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überprüfen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Validate"
+          }
+        }
+      }
+    },
+    "validateDialogMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte wählen Sie ein Paket aus und klicken Sie anschließend auf die Taste \"Überprüfen\", um die Signatur des Pakets zu überprüfen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select a package and click the \"Validate\" button below to check the signature of the package."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

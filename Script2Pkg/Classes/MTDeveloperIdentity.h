@@ -1,6 +1,6 @@
 /*
      MTDeveloperIdentity.h
-     Copyright 2022-2023 SAP SE
+     Copyright 2022-2024 SAP SE
      
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -20,15 +20,20 @@
 @interface MTDeveloperIdentity : NSObject
 
 /*!
-  @enum Developer Identity Type
-  @discussion Specifies a developer identity of type application or installer.
+ @enum          Developer Identity Type
+ @abstract      Specifies a developer identity of type application or installer.
+ @constant      MTDeveloperIdentityTypeApplication A "Developer ID Application" identity.
+ @constant      MTDeveloperIdentityTypeInstaller A "Developer ID Installer" identity.
 */
 typedef enum {
     MTDeveloperIdentityTypeApplication = 0,
     MTDeveloperIdentityTypeInstaller   = 1
 } MTDeveloperIdentityType;
 
-
+/*!
+ @method        init
+ @discussion    The init method is not available. Please use initWithIdentity: instead.
+*/
 - (id)init NS_UNAVAILABLE;
 
 /*!

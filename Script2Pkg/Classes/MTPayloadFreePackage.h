@@ -1,6 +1,6 @@
 /*
      MTPayloadFreePackage.h
-     Copyright 2022-2023 SAP SE
+     Copyright 2022-2024 SAP SE
      
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -121,7 +121,10 @@
 */
 @property (readonly) BOOL isDirectoryBased;
 
-
+/*!
+ @method        init
+ @discussion    The init method is not available. Please use initWithScriptURL: instead.
+*/
 - (id)init NS_UNAVAILABLE;
 
 /*!
@@ -139,7 +142,6 @@
  @discussion    Returns an initialized MTPayloadFreePackage object.
  */
 - (id)initWithDirectoryURL:(NSURL*)url;
-
 
 /*!
  @method        setNotarizationTeamID:

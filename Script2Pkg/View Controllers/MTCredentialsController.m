@@ -1,6 +1,6 @@
 /*
      MTCredentialsController.m
-     Copyright 2022-2023 SAP SE
+     Copyright 2022-2024 SAP SE
      
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -26,10 +26,10 @@
 @property (weak) IBOutlet NSTextField *appPasswordTextField;
 @property (weak) IBOutlet NSTextField *appSpecificPWText;
 @property (weak) IBOutlet NSButton *continueButton;
-@property (weak) IBOutlet NSLayoutConstraint *accountErrorHeight;
 
 @property (nonatomic, strong, readwrite) NSString *teamID;
 @property (assign) BOOL verifyingCredentials;
+@property (assign) BOOL accountError;
 @end
 
 @implementation MTCredentialsController
@@ -41,7 +41,6 @@
     _teamID = [[NSUserDefaults standardUserDefaults] stringForKey:kMTDefaultsTeamID];
     
     [_dialogBoxText setStringValue:[NSString localizedStringWithFormat:NSLocalizedString(@"credentialsDialogText", nil), _teamID]];
-    [_accountErrorHeight setConstant:0];
     
     // make the link in our text field clickable
     NSMutableAttributedString *finalString = [[NSMutableAttributedString alloc] initWithAttributedString:[_appSpecificPWText attributedStringValue]];
@@ -63,7 +62,7 @@
         [[[self view] window] makeFirstResponder:nil];
 
         self.verifyingCredentials = YES;
-        [_accountErrorHeight setConstant:0];
+        self.accountError = NO;
         [_continueButton setEnabled:NO];
         
         // try to store the credentials
@@ -102,7 +101,7 @@
                 } else {
                     
                     self.verifyingCredentials = NO;
-                    [self->_accountErrorHeight setConstant:26];
+                    self.accountError = YES;
                     [self->_continueButton setEnabled:YES];
                 }
                 
@@ -125,7 +124,7 @@
         [_continueButton setEnabled:NO];
     }
     
-    if ([_accountErrorHeight constant] > 0) { [_accountErrorHeight setConstant:0]; }
+    if (self.accountError) { self.accountError = NO; }
 }
 
 @end

@@ -1,6 +1,6 @@
 /*
      MTNotarization.m
-     Copyright 2022-2023 SAP SE
+     Copyright 2022-2024 SAP SE
      
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -109,10 +109,7 @@
             
             if (returnData) {
                 NSString *consoleMsg = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-                
-                if (![consoleMsg containsString:@"No Keychain password"]) {
-                    success = YES;
-                }
+                if (![consoleMsg containsString:@"password"]) { success = YES; }
             }
             
             if (completionHandler) { completionHandler(success); }

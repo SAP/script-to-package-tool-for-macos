@@ -1,6 +1,6 @@
 /*
      MTMainViewController.m
-     Copyright 2022-2023 SAP SE
+     Copyright 2022-2024 SAP SE
      
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -32,8 +32,6 @@
 
 @property (nonatomic, strong, readwrite) NSMutableArray *devIdentitiesArray;
 @property (nonatomic, strong, readwrite) NSUserDefaults *userDefaults;
-@property (nonatomic, strong, readwrite) NSWindowController *activityController;
-@property (nonatomic, strong, readwrite) NSWindowController *settingsController;
 @property (assign) BOOL enableNotarization;
 @property (assign) BOOL verifyingCredentials;
 @end
@@ -51,15 +49,6 @@
                                      [NSNumber numberWithInteger:0], kMTDefaultsExistingPKGHandling,
                                      [NSNumber numberWithBool:YES], kMTDefaultsSkipIfMissingScript,
                                      nil]];
-    
-    // load the activity window
-    _activityController = [[self storyboard] instantiateControllerWithIdentifier:@"corp.sap.Script2Pkg.ActivityController"];
-    [_activityController loadWindow];
-    [[_activityController window] setHidesOnDeactivate:![_userDefaults boolForKey:kMTDefaultsActivityWindowOnTop]];
-    
-    // load the settings window
-    _settingsController = [[self storyboard] instantiateControllerWithIdentifier:@"corp.sap.Script2Pkg.SettingsController"];
-    [_settingsController loadWindow];
     
     // get all developer identities from login keychain
     NSArray *allDevIdentities = [MTDeveloperIdentity validIdentitiesOfType:MTDeveloperIdentityTypeInstaller];
@@ -80,6 +69,28 @@
                                                                         object:nil
                                                                       userInfo:nil
                     ];
+                    
+                    // if notarization is enabled, we check if we have working credentials
+                    if ([self->_userDefaults boolForKey:kMTDefaultsPackageNotarize]) {
+                        
+                        [self checkCredentialsForNotarizationWithUserInteraction:NO completionHandler:^(BOOL success) {
+                            
+                            if (!success) {
+                                
+                                // show an alert so the user is informed why
+                                // notarization has been disabled
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    
+                                    NSAlert *theAlert = [[NSAlert alloc] init];
+                                    [theAlert setMessageText:NSLocalizedString(@"invalidCredentialsMessageTitle", nil)];
+                                    [theAlert setInformativeText:NSLocalizedString(@"invalidCredentialsMessageText", nil)];
+                                    [theAlert addButtonWithTitle:NSLocalizedString(@"okButton", nil)];
+                                    [theAlert setAlertStyle:NSAlertStyleCritical];
+                                    [theAlert beginSheetModalForWindow:[[self view] window] completionHandler:nil];
+                                });
+                            }
+                        }];
+                    }
                     
                 } else {
                     
@@ -196,10 +207,6 @@
                                                  name:kMTNotificationNameFileImport
                                                object:nil
     ];
-    
-    if ([_userDefaults boolForKey:kMTDefaultsShowActivityWindow]) {
-        [[_activityController window] orderFront:nil];
-    }
 }
 
 #pragma mark IBActions
@@ -227,7 +234,7 @@
     // development team already stored in keychain. Otherwise we ask
     // the user to enter the credentials and store them into keychain.
     if ([_notarizingCheckbox state] == NSControlStateValueMixed) {
-        [self checkCredentialsForNotarization];
+        [self checkCredentialsForNotarizationWithUserInteraction:YES completionHandler:nil];
     }
 }
 
@@ -252,20 +259,6 @@
             });
         }
     }];
-}
-
-- (IBAction)showActivityWindow:(id)sender
-{
-    if ([[_activityController window] isVisible]) {
-        [[_activityController window] orderOut:nil];
-    } else {
-        [[_activityController window] makeKeyAndOrderFront:nil];
-    }
-}
-
-- (IBAction)showSettingsWindow:(id)sender
-{
-    [[_settingsController window] makeKeyAndOrderFront:nil];
 }
 
 - (IBAction)signOrNotarizeExistingPackage:(id)sender
@@ -402,11 +395,6 @@
             });
         }
     }];
-}
-
-- (IBAction)openGitHub:(id)sender
-{
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:kMTGitHubURL]];
 }
 
 - (void)importFiles:(NSNotification*)notification
@@ -546,7 +534,8 @@
 
 #pragma mark Check credentials for notarization
 
-- (void)checkCredentialsForNotarization
+- (void)checkCredentialsForNotarizationWithUserInteraction:(BOOL)interaction
+                                         completionHandler:(void (^) (BOOL success))completionHandler
 {
     // we disable some interface elements during verification
     self.verifyingCredentials = YES;
@@ -563,8 +552,11 @@
             
             self.verifyingCredentials = NO;
             [self->_userDefaults setBool:NO forKey:kMTDefaultsPackageNotarize];
+            if (completionHandler) { completionHandler(NO); }
                 
-            [self performSegueWithIdentifier:@"corp.sap.Script2Pkg.CredentialSegue" sender:nil];
+            if (interaction) {
+                [self performSegueWithIdentifier:@"corp.sap.Script2Pkg.CredentialSegue" sender:nil];
+            }
             
         } else {
             
@@ -575,16 +567,17 @@
                     
                     self.verifyingCredentials = NO;
                     [self->_userDefaults setBool:exists forKey:kMTDefaultsPackageNotarize];
+                    if (completionHandler) { completionHandler(exists); }
                     
-                    if (!exists) {
-                        
+                    if (!exists && interaction) {
                         [self performSegueWithIdentifier:@"corp.sap.Script2Pkg.CredentialSegue" sender:nil];
                     }
                     
                 });
             }];
         }
-    }
+        
+    } else if (completionHandler) { completionHandler(NO); }
 }
 
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender

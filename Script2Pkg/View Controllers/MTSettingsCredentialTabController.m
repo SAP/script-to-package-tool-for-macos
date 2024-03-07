@@ -1,6 +1,6 @@
 /*
      MTSettingsCredentialTabController.m
-     Copyright 2022-2023 SAP SE
+     Copyright 2022-2024 SAP SE
      
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@
     [theAlert addButtonWithTitle:NSLocalizedString(@"invalidateButton", nil)];
     [theAlert addButtonWithTitle:NSLocalizedString(@"cancelButton", nil)];
     [theAlert setAlertStyle:NSAlertStyleCritical];
-    [theAlert beginSheetModalForWindow:[NSApp mainWindow] completionHandler:^(NSModalResponse returnCode) {
+    [theAlert beginSheetModalForWindow:[[self view] window] completionHandler:^(NSModalResponse returnCode) {
         
         if (returnCode == NSAlertFirstButtonReturn) {
             
