@@ -55,94 +55,6 @@
 
     if ([allDevIdentities count] > 0) {
         
-        // check for notarytool
-        [MTNotarization checkForNotarytoolWithCompletionHandler:^(BOOL exists) {
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                self.enableNotarization = exists;
-                
-                if (exists) {
-                    
-                    // send a notification
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kMTNotificationNameToolsInstalled
-                                                                        object:nil
-                                                                      userInfo:nil
-                    ];
-                    
-                    // if notarization is enabled, we check if we have working credentials
-                    if ([self->_userDefaults boolForKey:kMTDefaultsPackageNotarize]) {
-                        
-                        [self checkCredentialsForNotarizationWithUserInteraction:NO completionHandler:^(BOOL success) {
-                            
-                            if (!success) {
-                                
-                                // show an alert so the user is informed why
-                                // notarization has been disabled
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    
-                                    NSAlert *theAlert = [[NSAlert alloc] init];
-                                    [theAlert setMessageText:NSLocalizedString(@"invalidCredentialsMessageTitle", nil)];
-                                    [theAlert setInformativeText:NSLocalizedString(@"invalidCredentialsMessageText", nil)];
-                                    [theAlert addButtonWithTitle:NSLocalizedString(@"okButton", nil)];
-                                    [theAlert setAlertStyle:NSAlertStyleCritical];
-                                    [theAlert beginSheetModalForWindow:[[self view] window] completionHandler:nil];
-                                });
-                            }
-                        }];
-                    }
-                    
-                } else {
-                    
-                    // disable the notarization checkbox
-                    [self->_notarizingCheckbox setToolTip:NSLocalizedString(@"notarytoolMissingTooltip", nil)];
-                    [self->_userDefaults setBool:NO forKey:kMTDefaultsPackageNotarize];
-                    
-                    // monitor kMTPackageReceiptsPath so we get informed whenever a new
-                    // package (hopefully the developer tools) has been installed
-                    int receiptsPath = open(kMTPackageReceiptsPath, O_EVTONLY);
-
-                    dispatch_source_t source = dispatch_source_create(
-                                                                      DISPATCH_SOURCE_TYPE_VNODE,
-                                                                      receiptsPath,
-                                                                      DISPATCH_VNODE_WRITE | DISPATCH_VNODE_EXTEND | DISPATCH_VNODE_ATTRIB | DISPATCH_VNODE_DELETE,
-                                                                      dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-                                                                      );
-                    
-                    dispatch_source_set_event_handler(source, ^
-                    {
-                        [MTNotarization checkForNotarytoolWithCompletionHandler:^(BOOL exists) {
-                            
-                            if (exists) {
-                                
-                                dispatch_source_cancel(source);
-                                
-                                // re-enable the notarization checkbox
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    self.enableNotarization = YES;
-                                    [self->_notarizingCheckbox setToolTip:nil];
-                                });
-                                
-                                // send a notification
-                                [[NSNotificationCenter defaultCenter] postNotificationName:kMTNotificationNameToolsInstalled
-                                                                                    object:nil
-                                                                                  userInfo:nil
-                                ];
-                            }
-                        }];
-                    });
-
-                    dispatch_source_set_cancel_handler(source, ^
-                    {
-                        int receiptsPath = (int)dispatch_source_get_handle(source);
-                        close(receiptsPath);
-                    });
-                    
-                    dispatch_resume(source);
-                }
-            });
-        }];
-        
         NSMutableArray *identityDictionaries = [[NSMutableArray alloc] init];
         
         for (id identityRef in allDevIdentities) {
@@ -155,7 +67,7 @@
             if (teamName && teamID && certName) {
                 
                 NSDictionary *identityDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                              teamName, kMTDeveloperTeamName,
+                                                  teamName, kMTDeveloperTeamName,
                                               teamID, kMTDeveloperTeamID,
                                               certName, kMTDeveloperCertName,
                                               [teamName stringByAppendingFormat:@" (%@)", teamID], kMTDeveloperTeamDisplayName,
@@ -200,6 +112,94 @@
         [_userDefaults setBool:NO forKey:kMTDefaultsPackageSign];
         [_userDefaults setBool:NO forKey:kMTDefaultsPackageNotarize];
     }
+        
+    // check for notarytool
+    [MTNotarization checkForNotarytoolWithCompletionHandler:^(BOOL exists) {
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            self.enableNotarization = exists;
+            
+            if (exists) {
+                
+                // send a notification
+                [[NSNotificationCenter defaultCenter] postNotificationName:kMTNotificationNameToolsInstalled
+                                                                    object:nil
+                                                                  userInfo:nil
+                ];
+                
+                // if notarization is enabled, we check if we have working credentials
+                if ([self->_userDefaults boolForKey:kMTDefaultsPackageNotarize]) {
+                    
+                    [self checkCredentialsForNotarizationWithUserInteraction:NO completionHandler:^(BOOL success) {
+                        
+                        if (!success) {
+                            
+                            // show an alert so the user is informed why
+                            // notarization has been disabled
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                
+                                NSAlert *theAlert = [[NSAlert alloc] init];
+                                [theAlert setMessageText:NSLocalizedString(@"invalidCredentialsMessageTitle", nil)];
+                                [theAlert setInformativeText:NSLocalizedString(@"invalidCredentialsMessageText", nil)];
+                                [theAlert addButtonWithTitle:NSLocalizedString(@"okButton", nil)];
+                                [theAlert setAlertStyle:NSAlertStyleCritical];
+                                [theAlert beginSheetModalForWindow:[[self view] window] completionHandler:nil];
+                            });
+                        }
+                    }];
+                }
+                
+            } else {
+                
+                // disable the notarization checkbox
+                [self->_notarizingCheckbox setToolTip:NSLocalizedString(@"notarytoolMissingTooltip", nil)];
+                [self->_userDefaults setBool:NO forKey:kMTDefaultsPackageNotarize];
+                
+                // monitor kMTPackageReceiptsPath so we get informed whenever a new
+                // package (hopefully the developer tools) has been installed
+                int receiptsPath = open(kMTPackageReceiptsPath, O_EVTONLY);
+
+                dispatch_source_t source = dispatch_source_create(
+                                                                  DISPATCH_SOURCE_TYPE_VNODE,
+                                                                  receiptsPath,
+                                                                  DISPATCH_VNODE_WRITE | DISPATCH_VNODE_EXTEND | DISPATCH_VNODE_ATTRIB | DISPATCH_VNODE_DELETE,
+                                                                  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+                                                                  );
+                
+                dispatch_source_set_event_handler(source, ^
+                {
+                    [MTNotarization checkForNotarytoolWithCompletionHandler:^(BOOL exists) {
+                        
+                        if (exists) {
+                            
+                            dispatch_source_cancel(source);
+                            
+                            // re-enable the notarization checkbox
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                self.enableNotarization = YES;
+                                [self->_notarizingCheckbox setToolTip:nil];
+                            });
+                            
+                            // send a notification
+                            [[NSNotificationCenter defaultCenter] postNotificationName:kMTNotificationNameToolsInstalled
+                                                                                object:nil
+                                                                              userInfo:nil
+                            ];
+                        }
+                    }];
+                });
+
+                dispatch_source_set_cancel_handler(source, ^
+                {
+                    int receiptsPath = (int)dispatch_source_get_handle(source);
+                    close(receiptsPath);
+                });
+                
+                dispatch_resume(source);
+            }
+        });
+    }];
     
     // get notified if the user dropped a script to the app icon (in Finder or Dock)
     [[NSNotificationCenter defaultCenter] addObserver:self

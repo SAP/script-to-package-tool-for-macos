@@ -1351,18 +1351,6 @@
         }
       }
     },
-    "r8L-gr-v8e.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"r8L-gr-v8e\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
-          }
-        }
-      }
-    },
     "r9m-eh-Azc.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Cancel\"; ObjectID = \"r9m-eh-Azc\";",
       "extractionState" : "extracted_with_value",

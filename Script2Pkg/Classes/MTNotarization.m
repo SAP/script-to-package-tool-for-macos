@@ -29,23 +29,40 @@
 
 + (void)checkForNotarytoolWithCompletionHandler:(void (^) (BOOL exists))completionHandler
 {
-    NSTask *notarizeTask = [[NSTask alloc] init];
-    [notarizeTask setExecutableURL:[NSURL fileURLWithPath:kMTxcrunPath]];
-    [notarizeTask setArguments:[NSArray arrayWithObjects:
-                                @"notarytool",
-                                @"--version",
-                                nil
-                               ]
-    ];
-    [notarizeTask setStandardOutput:[NSFileHandle fileHandleWithNullDevice]];
-    [notarizeTask setStandardError:[NSFileHandle fileHandleWithNullDevice]];
-    [notarizeTask setTerminationHandler:^(NSTask* task){
+    // we don't want the user to get prompted to install dev tools. so
+    // we first check if dev tools are installed…
+    NSTask *xcselectTask = [[NSTask alloc] init];
+    [xcselectTask setExecutableURL:[NSURL fileURLWithPath:kMTxcodeselectPath]];
+    [xcselectTask setArguments:[NSArray arrayWithObject:@"-p"]];
+    [xcselectTask setStandardOutput:[NSFileHandle fileHandleWithNullDevice]];
+    [xcselectTask setStandardError:[NSFileHandle fileHandleWithNullDevice]];
+    [xcselectTask setTerminationHandler:^(NSTask* task){
         
         BOOL success = ([task terminationStatus] == 0) ? YES : NO;
-        if (completionHandler) { completionHandler(success); }
+        
+        if (success) {
+            
+            NSTask *notarizeTask = [[NSTask alloc] init];
+            [notarizeTask setExecutableURL:[NSURL fileURLWithPath:kMTxcrunPath]];
+            [notarizeTask setArguments:[NSArray arrayWithObjects:
+                                        @"notarytool",
+                                        @"--version",
+                                        nil
+                                       ]
+            ];
+            [notarizeTask setStandardOutput:[NSFileHandle fileHandleWithNullDevice]];
+            [notarizeTask setStandardError:[NSFileHandle fileHandleWithNullDevice]];
+            [notarizeTask setTerminationHandler:^(NSTask* task){
+                
+                if (completionHandler) { completionHandler(([task terminationStatus] == 0)); }
+            }];
+            
+            [notarizeTask launch];
+            
+        } else if (completionHandler) { completionHandler(success); }
     }];
     
-    [notarizeTask launch];
+    [xcselectTask launch];
 }
 
 + (void)storeNotarizationCredentialsForTeamID:(NSString*)teamID account:(NSString*)account password:(NSString*)password completionHandler:(void (^) (BOOL success))completionHandler

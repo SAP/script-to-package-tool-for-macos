@@ -133,7 +133,7 @@
 
 + (NSArray*)validIdentitiesOfType:(MTDeveloperIdentityType)type
 {
-    CFArrayRef items = NULL;
+    CFArrayRef secItems = NULL;
     NSMutableArray *identities = [[NSMutableArray alloc] init];
     NSString *identityType = (type == MTDeveloperIdentityTypeInstaller) ? @"Developer ID Installer:" : @"Developer ID Application:";
     
@@ -145,14 +145,38 @@
                            (__bridge id)kSecMatchLimitAll, (__bridge id)kSecMatchLimit,
                            nil];
     
-    OSStatus status = SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef*)&items);
+    OSStatus status = SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef*)&secItems);
 
     if (status == errSecSuccess) {
         
-        if (items) {
+        NSDateComponents *components = [[NSDateComponents alloc] init];
+        [components setYear:2001];
+        
+        for (int i = 0; i < CFArrayGetCount(secItems); i++) {
             
-            [identities addObjectsFromArray:CFBridgingRelease(items)];
+            SecIdentityRef identityRef = (SecIdentityRef)CFArrayGetValueAtIndex(secItems, i);
+            
+            if (identityRef) {
+                
+                SecCertificateRef certRef = NULL;
+                SecIdentityCopyCertificate(identityRef, &certRef);
+                
+                if (certRef) {
+                    
+                    const void *keys[] = { kSecOIDX509V1ValidityNotAfter };
+                    CFArrayRef keySelection = CFArrayCreate(NULL, keys , sizeof(keys)/sizeof(keys[0]), &kCFTypeArrayCallBacks);
+                    NSDictionary *dict = (NSDictionary*)CFBridgingRelease(SecCertificateCopyValues(certRef, keySelection, nil));
+                    NSNumber *expirationDate = [[dict objectForKey:(NSString*)kSecOIDX509V1ValidityNotAfter] objectForKey:(NSString*)kSecPropertyKeyValue];
+                                        
+                    if (expirationDate && [[NSDate dateWithTimeInterval:[expirationDate intValue] sinceDate:[[NSCalendar currentCalendar] dateFromComponents:components]] compare:[NSDate now]] != NSOrderedAscending) {
+                        
+                        [identities addObject:(__bridge id)(identityRef)];
+                    }
+                }
+            }
         }
+        
+        CFRelease(secItems);
     }
         
     return identities;
