@@ -1,1 +1,4 @@
+*.pbxproj binary -merge=union
+*.m       text diff=objc
+
 Script2Pkg.help/** linguist-documentation
