@@ -42,18 +42,18 @@ We as members, contributors, and leaders pledge to make participation in our com
 
 <br/>
 
-# License 🏷️
+# License
 
 Copyright (c) 2023-2025 SAP SE or an SAP affiliate company and script-to-package-tool-for-macos
  contributors. Please see our [LICENSE](LICENSE) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/SAP/script-to-package-tool-for-macos).
 
 <br/>
 
-# Security 👮
+# Security
 Found a security-related issue or vulnerability and want to notify us? [Please see here for how to report it](https://github.com/SAP/script-to-package-tool-for-macos/security/policy).
 
 <br/>
 
-# Support 🤓
+# Support
 
 This project is 'as-is' with no support, no changes being made. You are welcome to make changes to improve it but we are not available for questions or support of any kind.
