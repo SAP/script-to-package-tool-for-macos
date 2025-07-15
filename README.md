@@ -52,6 +52,8 @@ Copyright (c) 2023-2025 SAP SE or an SAP affiliate company and script-to-package
 # Security 👮
 Found a security-related issue or vulnerability and want to notify us? [Please see here for how to report it](https://github.com/SAP/script-to-package-tool-for-macos/security/policy).
 
+<br/>
+
 # Support 🤓
 
 This project is 'as-is' with no support, no changes being made. You are welcome to make changes to improve it but we are not available for questions or support of any kind.
