@@ -35,6 +35,7 @@
 		ADB059D72941FFC90039C082 /* MTPackagingProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB059D62941FFC90039C082 /* MTPackagingProgress.m */; };
 		ADB0A3A8297EAFF7008AFB52 /* MTSignatureValidationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB0A3A7297EAFF7008AFB52 /* MTSignatureValidationController.m */; };
 		ADC3A4132D5652A800FB4154 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = ADC3A4122D5652A800FB4154 /* InfoPlist.xcstrings */; };
+		ADD04CEE2E4B857000EF6DF6 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = ADD04CED2E4B857000EF6DF6 /* AppIcon.icon */; };
 		ADE48E4F2939F2640010B630 /* MTTextColorValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE48E4E2939F2640010B630 /* MTTextColorValueTransformer.m */; };
 		ADE8E5AB29D5CF5A0075A208 /* MTNotarizeController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE8E5A929D5CF5A0075A208 /* MTNotarizeController.m */; };
 		ADF9C8AE292E105D004101DE /* MTDeveloperIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF9C8AD292E105D004101DE /* MTDeveloperIdentity.m */; };
@@ -95,6 +96,7 @@
 		ADB0A3A6297EAFF7008AFB52 /* MTSignatureValidationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTSignatureValidationController.h; sourceTree = "<group>"; };
 		ADB0A3A7297EAFF7008AFB52 /* MTSignatureValidationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTSignatureValidationController.m; sourceTree = "<group>"; };
 		ADC3A4122D5652A800FB4154 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		ADD04CED2E4B857000EF6DF6 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		ADE48E4D2939F2640010B630 /* MTTextColorValueTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTextColorValueTransformer.h; sourceTree = "<group>"; };
 		ADE48E4E2939F2640010B630 /* MTTextColorValueTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTextColorValueTransformer.m; sourceTree = "<group>"; };
 		ADE8E5A929D5CF5A0075A208 /* MTNotarizeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTNotarizeController.m; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			children = (
 				AD581B8E296843E7002F85D7 /* Script2Pkg.help */,
 				AD774CA829068D670072E62B /* Assets.xcassets */,
+				ADD04CED2E4B857000EF6DF6 /* AppIcon.icon */,
 				AD1DB8322AD7EADE00E130D2 /* Credits.rtf */,
 				AD086A232935E59A00D30C61 /* Info.plist */,
 				ADC3A4122D5652A800FB4154 /* InfoPlist.xcstrings */,
@@ -266,7 +269,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					AD774C9E29068D650072E62B = {
 						CreatedOnToolsVersion = 14.1;
@@ -300,6 +303,7 @@
 				AD581B8F296843E7002F85D7 /* Script2Pkg.help in Resources */,
 				ADC3A4132D5652A800FB4154 /* InfoPlist.xcstrings in Resources */,
 				AD1DB8302AD7EADE00E130D2 /* Credits.rtf in Resources */,
+				ADD04CEE2E4B857000EF6DF6 /* AppIcon.icon in Resources */,
 				AD774CA929068D670072E62B /* Assets.xcassets in Resources */,
 				AD774CAC29068D670072E62B /* Main.storyboard in Resources */,
 				AD3A47812B92028700B51E08 /* Localizable.xcstrings in Resources */,
@@ -403,6 +407,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 7R5ZEU67FQ;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -426,6 +431,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 			};
 			name = Debug;
 		};
@@ -466,6 +472,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 7R5ZEU67FQ;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -482,6 +489,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 			};
 			name = Release;
 		};
@@ -494,9 +502,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 293;
+				CURRENT_PROJECT_VERSION = 295;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 7R5ZEU67FQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Script2Pkg/Info.plist;
@@ -510,7 +517,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
-				MARKETING_VERSION = 1.1.4;
+				MARKETING_VERSION = 1.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = corp.sap.Script2Pkg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -527,9 +534,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 293;
+				CURRENT_PROJECT_VERSION = 295;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 7R5ZEU67FQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Script2Pkg/Info.plist;
@@ -543,7 +549,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
-				MARKETING_VERSION = 1.1.4;
+				MARKETING_VERSION = 1.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = corp.sap.Script2Pkg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

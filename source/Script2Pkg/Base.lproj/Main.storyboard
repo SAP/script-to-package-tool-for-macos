@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="24127" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24127"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -482,7 +482,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="o6C-QS-X07"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="cfv-Wx-Yho">
-                                    <rect key="frame" x="1" y="183" width="478" height="16"/>
+                                    <rect key="frame" x="1" y="182" width="478" height="17"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="hsd-cB-dvC">
@@ -491,7 +491,7 @@
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ULg-TN-CVY">
-                                <rect key="frame" x="401" y="210" width="66" height="32"/>
+                                <rect key="frame" x="404" y="216" width="56" height="24"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uDt-w0-Dlo">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -501,7 +501,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f4X-nK-fem">
-                                <rect key="frame" x="18" y="219" width="297" height="18"/>
+                                <rect key="frame" x="20" y="220" width="293" height="16"/>
                                 <buttonCell key="cell" type="check" title="Keep successfully completed activities in list" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vN6-x0-bEU">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -549,11 +549,11 @@
             <objects>
                 <viewController id="qdq-zi-rh5" customClass="MTSignatureValidationController" sceneMemberID="viewController">
                     <view key="view" id="uNo-AG-dvt">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="236"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="240"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vLl-WC-rvh">
-                                <rect key="frame" x="190" y="146" width="70" height="70"/>
+                                <rect key="frame" x="190" y="150" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="EKK-gI-0kx"/>
                                     <constraint firstAttribute="height" constant="70" id="gFI-2z-VDD"/>
@@ -563,7 +563,7 @@
                                 </imageCell>
                             </imageView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BIL-Tp-tzr">
-                                <rect key="frame" x="180" y="13" width="90" height="32"/>
+                                <rect key="frame" x="187" y="20" width="76" height="24"/>
                                 <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4HC-hu-62G">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -584,7 +584,7 @@ DQ
                                 </connections>
                             </button>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tn-2E-H59">
-                                <rect key="frame" x="190" y="122" width="70" height="16"/>
+                                <rect key="frame" x="190" y="126" width="70" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" alignment="center" title="pkgName" usesSingleLineMode="YES" id="2pa-Hy-tIX">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -599,7 +599,7 @@ DQ
                                 </connections>
                             </textField>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNc-UJ-omD">
-                                <rect key="frame" x="186" y="86" width="78" height="16"/>
+                                <rect key="frame" x="186" y="90" width="78" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" alignment="center" title="signingText" usesSingleLineMode="YES" id="JaS-mA-zFq">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -615,7 +615,7 @@ DQ
                                 </connections>
                             </textField>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rrf-0S-0bT">
-                                <rect key="frame" x="178" y="65" width="94" height="16"/>
+                                <rect key="frame" x="178" y="69" width="94" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" alignment="center" title="notarizingText" usesSingleLineMode="YES" id="uN8-j8-gXn">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -631,7 +631,7 @@ DQ
                                 </connections>
                             </textField>
                             <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="uSw-Ad-3Ze">
-                                <rect key="frame" x="209" y="70" width="32" height="32"/>
+                                <rect key="frame" x="209" y="74" width="32" height="32"/>
                                 <connections>
                                     <binding destination="qdq-zi-rh5" name="animate" keyPath="showProgress" id="j2J-VH-WoO"/>
                                 </connections>
@@ -671,17 +671,17 @@ DQ
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="MTMainViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="507" height="236"/>
+                        <rect key="frame" x="0.0" y="0.0" width="507" height="242"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="S7u-LQ-mYD">
-                                <rect key="frame" x="17" y="56" width="473" height="74"/>
+                                <rect key="frame" x="20" y="64" width="467" height="70"/>
                                 <view key="contentView" id="bDh-oS-JH0">
-                                    <rect key="frame" x="4" y="5" width="465" height="66"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="467" height="70"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9hr-FD-T4x">
-                                            <rect key="frame" x="8" y="13" width="122" height="16"/>
+                                            <rect key="frame" x="8" y="15" width="122" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Development team:" id="YBd-eW-q3p">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -689,7 +689,7 @@ DQ
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0C4-N1-hKG">
-                                            <rect key="frame" x="135" y="6" width="324" height="25"/>
+                                            <rect key="frame" x="138" y="10" width="319" height="24"/>
                                             <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Bze-c0-v3a">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="message"/>
@@ -719,7 +719,7 @@ DQ
                                             </connections>
                                         </popUpButton>
                                         <button allowsExpansionToolTips="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xSq-IW-Cvf">
-                                            <rect key="frame" x="136" y="39" width="115" height="18"/>
+                                            <rect key="frame" x="138" y="44" width="111" height="16"/>
                                             <buttonCell key="cell" type="check" title="Sign packages" bezelStyle="regularSquare" imagePosition="left" inset="2" id="I8H-38-0f0">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -748,7 +748,7 @@ DQ
                                             </connections>
                                         </button>
                                         <button allowsExpansionToolTips="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wkn-wA-R1K">
-                                            <rect key="frame" x="269" y="39" width="139" height="18"/>
+                                            <rect key="frame" x="269" y="44" width="135" height="16"/>
                                             <buttonCell key="cell" type="check" title="Notarize packages" bezelStyle="regularSquare" imagePosition="left" allowsMixedState="YES" inset="2" id="9oH-Kh-usa">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -796,7 +796,7 @@ DQ
                                 </view>
                             </box>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ZLU-cp-2b9">
-                                <rect key="frame" x="23" y="200" width="461" height="16"/>
+                                <rect key="frame" x="23" y="206" width="461" height="16"/>
                                 <textFieldCell key="cell" alignment="justified" title="mainWindowText" id="00s-Gl-izm">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -813,7 +813,7 @@ DQ
                                 </connections>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gHz-jf-TvT">
-                                <rect key="frame" x="377" y="13" width="117" height="32"/>
+                                <rect key="frame" x="380" y="20" width="107" height="24"/>
                                 <buttonCell key="cell" type="push" title="Select scripts" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gEM-CH-zLf">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -831,7 +831,7 @@ DQ
                                 </connections>
                             </button>
                             <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="zP7-Zs-mbR">
-                                <rect key="frame" x="20" y="22" width="16" height="16"/>
+                                <rect key="frame" x="20" y="24" width="16" height="16"/>
                                 <connections>
                                     <binding destination="XfG-lQ-9wD" name="animate" keyPath="verifyingCredentials" id="JsM-g0-xE6"/>
                                     <binding destination="XfG-lQ-9wD" name="hidden" keyPath="verifyingCredentials" id="oc7-II-5vJ">
@@ -842,7 +842,7 @@ DQ
                                 </connections>
                             </progressIndicator>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="n8Z-ma-F7o">
-                                <rect key="frame" x="23" y="148" width="461" height="42"/>
+                                <rect key="frame" x="23" y="154" width="461" height="42"/>
                                 <textFieldCell key="cell" alignment="justified" id="tu8-vn-5eW">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">If you want your packages to be signed, please make sure you have at least one valid "Developer ID Installer" identity in your login keychain. For notarization, the Command Line Tools for Xcode 13 or later must be installed.</string>
@@ -851,7 +851,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ua4-OR-DPt">
-                                <rect key="frame" x="39" y="23" width="121" height="14"/>
+                                <rect key="frame" x="39" y="24" width="121" height="14"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Verifying credentials…" id="IWz-Pr-69B">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -911,14 +911,14 @@ DQ
             <objects>
                 <viewController id="2fm-r5-Kw4" customClass="MTProgressController" sceneMemberID="viewController">
                     <view key="view" id="AJY-Uo-fY1">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="117"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="123"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <progressIndicator maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="9BY-m5-QVb">
-                                <rect key="frame" x="20" y="59" width="410" height="20"/>
+                                <rect key="frame" x="20" y="64" width="410" height="20"/>
                             </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tZK-fj-3mL">
-                                <rect key="frame" x="361" y="13" width="76" height="32"/>
+                                <rect key="frame" x="364" y="20" width="66" height="24"/>
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r9m-eh-Azc">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -930,7 +930,7 @@ DQ
                                 </connections>
                             </button>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m7a-gF-do2">
-                                <rect key="frame" x="18" y="81" width="188" height="16"/>
+                                <rect key="frame" x="18" y="87" width="188" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Running package build tasks…" id="Z98-0m-f8Y">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -966,14 +966,14 @@ DQ
             <objects>
                 <viewController id="rQD-xu-fon" customClass="MTNotarizeController" sceneMemberID="viewController">
                     <view key="view" id="E7T-TG-2yQ">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="117"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="123"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <progressIndicator maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="GhB-WS-oiA">
-                                <rect key="frame" x="20" y="59" width="410" height="20"/>
+                                <rect key="frame" x="20" y="64" width="410" height="20"/>
                             </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="27A-6w-Csk">
-                                <rect key="frame" x="361" y="13" width="76" height="32"/>
+                                <rect key="frame" x="364" y="20" width="66" height="24"/>
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vmC-HC-cmS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -985,7 +985,7 @@ DQ
                                 </connections>
                             </button>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fWP-t0-2fL">
-                                <rect key="frame" x="18" y="81" width="230" height="16"/>
+                                <rect key="frame" x="18" y="87" width="230" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Waiting for package to be notarized…" id="dCN-oY-xhH">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1019,11 +1019,11 @@ DQ
             <objects>
                 <viewController id="7vo-GG-ZV1" customClass="MTCredentialsController" sceneMemberID="viewController">
                     <view key="view" id="Tna-7j-EiG">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="325"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="335"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <secureTextField focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" contentType="password" translatesAutoresizingMaskIntoConstraints="NO" id="pNY-Et-Rh5">
-                                <rect key="frame" x="60" y="80" width="280" height="21"/>
+                                <rect key="frame" x="60" y="84" width="280" height="24"/>
                                 <secureTextFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="ac6-TG-TvJ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1043,7 +1043,7 @@ DQ
                                 </connections>
                             </secureTextField>
                             <textField focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" contentType="username" translatesAutoresizingMaskIntoConstraints="NO" id="uN0-Y3-rzI">
-                                <rect key="frame" x="60" y="142" width="280" height="21"/>
+                                <rect key="frame" x="60" y="149" width="280" height="24"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="example@icloud.com" drawsBackground="YES" usesSingleLineMode="YES" id="RRi-tu-J3v">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1063,7 +1063,7 @@ DQ
                                 </connections>
                             </textField>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rWn-wp-wQt">
-                                <rect key="frame" x="30" y="205" width="340" height="90"/>
+                                <rect key="frame" x="30" y="215" width="340" height="90"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="PUc-Co-Bcr">
                                         <rect key="frame" x="0.0" y="36" width="340" height="54"/>
@@ -1139,7 +1139,7 @@ DQ
                                 </customSpacing>
                             </stackView>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gCf-Ff-76p">
-                                <rect key="frame" x="58" y="168" width="60" height="16"/>
+                                <rect key="frame" x="58" y="178" width="60" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Apple ID:" id="Eaf-1n-8RA">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1147,7 +1147,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tLM-XJ-bFn">
-                                <rect key="frame" x="58" y="106" width="148" height="16"/>
+                                <rect key="frame" x="58" y="113" width="148" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="App-specific password:" id="kt6-28-Uuf">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1155,10 +1155,10 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="6ES-hA-0ZI">
-                                <rect key="frame" x="117" y="25" width="167" height="30"/>
+                                <rect key="frame" x="113" y="25" width="174" height="34"/>
                                 <subviews>
                                     <button tag="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mri-Jm-Fz2">
-                                        <rect key="frame" x="80" y="-2" width="89" height="32"/>
+                                        <rect key="frame" x="91" y="5" width="78" height="24"/>
                                         <buttonCell key="cell" type="push" title="Continue" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J3T-ee-JAE">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -1171,7 +1171,7 @@ DQ
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZJu-iK-xoE">
-                                        <rect key="frame" x="-2" y="-2" width="76" height="32"/>
+                                        <rect key="frame" x="5" y="5" width="66" height="24"/>
                                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RAm-yw-jux">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -1200,7 +1200,7 @@ Gw
                                 </constraints>
                             </customView>
                             <progressIndicator hidden="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="UdR-BW-QfS">
-                                <rect key="frame" x="314" y="145" width="16" height="16"/>
+                                <rect key="frame" x="314" y="153" width="16" height="16"/>
                                 <connections>
                                     <binding destination="7vo-GG-ZV1" name="animate" keyPath="verifyingCredentials" id="W0H-O4-3Dn"/>
                                     <binding destination="7vo-GG-ZV1" name="hidden" keyPath="verifyingCredentials" id="Wmo-gU-dQE">
@@ -1282,11 +1282,11 @@ Gw
             <objects>
                 <viewController title="Locations" id="NRt-HZ-e3v" customClass="MTSettingsLocationsTabController" sceneMemberID="viewController">
                     <view key="view" id="v0y-F6-jdx">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="206"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="211"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ECb-9t-V7r">
-                                <rect key="frame" x="23" y="93" width="111" height="16"/>
+                                <rect key="frame" x="23" y="96" width="111" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Package location:" id="QG6-jQ-Stm">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1294,7 +1294,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LFC-Kk-qjm" userLabel="Popup Button">
-                                <rect key="frame" x="139" y="86" width="320" height="25"/>
+                                <rect key="frame" x="142" y="91" width="313" height="24"/>
                                 <popUpButtonCell key="cell" type="push" title="Same as script" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1000" imageScaling="proportionallyDown" inset="2" selectedItem="hWO-Qq-hnm" id="Bhs-ce-6gX" userLabel="Popup Button">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="message"/>
@@ -1316,7 +1316,7 @@ Gw
                                 </connections>
                             </popUpButton>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTh-lZ-gUM">
-                                <rect key="frame" x="23" y="130" width="434" height="56"/>
+                                <rect key="frame" x="23" y="135" width="434" height="56"/>
                                 <textFieldCell key="cell" controlSize="small" allowsUndo="NO" alignment="justified" id="AP9-nh-UKh">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">By default, all packages are stored in the same location as the selected scripts. This may be changed by using the menu below. If at some point the selected location should not exist anymore, the location will be automatically reset to default.</string>
@@ -1325,7 +1325,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HAf-qk-vjT">
-                                <rect key="frame" x="23" y="64" width="111" height="16"/>
+                                <rect key="frame" x="23" y="65" width="111" height="16"/>
                                 <textFieldCell key="cell" alignment="left" title="If package exists:" id="kOo-vx-Wtz">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1333,7 +1333,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5dQ-K7-L2T">
-                                <rect key="frame" x="139" y="57" width="320" height="25"/>
+                                <rect key="frame" x="142" y="61" width="313" height="24"/>
                                 <popUpButtonCell key="cell" type="push" title="Rename new package" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JkW-Kq-xvY" id="xR3-p2-gCa">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="message"/>
@@ -1358,7 +1358,7 @@ Gw
                                 </connections>
                             </popUpButton>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WQi-sO-Ilo">
-                                <rect key="frame" x="23" y="24" width="312" height="18"/>
+                                <rect key="frame" x="25" y="25" width="308" height="16"/>
                                 <buttonCell key="cell" type="check" title="Delete script after successful package creation" bezelStyle="regularSquare" imagePosition="left" inset="2" id="GPs-hN-YRN">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1408,11 +1408,11 @@ Gw
             <objects>
                 <viewController title="Credentials" id="BW1-qO-gRM" customClass="MTSettingsCredentialTabController" sceneMemberID="viewController">
                     <view key="view" id="IiX-lQ-GsM">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="155"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="159"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrG-aH-brq">
-                                <rect key="frame" x="23" y="65" width="434" height="70"/>
+                                <rect key="frame" x="23" y="69" width="434" height="70"/>
                                 <textFieldCell key="cell" controlSize="small" allowsUndo="NO" alignment="justified" id="BfI-Zo-V14">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">Once you have entered valid credentials for notarization, they are securely stored in your keychain. You may use the button below to invalidate the stored credentials. This also temporarily disables notarization for packages. You may enable notarization again at any time but then you will be asked for your credentials again.</string>
@@ -1421,7 +1421,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BL3-8h-bLU">
-                                <rect key="frame" x="159" y="18" width="163" height="32"/>
+                                <rect key="frame" x="164" y="25" width="152" height="24"/>
                                 <buttonCell key="cell" type="push" title="Invalidate credentials" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lVE-Qs-sJj">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1456,11 +1456,11 @@ Gw
             <objects>
                 <viewController title="Packaging" id="5QV-rW-NRE" customClass="MTSettingsPackagingTabController" sceneMemberID="viewController">
                     <view key="view" id="8rq-Sd-an4">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="594"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sG8-Op-dcP">
-                                <rect key="frame" x="23" y="466" width="155" height="16"/>
+                                <rect key="frame" x="23" y="470" width="155" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Package identifier prefix:" id="vy2-Bx-Tyk">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1468,7 +1468,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdJ-Ul-U1H">
-                                <rect key="frame" x="23" y="504" width="434" height="70"/>
+                                <rect key="frame" x="23" y="510" width="434" height="70"/>
                                 <textFieldCell key="cell" controlSize="small" allowsUndo="NO" alignment="justified" id="Xni-Xz-Rjc">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">All macOS installer packages need an identifier so the macOS Installer can recognize a package as being an upgrade to an already-installed package. Even if this is not relevant to payload-free packages, an identifier must be set. If you need to change the default identifier prefix, please enter a new prefix in the text field below.</string>
@@ -1477,7 +1477,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <textField focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oof-gP-CrI">
-                                <rect key="frame" x="186" y="463" width="269" height="21"/>
+                                <rect key="frame" x="186" y="466" width="269" height="24"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="corp.sap.Script2Pkg" drawsBackground="YES" usesSingleLineMode="YES" id="N9j-SW-7cp">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1498,10 +1498,10 @@ Gw
                                 </connections>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="A2h-Yg-HD2">
-                                <rect key="frame" x="25" y="416" width="430" height="5"/>
+                                <rect key="frame" x="25" y="419" width="430" height="5"/>
                             </box>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NvY-Jw-76A">
-                                <rect key="frame" x="23" y="290" width="154" height="16"/>
+                                <rect key="frame" x="23" y="291" width="154" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Default package version:" id="dPa-0q-E7o">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1509,7 +1509,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <textField focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kfn-TD-ehQ">
-                                <rect key="frame" x="185" y="287" width="270" height="21"/>
+                                <rect key="frame" x="185" y="287" width="270" height="24"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="1.0.0" drawsBackground="YES" usesSingleLineMode="YES" id="LIw-BY-v0m">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1530,7 +1530,7 @@ Gw
                                 </connections>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YHZ-YJ-uIy">
-                                <rect key="frame" x="23" y="262" width="324" height="18"/>
+                                <rect key="frame" x="25" y="263" width="320" height="16"/>
                                 <buttonCell key="cell" type="check" title="Use package version from script name if possible" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="TYt-Xs-CuU">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1544,7 +1544,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BBA-c1-EbK">
-                                <rect key="frame" x="23" y="143" width="174" height="18"/>
+                                <rect key="frame" x="25" y="144" width="170" height="16"/>
                                 <buttonCell key="cell" type="check" title="Create package receipts" bezelStyle="regularSquare" imagePosition="left" inset="2" id="LIg-su-ajH">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1561,7 +1561,7 @@ Gw
                                 <rect key="frame" x="25" y="240" width="430" height="5"/>
                             </box>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPE-0t-HsC">
-                                <rect key="frame" x="23" y="328" width="434" height="70"/>
+                                <rect key="frame" x="23" y="331" width="434" height="70"/>
                                 <textFieldCell key="cell" controlSize="small" allowsUndo="NO" alignment="justified" id="J24-Wu-DNa">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">A macOS installer package can have an optional version number. Although this is not relevant for payload-free packages in most cases, it is required in some environments. If you want to use a specific version number, you can specify it in the field below. Alternatively, the version number can be taken from the name of the script, which you can enable with the checkbox below.</string>
@@ -1579,7 +1579,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YlA-5z-cFL">
-                                <rect key="frame" x="23" y="438" width="251" height="18"/>
+                                <rect key="frame" x="25" y="442" width="247" height="16"/>
                                 <buttonCell key="cell" type="check" title="Use prefix as fixed package identifier" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="NL1-cR-7nK">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1593,7 +1593,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dfL-ha-9cq">
-                                <rect key="frame" x="23" y="24" width="201" height="18"/>
+                                <rect key="frame" x="25" y="25" width="197" height="16"/>
                                 <buttonCell key="cell" type="check" title="Create distribution packages" bezelStyle="regularSquare" imagePosition="left" inset="2" id="aOU-lv-dLl">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1678,11 +1678,11 @@ Gw
             <objects>
                 <viewController title="General" id="95H-TL-oeU" customClass="MTSettingsGeneralTabController" sceneMemberID="viewController">
                     <view key="view" id="Fwe-hU-UIz">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="343"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="347"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Cy-gW-yfx">
-                                <rect key="frame" x="23" y="24" width="343" height="18"/>
+                                <rect key="frame" x="25" y="25" width="339" height="16"/>
                                 <buttonCell key="cell" type="check" title="Show notification when packaging has been finished" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="voH-7I-8wr">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1696,7 +1696,7 @@ Gw
                                 </connections>
                             </button>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5v-Bq-JoB">
-                                <rect key="frame" x="23" y="281" width="434" height="42"/>
+                                <rect key="frame" x="23" y="285" width="434" height="42"/>
                                 <textFieldCell key="cell" controlSize="small" allowsUndo="NO" alignment="justified" id="4Es-9G-ssG">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">To notarize packages the Command Line Tools for Xcode 13 or later are required but are not installed at the moment. Please click the button below to install the Command Line Tools for Xcode.</string>
@@ -1705,7 +1705,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LyM-nd-tFR">
-                                <rect key="frame" x="109" y="234" width="262" height="32"/>
+                                <rect key="frame" x="114" y="241" width="252" height="24"/>
                                 <buttonCell key="cell" type="push" title="Install Command Line Tools for Xcode" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kV4-Q6-gW4">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1723,7 +1723,7 @@ Gw
                                 <rect key="frame" x="25" y="218" width="430" height="5"/>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EmC-Qt-jiW">
-                                <rect key="frame" x="23" y="50" width="322" height="18"/>
+                                <rect key="frame" x="25" y="51" width="318" height="16"/>
                                 <buttonCell key="cell" type="check" title="Keep Activity window on top of all other windows" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Hpi-vw-YUs">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1738,7 +1738,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mX2-hN-LLq">
-                                <rect key="frame" x="23" y="107" width="278" height="18"/>
+                                <rect key="frame" x="25" y="108" width="274" height="16"/>
                                 <buttonCell key="cell" type="check" title="Ignore source folders with missing scripts" bezelStyle="regularSquare" imagePosition="left" inset="2" id="eYa-w5-LZe">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
