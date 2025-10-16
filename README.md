@@ -1,4 +1,4 @@
-![Script2PkgBanner](https://github.com/SAP/script-to-package-tool-for-macos/blob/main/readme_images/macOS_script2Pkg_Banner_GitHub.png)
+<img src="https://github.com/SAP/script-to-package-tool-for-macos/blob/main/readme_images/script2pkg_banner_github.png" width="879"><br/>
 
 <br/>
 
