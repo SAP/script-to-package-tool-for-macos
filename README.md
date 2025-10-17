@@ -25,7 +25,7 @@ To learn more about _Script2Pkg_ features, make sure to take a look at our [wiki
 
 * [Installation](https://github.com/SAP/script-to-package-tool-for-macos/wiki/Installation)
 * [Uninstallation](https://github.com/SAP/script-to-package-tool-for-macos/wiki/Uninstallation)
-* [Using Script2Pkg](https://github.com/SAP/script-to-package-tool-for-macos/wiki/Using-Script2Pkg)
+* [Using _Script2Pkg_](https://github.com/SAP/script-to-package-tool-for-macos/wiki/Using-Script2Pkg)
 * [Frequently Asked Questions](https://github.com/SAP/script-to-package-tool-for-macos/wiki/Frequently-Asked-Questions)
 
 <br/>
