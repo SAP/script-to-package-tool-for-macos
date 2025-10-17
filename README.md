@@ -21,7 +21,7 @@ This application is designed to help you with the process of creating [payload-f
 
 # Documentation 
 
-📚 If you want to learn more about _Script2Pkg_ features, make sure to take a look at our [wiki](https://github.com/SAP/script-to-package-tool-for-macos/wiki) or the links below:
+If you want to learn more about _Script2Pkg_ features, make sure to take a look at our [wiki](https://github.com/SAP/script-to-package-tool-for-macos/wiki) or the links below:
 
 * [Installation](https://github.com/SAP/script-to-package-tool-for-macos/wiki/Installation)
 * [Uninstallation](https://github.com/SAP/script-to-package-tool-for-macos/wiki/Uninstallation)
