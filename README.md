@@ -2,21 +2,23 @@
 
 <br/>
 
-# Script2Pkg 
+# Script2Pkg
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/script-to-package-tool-for-macos)](https://api.reuse.software/info/github.com/SAP/script-to-package-tool-for-macos)
  
 This application is designed to help you with the process of creating [payload-free installer packages](https://github.com/SAP/script-to-package-tool-for-macos/wiki/Glossary#payload-free-installer-package) for macOS. 
 
-**_Script2Pkg_ has multiple configuration options and can be configured for the following:**
+<br/>
 
-* Setting a specific package identifier.
-* Setting a specific package version.
-* Setting signing and notarization options.
-* Choosing if the packages created by this tool will create an installer package receipt.
-* Notifying you when packages are created.
-* Choosing where newly-created installer packages are stored.
-* How to handle cases where an existing package has the same name as the package you’re creating.
+# Features
+
+⚙️ Extensive configuration options for package creation
+
+🚀 Easily sign and notarize your packages
+
+🎉 Sign and notarize even existing packages
+
+✅ Verify package signatures
 
 <br/>
 
