@@ -12,6 +12,7 @@ This application is designed to help you with the process of creating [payload-f
 
 * Setting a specific package identifier.
 * Setting a specific package version.
+* Setting signing and notarization options.
 * Choosing if the packages created by this tool will create an installer package receipt.
 * Notifying you when packages are created.
 * Choosing where newly-created installer packages are stored.
