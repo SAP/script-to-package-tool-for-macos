@@ -10,12 +10,12 @@ This application is designed to help you with the process of creating [payload-f
 
 **_Script2Pkg_ has multiple configuration options and can be configured for the following:**
 
-* Notifying you when packages are created.
-* Choosing where newly-created installer packages are stored.
-* How to handle cases where an existing package has the same name as the package you’re creating.
 * Setting a specific package identifier.
 * Setting a specific package version.
 * Choosing if the packages created by this tool will create an installer package receipt.
+* Notifying you when packages are created.
+* Choosing where newly-created installer packages are stored.
+* How to handle cases where an existing package has the same name as the package you’re creating.
 
 <br/>
 
