@@ -1,6 +1,6 @@
 /*
      AppDelegate.m
-     Copyright 2022-2025 SAP SE
+     Copyright 2022-2026 SAP SE
      
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
 #import <UserNotifications/UserNotifications.h>
 #import "Constants.h"
 #import "AppDelegate.h"
+#import "MTUpdateChecker.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong, readwrite) NSArray *queuedImportFiles;
@@ -79,6 +80,8 @@
     }
 }
 
+# pragma mark - IBActions
+
 - (IBAction)showActivityWindow:(id)sender
 {
     if (!sender) {
@@ -107,10 +110,39 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:kMTGitHubURL]];
 }
 
+- (IBAction)checkForUpdates:(id)sender
+{
+    MTUpdateChecker *updateChecker = [[MTUpdateChecker alloc] initWithBundleIdentifier:kMTUpdateCheckerBundleIdentifier];
+    [updateChecker launch];
+}
+
+#pragma mark - NSMenuItemValidation
+
+- (BOOL)validateMenuItem:(NSMenuItem *)item
+{
+    BOOL enableItem = YES;
+
+    if ([item tag] == 9000) {
+        
+        enableItem = !([[NSUserDefaults standardUserDefaults] objectIsForcedForKey:kMTDefaultsUpdateCheckDisabledKey] &&
+                       [[NSUserDefaults standardUserDefaults] boolForKey:kMTDefaultsUpdateCheckDisabledKey]);
+        
+        // if update checking has not been disabled, we check if the Patcher app is installed
+        if (enableItem) {
+            
+            MTUpdateChecker *updateChecker = [[MTUpdateChecker alloc] initWithBundleIdentifier:kMTUpdateCheckerBundleIdentifier];
+            enableItem = [updateChecker isAvailable];
+        }
+        
+        [item setHidden:!enableItem];
+    }
+
+    return enableItem;
+}
+
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
-
 
 - (BOOL)applicationSupportsSecureRestorableState:(NSApplication *)app {
     return YES;

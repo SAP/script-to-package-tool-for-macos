@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="24127" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="25094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24127"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="25094"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,10 +23,16 @@
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Check for Updates" secondaryImage="arrow.3.trianglepath" catalog="system" tag="9000" hidden="YES" id="1Hw-gB-5fG">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="checkForUpdates:" target="Voe-Tx-rLC" id="YGW-pD-WBi"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                                         <menuItem title="Settings…" keyEquivalent="," id="8gQ-yR-rnr" userLabel="Settings…">
                                             <connections>
-                                                <action selector="showSettingsWindow:" target="Ady-hI-5gd" id="mcw-J0-bgI"/>
+                                                <action selector="showSettingsWindow:" target="Voe-Tx-rLC" id="RqP-18-qk6"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="oSE-1z-cO0"/>
@@ -65,12 +71,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="TXr-0J-wqR">
                                     <items>
-                                        <menuItem title="Select Scripts…" keyEquivalent="o" id="eCT-4K-Gqw">
+                                        <menuItem title="Select Scripts…" secondaryImage="document" catalog="system" keyEquivalent="o" id="eCT-4K-Gqw">
                                             <connections>
                                                 <action selector="selectFiles:" target="Ady-hI-5gd" id="Sdp-WO-0jU"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Recent Scripts" id="eb6-XJ-yRV">
+                                        <menuItem title="Recent Scripts" secondaryImage="clock" catalog="system" id="eb6-XJ-yRV">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Recent Scripts" systemMenu="recentDocuments" id="F9q-Ie-uRT">
                                                 <items>
@@ -84,17 +90,17 @@
                                             </menu>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="QNd-hW-SN1"/>
-                                        <menuItem title="Sign Existing Package…" tag="1000" keyEquivalent="d" id="hgq-fm-bhE" userLabel="Sign Existing Package…">
+                                        <menuItem title="Sign Existing Package…" secondaryImage="lock" catalog="system" tag="1000" keyEquivalent="d" id="hgq-fm-bhE" userLabel="Sign Existing Package…">
                                             <connections>
                                                 <action selector="signOrNotarizeExistingPackage:" target="Ady-hI-5gd" id="rKz-T4-bST"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Notarize Existing Package…" tag="2000" keyEquivalent="u" id="eHd-rj-1lq" userLabel="Notarize Existing Package…">
+                                        <menuItem title="Notarize Existing Package…" secondaryImage="shield.lefthalf.filled" catalog="system" tag="2000" keyEquivalent="u" id="eHd-rj-1lq" userLabel="Notarize Existing Package…">
                                             <connections>
                                                 <action selector="signOrNotarizeExistingPackage:" target="Ady-hI-5gd" id="kQg-5f-DkG"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Validate Package Signature…" keyEquivalent="y" id="mDR-zy-rKU">
+                                        <menuItem title="Validate Package Signature…" secondaryImage="checkmark" catalog="system" keyEquivalent="y" id="mDR-zy-rKU">
                                             <connections>
                                                 <action selector="validateSigning:" target="Ady-hI-5gd" id="6GI-vj-uTN"/>
                                             </connections>
@@ -175,10 +181,10 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="2Z1-Vj-tFR"/>
-                                        <menuItem title="Activity" keyEquivalent="0" id="pnK-UQ-W5v">
+                                        <menuItem title="Activity" secondaryImage="waveform.path.ecg" catalog="system" keyEquivalent="0" id="pnK-UQ-W5v">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
-                                                <action selector="showActivityWindow:" target="Ady-hI-5gd" id="XWl-bO-akz"/>
+                                                <action selector="showActivityWindow:" target="Voe-Tx-rLC" id="01R-6I-9ZK"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -194,10 +200,10 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="oWd-JQ-VnO"/>
-                                        <menuItem title="Script2Pkg on GitHub" id="U6Q-LW-EUa" userLabel="Script2Pkg on GitHub">
+                                        <menuItem title="Script2Pkg on GitHub" secondaryImage="globe" catalog="system" id="U6Q-LW-EUa" userLabel="Script2Pkg on GitHub">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="openGitHub:" target="Ady-hI-5gd" id="6cW-HR-1hs"/>
+                                                <action selector="openGitHub:" target="Voe-Tx-rLC" id="WDD-Rb-NOs"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -221,7 +227,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="corp.sap.Script2Pkg.MainController" showSeguePresentationStyle="single" id="B8D-0N-5wS" userLabel="Main Window Controller" customClass="MTMainWindowController" sceneMemberID="viewController">
-                    <window key="window" title="Script2Pkg" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="MainWindow" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Script2Pkg" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="MainWindow" animationBehavior="default" tabbingMode="disallowed" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -372,7 +378,7 @@
                                                                                 </binding>
                                                                             </connections>
                                                                         </textField>
-                                                                        <progressIndicator maxValue="1" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="MU4-bR-fzd" customClass="MTProgressIndicator">
+                                                                        <progressIndicator wantsLayer="YES" maxValue="1" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="MU4-bR-fzd" customClass="MTProgressIndicator">
                                                                             <rect key="frame" x="0.0" y="14" width="426" height="12"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="12" id="IRT-b1-QSq"/>
@@ -681,7 +687,7 @@ DQ
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9hr-FD-T4x">
-                                            <rect key="frame" x="8" y="15" width="122" height="16"/>
+                                            <rect key="frame" x="8" y="14" width="122" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Development team:" id="YBd-eW-q3p">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -830,7 +836,7 @@ DQ
                                     </binding>
                                 </connections>
                             </button>
-                            <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="zP7-Zs-mbR">
+                            <progressIndicator wantsLayer="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="zP7-Zs-mbR">
                                 <rect key="frame" x="20" y="24" width="16" height="16"/>
                                 <connections>
                                     <binding destination="XfG-lQ-9wD" name="animate" keyPath="verifyingCredentials" id="JsM-g0-xE6"/>
@@ -914,7 +920,7 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="450" height="123"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <progressIndicator maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="9BY-m5-QVb">
+                            <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="9BY-m5-QVb">
                                 <rect key="frame" x="20" y="64" width="410" height="20"/>
                             </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tZK-fj-3mL">
@@ -969,7 +975,7 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="450" height="123"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <progressIndicator maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="GhB-WS-oiA">
+                            <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="GhB-WS-oiA">
                                 <rect key="frame" x="20" y="64" width="410" height="20"/>
                             </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="27A-6w-Csk">
@@ -1199,7 +1205,7 @@ Gw
                                     <constraint firstItem="mri-Jm-Fz2" firstAttribute="leading" secondItem="ZJu-iK-xoE" secondAttribute="trailing" constant="20" id="uen-UP-reF"/>
                                 </constraints>
                             </customView>
-                            <progressIndicator hidden="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="UdR-BW-QfS">
+                            <progressIndicator hidden="YES" wantsLayer="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="UdR-BW-QfS">
                                 <rect key="frame" x="314" y="153" width="16" height="16"/>
                                 <connections>
                                     <binding destination="7vo-GG-ZV1" name="animate" keyPath="verifyingCredentials" id="W0H-O4-3Dn"/>
@@ -1286,7 +1292,7 @@ Gw
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ECb-9t-V7r">
-                                <rect key="frame" x="23" y="96" width="111" height="16"/>
+                                <rect key="frame" x="23" y="95" width="111" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Package location:" id="QG6-jQ-Stm">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1804,10 +1810,18 @@ Gw
     </scenes>
     <resources>
         <image name="archivebox" catalog="system" width="16" height="14"/>
+        <image name="arrow.3.trianglepath" catalog="system" width="17" height="16"/>
+        <image name="checkmark" catalog="system" width="14" height="13"/>
+        <image name="clock" catalog="system" width="15" height="15"/>
+        <image name="document" catalog="system" width="14" height="16"/>
         <image name="externaldrive" catalog="system" width="18" height="13"/>
         <image name="gearshape" catalog="system" width="16" height="16"/>
+        <image name="globe" catalog="system" width="15" height="15"/>
         <image name="key.horizontal" catalog="system" width="19" height="11"/>
+        <image name="lock" catalog="system" width="13" height="15"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="15" height="15"/>
+        <image name="shield.lefthalf.filled" catalog="system" width="14" height="15"/>
         <image name="shippingbox.circle.fill.gray" width="79" height="79"/>
+        <image name="waveform.path.ecg" catalog="system" width="16" height="16"/>
     </resources>
 </document>

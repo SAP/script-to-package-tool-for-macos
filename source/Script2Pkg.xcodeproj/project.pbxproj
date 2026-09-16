@@ -38,6 +38,7 @@
 		ADD04CEE2E4B857000EF6DF6 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = ADD04CED2E4B857000EF6DF6 /* AppIcon.icon */; };
 		ADE48E4F2939F2640010B630 /* MTTextColorValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE48E4E2939F2640010B630 /* MTTextColorValueTransformer.m */; };
 		ADE8E5AB29D5CF5A0075A208 /* MTNotarizeController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE8E5A929D5CF5A0075A208 /* MTNotarizeController.m */; };
+		ADEDA2963010E90C0072A6C8 /* MTUpdateChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDA2953010E90C0072A6C8 /* MTUpdateChecker.m */; };
 		ADF9C8AE292E105D004101DE /* MTDeveloperIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF9C8AD292E105D004101DE /* MTDeveloperIdentity.m */; };
 		ADF9C8B4292E22EB004101DE /* MTPayloadFreePackage.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF9C8B3292E22EB004101DE /* MTPayloadFreePackage.m */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,8 @@
 		ADE48E4E2939F2640010B630 /* MTTextColorValueTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTTextColorValueTransformer.m; sourceTree = "<group>"; };
 		ADE8E5A929D5CF5A0075A208 /* MTNotarizeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTNotarizeController.m; sourceTree = "<group>"; };
 		ADE8E5AA29D5CF5A0075A208 /* MTNotarizeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTNotarizeController.h; sourceTree = "<group>"; };
+		ADEDA2943010E90C0072A6C8 /* MTUpdateChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTUpdateChecker.h; sourceTree = "<group>"; };
+		ADEDA2953010E90C0072A6C8 /* MTUpdateChecker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTUpdateChecker.m; sourceTree = "<group>"; };
 		ADF9C8A6292E0BBA004101DE /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		ADF9C8AC292E105D004101DE /* MTDeveloperIdentity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDeveloperIdentity.h; sourceTree = "<group>"; };
 		ADF9C8AD292E105D004101DE /* MTDeveloperIdentity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDeveloperIdentity.m; sourceTree = "<group>"; };
@@ -209,6 +212,8 @@
 				AD58FDA2294F7CFE00A0F173 /* MTProgressIndicator.m */,
 				AD8C28D9296741BA00EC5F18 /* MTTableCellView.h */,
 				AD8C28DA296741BA00EC5F18 /* MTTableCellView.m */,
+				ADEDA2943010E90C0072A6C8 /* MTUpdateChecker.h */,
+				ADEDA2953010E90C0072A6C8 /* MTUpdateChecker.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -269,7 +274,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 2600;
+				LastUpgradeCheck = 2700;
 				TargetAttributes = {
 					AD774C9E29068D650072E62B = {
 						CreatedOnToolsVersion = 14.1;
@@ -323,6 +328,7 @@
 				ADE8E5AB29D5CF5A0075A208 /* MTNotarizeController.m in Sources */,
 				AD774CA729068D650072E62B /* MTMainViewController.m in Sources */,
 				AD73BB912966C583009778FE /* MTLocalNotification.m in Sources */,
+				ADEDA2963010E90C0072A6C8 /* MTUpdateChecker.m in Sources */,
 				ADE48E4F2939F2640010B630 /* MTTextColorValueTransformer.m in Sources */,
 				AD294EE829474AE60041F5CA /* MTOperationQueue.m in Sources */,
 				AD534F3A29312A6800759C19 /* MTNotarization.m in Sources */,
@@ -502,22 +508,22 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 295;
+				CURRENT_PROJECT_VERSION = 309;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Script2Pkg/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Script2Pkg;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022-2025 SAP SE. All rights reserved.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022-2026 SAP SE. All rights reserved.";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
-				MARKETING_VERSION = 1.1.5;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = corp.sap.Script2Pkg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -534,22 +540,22 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 295;
+				CURRENT_PROJECT_VERSION = 309;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Script2Pkg/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Script2Pkg;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022-2025 SAP SE. All rights reserved.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022-2026 SAP SE. All rights reserved.";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
-				MARKETING_VERSION = 1.1.5;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = corp.sap.Script2Pkg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

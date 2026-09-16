@@ -5,6 +5,12 @@
       "comment" : "Class = \"NSPopUpButton\"; ibExternalAccessibilityDescription = \"Development Team\"; ObjectID = \"0C4-N1-hKG\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entwicklerteam"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -41,6 +47,25 @@
             "value" : "mainWindowText"
           }
         }
+      },
+      "shouldTranslate" : false
+    },
+    "1Hw-gB-5fG.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Check for Updates\"; ObjectID = \"1Hw-gB-5fG\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach Updates suchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Check for Updates"
+          }
+        }
       }
     },
     "1Xt-HY-uBw.title" : {
@@ -53,7 +78,8 @@
             "value" : "Script2Pkg"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "2pa-Hy-tIX.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"pkgName\"; ObjectID = \"2pa-Hy-tIX\";",
@@ -65,7 +91,8 @@
             "value" : "pkgName"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "2SB-bx-137.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Cut\"; ObjectID = \"2SB-bx-137\";",
@@ -143,6 +170,12 @@
       "comment" : "Class = \"NSPopUpButton\"; ibExternalAccessibilityDescription = \"What to do, if package exists\"; ObjectID = \"5dQ-K7-L2T\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was passieren soll, wenn das Paket existiert"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -227,6 +260,12 @@
       "comment" : "Class = \"NSTableView\"; ibExternalAccessibilityDescription = \"List of tasks\"; ObjectID = \"9cm-Is-aFq\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liste von Aufgaben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -263,7 +302,8 @@
             "value" : "1.0.0"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "9Oj-FR-GTb.ibShadowedNoSelectionPlaceholder" : {
       "comment" : "Class = \"CocoaBindingsConnection\"; ibShadowedNoSelectionPlaceholder = \"1.0.0\"; ObjectID = \"9Oj-FR-GTb\";",
@@ -275,7 +315,8 @@
             "value" : "1.0.0"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "20I-Op-has.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Don't have an app-specific password yet? Please create one at https://appleid.apple.com.\"; ObjectID = \"20I-Op-has\";",
@@ -377,7 +418,8 @@
             "value" : "Window"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "avY-6F-Cxu.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Copy\"; ObjectID = \"avY-6F-Cxu\";",
@@ -407,7 +449,8 @@
             "value" : "Main Menu"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "BfI-Zo-V14.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Once you have entered valid credentials for notarization, they are securely stored in your keychain. You may use the button below to invalidate the stored credentials. This also temporarily disables notarization for packages. You may enable notarization again at any time but then you will be asked for your credentials again.\"; ObjectID = \"BfI-Zo-V14\";",
@@ -509,7 +552,8 @@
             "value" : "taskState"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "dCN-oY-xhH.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Waiting for package to be notarized…\"; ObjectID = \"dCN-oY-xhH\";",
@@ -665,7 +709,8 @@
             "value" : "Recent Scripts"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "gEM-CH-zLf.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Select scripts\"; ObjectID = \"gEM-CH-zLf\";",
@@ -803,7 +848,8 @@
             "value" : "Script2Pkg"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "IWz-Pr-69B.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Verifying credentials…\"; ObjectID = \"IWz-Pr-69B\";",
@@ -869,7 +915,8 @@
             "value" : "signingText"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "JkW-Kq-xvY.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Rename new package\"; ObjectID = \"JkW-Kq-xvY\";",
@@ -929,6 +976,12 @@
       "comment" : "Class = \"NSTextField\"; ibExternalAccessibilityDescription = \"Default package version\"; ObjectID = \"Kfn-TD-ehQ\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard-Paketversion"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1013,6 +1066,12 @@
       "comment" : "Class = \"NSPopUpButton\"; ibExternalAccessibilityDescription = \"Package location\"; ObjectID = \"LFC-Kk-qjm\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speicherort für Pakete"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1049,7 +1108,8 @@
             "value" : "1.0.0"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "lmE-yP-kZR.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Delete\"; ObjectID = \"lmE-yP-kZR\";",
@@ -1169,7 +1229,8 @@
             "value" : "taskName"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "mqD-k9-T2g.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Distribution packages are a special format of installer packages, needed in some environments. If you need to create distribution packages instead of component packages, enable the option below.\"; ObjectID = \"mqD-k9-T2g\";",
@@ -1199,7 +1260,8 @@
             "value" : "corp.sap.Script2Pkg"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "NL1-cR-7nK.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Use prefix as fixed package identifier\"; ObjectID = \"NL1-cR-7nK\";",
@@ -1277,6 +1339,12 @@
       "comment" : "Class = \"NSTextField\"; ibExternalAccessibilityDescription = \"Package identifier prefix\"; ObjectID = \"oof-gP-CrI\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präfix für Paketkennung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1367,6 +1435,12 @@
       "comment" : "Class = \"NSSecureTextField\"; ibExternalAccessibilityDescription = \"App-specific password\"; ObjectID = \"pNY-Et-Rh5\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-spezifisches Passwort"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1385,7 +1459,8 @@
             "value" : "corp.sap.Script2Pkg"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "PX7-Xd-aMX.ibShadowedNoSelectionPlaceholder" : {
       "comment" : "Class = \"CocoaBindingsConnection\"; ibShadowedNoSelectionPlaceholder = \"corp.sap.Script2Pkg\"; ObjectID = \"PX7-Xd-aMX\";",
@@ -1397,7 +1472,8 @@
             "value" : "corp.sap.Script2Pkg"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "QG6-jQ-Stm.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Package location:\"; ObjectID = \"QG6-jQ-Stm\";",
@@ -1661,7 +1737,8 @@
             "value" : "Apple ID"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "uN8-j8-gXn.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"notarizingText\"; ObjectID = \"uN8-j8-gXn\";",
@@ -1673,12 +1750,19 @@
             "value" : "notarizingText"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "uNo-AG-dvt.ibExternalAccessibilityDescription" : {
       "comment" : "Class = \"NSView\"; ibExternalAccessibilityDescription = \"Package Signature Validation\"; ObjectID = \"uNo-AG-dvt\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überprüfung der Paketsignatur"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1697,7 +1781,8 @@
             "value" : "Script2Pkg"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Vdr-fp-XzO.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Hide Others\"; ObjectID = \"Vdr-fp-XzO\";",
@@ -1781,7 +1866,8 @@
             "value" : " – "
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "vy2-Bx-Tyk.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Package identifier prefix:\"; ObjectID = \"vy2-Bx-Tyk\";",
@@ -1811,7 +1897,8 @@
             "value" : "dialogBoxText"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "wz8-EM-PL4.title" : {
       "comment" : "Class = \"NSMenu\"; title = \"Help\"; ObjectID = \"wz8-EM-PL4\";",
@@ -1877,7 +1964,8 @@
             "value" : "errorDescription"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "YBd-eW-q3p.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Development team:\"; ObjectID = \"YBd-eW-q3p\";",
@@ -1943,7 +2031,8 @@
             "value" : "Clear Menu"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "ZxJ-bt-Vh9.title" : {
       "comment" : "Class = \"NSMenu\"; title = \"Edit\"; ObjectID = \"ZxJ-bt-Vh9\";",
