@@ -20,6 +20,8 @@ This application is designed to help you with the process of creating [payload-f
 
 ✅ Verify package signatures
 
+💻 Runs on macOS 13 and newer
+
 <br/>
 
 # Documentation 
