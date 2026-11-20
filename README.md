@@ -20,6 +20,8 @@ This application is designed to help you with the process of creating [payload-f
 
 ✅ Verify package signatures
 
+🔄 Seamless automatic updates powered by [_Patcher_](https://github.com/SAP/macos-app-patcher)
+
 💻 Runs on macOS 13 and newer
 
 <br/>
